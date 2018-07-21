@@ -29,6 +29,7 @@ export class Api {
   }
 
   post(endpoint: string, body: any, token?: any) {
+    console.log(this.url + endpoint);
     return this.http.post(this.url + endpoint, JSON.stringify(body), { headers: this.header }).timeout(this.timeOut);
   }
 

@@ -32,7 +32,6 @@ export const API_CONFIG: ApiConfig = {
   ],
 
   getEndPoint(endpointName) {
-    console.log('EndPoint');
     const result = API_CONFIG.apiEndpoints.filter(ep => ep.endPointName === endpointName);
     if (result.length > 0) {
       return result[0].endPointValue;

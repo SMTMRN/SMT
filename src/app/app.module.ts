@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/header-footer-section/footer/footer.component';
 import { HeaderComponent } from './components/header-footer-section/header/header.component';
 import { HomeComponent } from './components/home-section/home/home.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountManagementModule } from './components/account-management/account-management.module';
-import { AccountManagementProvider } from './services/account-management/account-management-service';
+import { Api } from './services/api-settings/api';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,14 @@ import { AccountManagementProvider } from './services/account-management/account
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     AccountManagementModule
   ],
   providers: [
-    AccountManagementProvider
+    Api
   ],
   bootstrap: [AppComponent]
 })

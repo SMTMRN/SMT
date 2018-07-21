@@ -20,11 +20,15 @@ export class AccountManagementProvider {
   }
 
   registration(payload) {
-    return this.requestApiCall('forgotPWD', 'POST', payload);
+    return this.requestApiCall('register', 'POST', payload);
   }
 
   recoverPassword(payload) {
-    return this.requestApiCall('login', 'POST', payload);
+    return this.requestApiCall('recoverPWD', 'POST', payload);
+  }
+
+  resetPassword(payload) {
+    return this.requestApiCall('resetPwd', 'POST', payload);
   }
 
   requestApiCall(endpoint: string, type: string, payload?: any) {

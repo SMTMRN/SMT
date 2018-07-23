@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AccountManagementProvider } from '../../../services/account-management/account-management-service';
+import { RegistrationValidator } from '../../../services/account-management/validators/registration-validator';
 
 @Component({
   selector: 'app-registration',
@@ -9,6 +10,7 @@ import { AccountManagementProvider } from '../../../services/account-management/
 })
 export class RegistrationComponent implements OnInit {
   registrationValidator: any;
+  passwordFormGroup: any;
 
   constructor(private formBuilder: FormBuilder, private accountServices: AccountManagementProvider) {
 
@@ -19,6 +21,13 @@ export class RegistrationComponent implements OnInit {
   }
 
   doValidations() {
+    this.passwordFormGroup = this.formBuilder.group({
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
+    }, {
+      validator: RegistrationValidator.validate.bind(this)
+    });
+
     this.registrationValidator = this.formBuilder.group({
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
@@ -28,8 +37,7 @@ export class RegistrationComponent implements OnInit {
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-]+$')
       ])),
-      password: new FormControl('', Validators.required),
-      confirmPassword: new FormControl('', Validators.required),
+      passwordFormGroup: this.passwordFormGroup
     });
   }
 

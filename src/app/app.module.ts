@@ -9,6 +9,10 @@ import { HomeComponent } from './components/home-section/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountManagementModule } from './components/account-management/account-management.module';
 import { Api } from './services/api-settings/api';
+import { SampleData } from '../assets/mocks/sample-data';
+import { ViewCartComponent } from './components/cart-section/view-cart/view-cart.component';
+import { ResponseHandler } from './services/api-settings/response-handler';
+import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -16,18 +20,22 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ViewCartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
     AccountManagementModule
   ],
   providers: [
-    Api
+    Api,
+    ResponseHandler,
+    SampleData
   ],
   bootstrap: [AppComponent]
 })

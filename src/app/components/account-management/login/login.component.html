@@ -1,94 +1,104 @@
-<section class="custom-bg-img">
-    <div class="container-fluid container-height">
-        <div class="row">
-            <div class="col-md-12 text-center mb-5">
-                <h2 class="text-white text-uppercase">Already registered?</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="loginbox panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="text-uppercase medium pb-4">New customer</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p class="text-white">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident. Nemo enim ipsam voluptatem quia voluptas sit
-                            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
-                            sequi nesciunt.</p>
-                        <div class="form-group last pt-5 mb-5">
-                            <div class="row align-items-center">
-                                <div class="col-sm-12">
-                                    <button type="submit" class="medium rounded-0 btn btn-outline text-uppercase">
-                                        an Account</button>
-                                </div>
+<div class="body-bg">
+    <nav class="fixed-top-2" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#">Account</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Account</li>
+        </ol>
+    </nav>
+    <div class="d-block d-sm-none d-md-none d-lg-none">&nbsp;</div>
 
+    <section>
+        <div class="container-fluid container-height">
+            <div class="row">
+                <div class="col-md-12 text-center mb-5">
+                    <h2 class="text-white text-uppercase">Already registered?</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="loginbox panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="text-uppercase medium pb-4">New customer</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p class="text-white">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                pariatur. Excepteur sint occaecat cupidatat non proident. Nemo enim ipsam voluptatem quia
+                                voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+                                voluptatem sequi nesciunt.</p>
+                            <div class="form-group last pt-5 mb-5">
+                                <div class="row align-items-center">
+                                    <div class="col-sm-12">
+                                        <button type="button" routerLink="/register" class="medium rounded-0 btn btn-outline text-uppercase">
+                                            Create An Account</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-            </div>
-            <div class="d-block d-sm-none d-md-none d-lg-none">&nbsp;</div>
-
-            <div class="col-md-6">
-                <div class="loginbox panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="text-uppercase medium">Login</h4>
-                        <p class="text-white">If you have a account with us, please login.</p>
-                    </div>
-                    <div class="panel-body">
-                        <form [formGroup]="loginValidator" class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-5">
-                                        <label for="inputEmail3" class="text-white text-uppercase">
-                                            Email*</label>
+                <div class="d-block d-sm-none d-md-none d-lg-none">&nbsp;</div>
+                <div class="col-md-6">
+                    <div class="loginbox panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="text-uppercase medium">Login</h4>
+                            <p class="text-white">If you have a account with us, please login.</p>
+                        </div>
+                        <div class="panel-body">
+                            <form [formGroup]="loginValidator" class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <label for="inputEmail3" class="text-white text-uppercase">
+                                                Email*</label>
+                                        </div>
+                                        <div class="col-7 text-right">
+                                            <p class="text-white">* Required fields</p>
+                                        </div>
                                     </div>
-                                    <div class="col-7 text-right">
-                                        <p class="text-white">* Required fields</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <input type="email" formControlName="email" [(ngModel)]="ngEmail" class="form-control1 rounded-0 " id="inputEmail3" placeholder="Email"
-                                        required>
-                                    <div *ngFor="let validation of validation_messages.email">
-                                        <div class="error-message" *ngIf="loginValidator.get('email').hasError(validation.type) && (loginValidator.get('email').dirty || loginValidator.get('email').touched)">
-                                            {{ validation.message }}
+                                    <div>
+                                        <input type="email" formControlName="email" [(ngModel)]="ngEmail" class="form-control1 rounded-0 " id="inputEmail3" placeholder="Email"
+                                            required>
+                                        <div *ngFor="let validation of validation_messages.email">
+                                            <div class="error-message" *ngIf="loginValidator.get('email').hasError(validation.type) && (loginValidator.get('email').dirty || loginValidator.get('email').touched)">
+                                                {{ validation.message }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword3" class="text-white text-uppercase">
-                                    Password*</label>
-                                <div>
-                                    <input type="password" formControlName="password" [(ngModel)]="ngPassword" class="form-control1 rounded-0 " id="inputPassword3"
-                                        placeholder="Password" required>
-                                    <div *ngFor="let validation of validation_messages.password">
-                                        <div class="error-message" *ngIf="loginValidator.get('password').hasError(validation.type) && (loginValidator.get('password').dirty || loginValidator.get('password').touched)">
-                                            {{ validation.message }}
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="text-white text-uppercase">
+                                        Password*</label>
+                                    <div>
+                                        <input type="password" formControlName="password" [(ngModel)]="ngPassword" class="form-control1 rounded-0 " id="inputPassword3"
+                                            placeholder="Password" required>
+                                        <div *ngFor="let validation of validation_messages.password">
+                                            <div class="error-message" *ngIf="loginValidator.get('password').hasError(validation.type) && (loginValidator.get('password').dirty || loginValidator.get('password').touched)">
+                                                {{ validation.message }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group last pt-3">
-                                <div class="row align-items-center">
-                                    <div class="col-sm-4">
-                                        <button (click)=loginUser() [disabled]="!loginValidator.valid" class="medium rounded-0 btn btn-outline text-uppercase">
-                                            Login</button>
-                                    </div>
-                                    <div class="col-sm-8 text-right">
-                                        <a routerLink="/forgotpassword" class="btn btn-link text-white">Lost your password?</a>
+                                <div class="form-group last pt-3">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-4">
+                                            <button (click)=loginUser() [disabled]="!loginValidator.valid" class="medium rounded-0 btn btn-outline text-uppercase">
+                                                Login</button>
+                                        </div>
+                                        <div class="col-sm-8 text-right">
+                                            <a routerLink="/forgotpassword" class="btn btn-link text-white">Lost your password?</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
-    </div>
-</section>
+    </section>
+</div>

@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { API_CONFIG } from '../api-settings/api-settings';
 import 'rxjs/add/operator/timeout';
@@ -10,17 +11,21 @@ export class Api {
   fileHeader: any;
   timeOut = 120000;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: Http) {
     this.header = new HttpHeaders({ 'Content-Type': 'application/json' });
   }
 
   get(endpoint: string, params?: any, token?: any) {
     let getUrl = this.url + endpoint;
     if ((params != null) && (params !== undefined)) {
-      for (const p of params) {
-        getUrl = getUrl + '/' + p;
-      }
+      getUrl = getUrl + params;
+      console.log(getUrl);
     }
+    // if ((params != null) && (params !== undefined)) {
+    //   for (const p of params) {
+    //     getUrl = getUrl + '/' + p;
+    //   }
+    // }
     if (token) {
       return this.http.get(getUrl, this.getHeader(token));
     } else {

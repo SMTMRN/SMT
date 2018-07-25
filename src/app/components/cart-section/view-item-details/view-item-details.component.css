@@ -1,0 +1,45 @@
+.categories.dropdown-toggle::after {
+    content: none !important;
+}
+
+.list-inline-item:not(:last-child) {
+    margin-right: .0rem;
+}
+
+@media(min-width:768px) {
+    #carousel {
+        left: -210px;
+        top: 180px;
+    }
+    #carousel .flex-viewport {
+        height: 65px;
+    }
+    .flexslider .slides img {
+        background: #FBFBFB
+    }
+    #slider {
+        left: 80px;
+        top: -110px;
+    }
+    #carousel img {
+        transform: rotate(-90deg);
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        min-height: 60px;
+        padding-bottom: 0px;
+        border: 1px solid #000
+    }
+    #carousel li {
+        margin-bottom: 0px;
+    }
+    #carousel {
+        transform: rotate(90deg);
+    }
+}
+
+#carousel.flexslider {
+    /* border: 1px solid #000 */
+    background: none;
+    border: none;
+}

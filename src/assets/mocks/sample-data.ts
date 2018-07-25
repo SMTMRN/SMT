@@ -130,4 +130,74 @@ export class SampleData {
             'metadescription': []
         }
     ];
+
+
+    itemDetails = {
+        'upload_name': '125mm Angle Grinder Sun Flower SFAG-125',
+        'upload_brand': 'Sun Flower',
+        'item_description': 'Lorem Ipsum is simply dummy text of the printing and unknown printer took a galley of type and scrambled',
+        'extraimages': [],
+        'tags': [],
+        'search_keywords': [],
+        'keywords': [],
+        'status': 'Inprocess',
+        'created_date': {
+            '$date': 1530629474798
+        },
+        'prices': [
+            {
+                'percentage': 33.38,
+                'enduser_price': '2627.00',
+                'offer_price': '1750.00'
+            }
+        ],
+        'attributes': [
+            {
+                'atrname': 'Input Power(W)',
+                'atrvalue': '1200'
+            },
+            {
+                'atrname': 'No Rated Speed(rpm)',
+                'atrvalue': '11800'
+            },
+            {
+                'atrname': 'Disc Size(mm)',
+                'atrvalue': '125'
+            }
+        ],
+        'todaydeals': [],
+        '_id': {
+            '$oid': '5b307fa05ba9450dc6b9a26d'
+        },
+        'metadescription': []
+    };
+
+    itemCategories = [{
+        name: 'Power Tools',
+        itemImage: 'assets/img/powertools.png'
+    },
+    {
+        name: 'Generator Tools',
+        itemImage: 'assets/img/powertools.png'
+    },
+    {
+        name: 'Vaccum Tools',
+        itemImage: 'assets/img/powertools.png'
+    },
+    {
+        name: 'Digital Tools',
+        itemImage: 'assets/img/powertools.png'
+    },
+    {
+        name: 'Air Tools',
+        itemImage: 'assets/img/powertools.png'
+    },
+    {
+        name: 'Hand Tools',
+        itemImage: 'assets/img/powertools.png'
+    },
+    {
+        name: 'Garden Tools',
+        itemImage: 'assets/img/powertools.png'
+    }];
 }

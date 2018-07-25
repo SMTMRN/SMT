@@ -14,6 +14,7 @@ import { ViewCartComponent } from './components/cart-section/view-cart/view-cart
 import { ResponseHandler } from './services/api-settings/response-handler';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { ViewItemDetailsComponent } from './components/cart-section/view-item-details/view-item-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    ViewCartComponent
+    ViewCartComponent,
+    ViewItemDetailsComponent
   ],
   imports: [
     BrowserModule,

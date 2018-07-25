@@ -5,6 +5,7 @@ import { LoginComponent } from './components/account-management/login/login.comp
 import { RegistrationComponent } from './components/account-management/registration/registration.component';
 import { RecoverPasswordComponent } from './components/account-management/recover-password/recover-password.component';
 import { ViewCartComponent } from './components/cart-section/view-cart/view-cart.component';
+import { ViewItemDetailsComponent } from './components/cart-section/view-item-details/view-item-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'forgotpassword', component: RecoverPasswordComponent },
   { path: 'view-cart', component: ViewCartComponent },
+  { path: 'view-details', component: ViewItemDetailsComponent },
 ];
 
 @NgModule({

@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'forgotpassword', component: RecoverPasswordComponent },
   { path: 'view-cart', component: ViewCartComponent },
   { path: 'view-details', component: ViewItemDetailsComponent },
+  { path: '**', component: HomeComponent }
 ];
 
 @NgModule({

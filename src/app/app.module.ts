@@ -15,6 +15,14 @@ import { ResponseHandler } from './services/api-settings/response-handler';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewItemDetailsComponent } from './components/cart-section/view-item-details/view-item-details.component';
+import { CarouselComponent } from './components/home-section/carousel/carousel.component';
+import { SmtpInfoComponent } from './components/home-section/smtp-info/smtp-info.component';
+import { AddBlockComponent } from './components/home-section/add-block/add-block.component';
+import { ToolsCategoryComponent } from './components/home-section/tools-category/tools-category.component';
+import { TopBrandsComponent } from './components/home-section/top-brands/top-brands.component';
+import { OffersComponent } from './components/home-section/offers/offers.component';
+import { OffersAdsComponent } from './components/home-section/offers-ads/offers-ads.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +31,14 @@ import { ViewItemDetailsComponent } from './components/cart-section/view-item-de
     HeaderComponent,
     HomeComponent,
     ViewCartComponent,
-    ViewItemDetailsComponent
+    ViewItemDetailsComponent,
+    CarouselComponent,
+    SmtpInfoComponent,
+    AddBlockComponent,
+    ToolsCategoryComponent,
+    TopBrandsComponent,
+    OffersComponent,
+    OffersAdsComponent
   ],
   imports: [
     BrowserModule,

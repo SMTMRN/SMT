@@ -1,0 +1,97 @@
+<ul class="nav nav-pills justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link text-uppercase border-right active" data-toggle="pill" href="#topbrands">top brands</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-uppercase border-right" data-toggle="pill" href="#emergingbrands">emerging brands</a>
+    </li>
+    <!-- <li class="nav-item">
+    <a class="nav-link text-uppercase" data-toggle="pill" href="#offers">offers</a>
+  </li> -->
+</ul>
+<section class="tab-content">
+
+    <section class="pt-4 pb-4 tab-pane active show" id="topbrands">
+        <div class="container">
+            <!-- <div class="col-md-8 pb-4">
+          <h4 class="medium text-uppercase">Top Brands</h4>
+      </div> -->
+            <div id="carousel01" class="owl-carousel owl-theme owl-loaded owl-drag">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1410px;">
+                        <ng-container *ngFor="let item of topBrands; let i=index">
+                                <div class="owl-item" style="width: 230px; margin-right: 5px;" [ngClass]="{'active':i<4}">
+                                        <div class="item">
+                                            <img src="assets/img/{{item.src}}.png" class="img-fluid logo-bg">
+                                        </div>
+                                    </div>
+                        </ng-container>
+                        
+                       
+                    </div>
+                </div>
+                <div class="owl-nav">
+                    <button type="button" role="presentation" class="owl-prev disabled">
+                        <span aria-label="Previous">
+                            <span class="icon-angle-left"></span>
+                        </span>
+                    </button>
+                    <button type="button" role="presentation" class="owl-next">
+                        <span aria-label="Next">
+                            <span class="icon-angle-right"></span>
+                        </span>
+                    </button>
+                </div>
+                <div class="owl-dots">
+                    <button role="button" class="owl-dot active">
+                        <span></span>
+                    </button>
+                    <button role="button" class="owl-dot">
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pt-4 pb-4 tab-pane fade" id="emergingbrands">
+        <div class="container">
+            <!-- <div class="col-md-8 pb-4">
+          <h4 class="medium text-uppercase">Emerging Brands</h4>
+      </div> -->
+            <div id="carousel03" class="owl-carousel owl-theme owl-loaded owl-drag owl-hidden">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1410px;">
+                            <ng-container *ngFor="let item of emergingBrands; let i=index">
+                                    <div class="owl-item" style="width: 230px; margin-right: 5px;" [ngClass]="{'active':i<4}">
+                                            <div class="item">
+                                                <img src="assets/img/{{item.src}}.png" class="img-fluid logo-bg">
+                                            </div>
+                                        </div>
+                            </ng-container>
+                        
+                    </div>
+                </div>
+                <div class="owl-nav">
+                    <button type="button" role="presentation" class="owl-prev disabled">
+                        <span aria-label="Previous">
+                            <span class="icon-angle-left"></span>
+                        </span>
+                    </button>
+                    <button type="button" role="presentation" class="owl-next">
+                        <span aria-label="Next">
+                            <span class="icon-angle-right"></span>
+                        </span>
+                    </button>
+                </div>
+                <div class="owl-dots">
+                    <button role="button" class="owl-dot active">
+                        <span></span>
+                    </button>
+                    <button role="button" class="owl-dot">
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

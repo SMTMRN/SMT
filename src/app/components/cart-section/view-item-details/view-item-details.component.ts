@@ -21,6 +21,11 @@ export class ViewItemDetailsComponent implements OnInit {
     // this.getCartDetails();
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterViewInit() {
+
+  }
+
   calculateTotalItems() {
     console.log(this.itemData);
     this.discountPercentage = Number(this.itemData.prices[0].percentage);

@@ -27,6 +27,7 @@ import { OrderLoginComponent } from './components/cart-section/place-order-secti
 import { DeliveryAddressComponent } from './components/cart-section/place-order-section/delivery-address/delivery-address.component';
 import { OrderSummaryComponent } from './components/cart-section/place-order-section/order-summary/order-summary.component';
 import { PaymentOptionsComponent } from './components/cart-section/place-order-section/payment-options/payment-options.component';
+import { ErrorValidatorComponent } from './components/validators/error-validator/error-validator.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { PaymentOptionsComponent } from './components/cart-section/place-order-s
     OrderLoginComponent,
     DeliveryAddressComponent,
     OrderSummaryComponent,
-    PaymentOptionsComponent
+    PaymentOptionsComponent,
+    ErrorValidatorComponent
   ],
   imports: [
     BrowserModule,

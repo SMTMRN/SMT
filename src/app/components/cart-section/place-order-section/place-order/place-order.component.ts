@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class PlaceOrderComponent implements OnInit {
 
   pageShown = 'order-login';
+  deliveryAddressFlag: any = false;
+  orderSummaryFlag: any = false;
+  paymentOptionsFlag: any = false;
   constructor() { }
 
   ngOnInit() {
@@ -15,6 +18,13 @@ export class PlaceOrderComponent implements OnInit {
 
   openPage(page) {
     this.pageShown = page;
+  }
+
+  getLoginDetails(event) {
+    if (event) {
+      this.deliveryAddressFlag = event;
+      this.openPage('delivery-address');
+    }
   }
 
 }

@@ -1,0 +1,5 @@
+<div *ngFor="let validation of validationArray">
+    <div class="error-message" *ngIf="formDetails.get(elementType).hasError(validation.type) && (formDetails.get(elementType).dirty || formDetails.get(elementType).touched)">
+        {{ validation.message }}
+    </div>
+</div>

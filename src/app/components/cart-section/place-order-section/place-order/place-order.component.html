@@ -11,13 +11,13 @@
                           </p>
                       </div>
                       <div class="stepwizard-step  pb-3 col-xs-3">
-                          <a (click)="openPage('delivery-address')" class="btn btn-default btn-circle">2</a>
+                          <button (click)="openPage('delivery-address')" [disabled]="!deliveryAddressFlag" class="btn btn-default btn-circle">2</button>
                           <p class="text-uppercase">
                               <small>Delivery Address</small>
                           </p>
                       </div>
                       <div class="stepwizard-step  pb-3 col-xs-3">
-                          <a (click)="openPage('order-summary')" class="btn btn-default btn-circle">3</a>
+                          <a (click)="openPage('order-summary')"class="btn btn-default btn-circle">3</a>
                           <p class="text-uppercase">
                               <small>Order Summary</small>
                           </p>
@@ -35,7 +35,7 @@
                       <form role="form">
                           
 
-                        <app-order-login *ngIf="pageShown=='order-login'"></app-order-login> 
+                        <app-order-login (loginDetails)="getLoginDetails($event)" *ngIf="pageShown=='order-login'"></app-order-login> 
                         <app-delivery-address *ngIf="pageShown=='delivery-address'"></app-delivery-address>
                         <app-order-summary *ngIf="pageShown=='order-summary'"></app-order-summary>
                         <app-payment-options *ngIf="pageShown=='payment-options'"></app-payment-options>

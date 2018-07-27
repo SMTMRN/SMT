@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SampleData } from '../../../../assets/mocks/sample-data';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-view-item-details',
   templateUrl: './view-item-details.component.html',
@@ -18,6 +18,32 @@ export class ViewItemDetailsComponent implements OnInit {
   ngOnInit() {
     this.itemData = this.sampleData.itemDetails;
     this.calculateTotalItems();
+    $(document).ready(function() {
+    //   $(window).load(function() {
+    //     // The slider being synced must be initialized first
+    //     $('#carousel').flexslider({
+    //         animation: "slide",
+    //         controlNav: false,
+    //         animationLoop: false,
+    //         slideshow: false,
+    //         itemWidth: 75,
+    //         // itemHeight: 75,
+    //         maxItems: 6,
+    //         //smoothHeight:200,
+    //         // itemMargin: 5,
+    //         asNavFor: '#slider'
+    //     });
+
+    //     $('#slider').flexslider({
+    //         animation: "slide",
+    //         controlNav: false,
+    //         animationLoop: false,
+    //         slideshow: false,
+    //         sync: "#carousel"
+    //     });
+    // });
+
+  });
     // this.getCartDetails();
   }
 

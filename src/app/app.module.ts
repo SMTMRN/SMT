@@ -22,6 +22,7 @@ import { ToolsCategoryComponent } from './components/home-section/tools-category
 import { TopBrandsComponent } from './components/home-section/top-brands/top-brands.component';
 import { OffersComponent } from './components/home-section/offers/offers.component';
 import { OffersAdsComponent } from './components/home-section/offers-ads/offers-ads.component';
+import { ToolsComponent } from './components/tools/tools.component';
 import { PlaceOrderComponent } from './components/cart-section/place-order-section/place-order/place-order.component';
 import { OrderLoginComponent } from './components/cart-section/place-order-section/order-login/order-login.component';
 import { DeliveryAddressComponent } from './components/cart-section/place-order-section/delivery-address/delivery-address.component';
@@ -45,8 +46,9 @@ import { ErrorValidatorComponent } from './components/validators/error-validator
     TopBrandsComponent,
     OffersComponent,
     OffersAdsComponent,
-    PlaceOrderComponent,
+    ToolsComponent,
     OrderLoginComponent,
+    PlaceOrderComponent,
     DeliveryAddressComponent,
     OrderSummaryComponent,
     PaymentOptionsComponent,

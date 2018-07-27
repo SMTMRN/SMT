@@ -6,6 +6,7 @@ import { RegistrationComponent } from './components/account-management/registrat
 import { RecoverPasswordComponent } from './components/account-management/recover-password/recover-password.component';
 import { ViewCartComponent } from './components/cart-section/view-cart/view-cart.component';
 import { ViewItemDetailsComponent } from './components/cart-section/view-item-details/view-item-details.component';
+import { ToolsComponent } from './components/tools/tools.component';
 import { PlaceOrderComponent } from './components/cart-section/place-order-section/place-order/place-order.component';
 import { PaymentOptionsComponent } from './components/cart-section/place-order-section/payment-options/payment-options.component';
 import { OrderSummaryComponent } from './components/cart-section/place-order-section/order-summary/order-summary.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'forgotpassword', component: RecoverPasswordComponent },
   { path: 'view-cart', component: ViewCartComponent },
   { path: 'view-details', component: ViewItemDetailsComponent },
+  { path: 'library', component: ToolsComponent },
   { path: 'place-order', component: PlaceOrderComponent },
   { path: '**', component: HomeComponent }
 ];

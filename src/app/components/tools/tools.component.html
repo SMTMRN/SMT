@@ -1,0 +1,401 @@
+<div class="container-fluid container-height">
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="d-none d-sm-block d-md-block d-lg-block">
+                <div class="row filter">
+                    <div class="col-md-12">
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <p>
+                                        <label class="more-less text-small">Clear All</label>
+                                        <span class="text-uppercase">
+                                        filters
+                                    </span>
+                                    </p>
+                                </h4>
+                            </div>
+                            <hr>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <i class="more-less  icon-minus"></i>Sub-category
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                        <div class="form-group has-feedback">
+                                            <input type="text" class="form-control" id="inputValidation" placeholder="Search">
+                                            <span class="icon-search form-control-feedback"></span>
+                                        </div>
+                                        <div class="form-group" *ngFor="let cat of subCat">
+                                            <label class="spl-checkbox">
+                                            <input type="checkbox" (click)="onSubCategory(cat)">
+                                            <div class="spl-checkmark"></div>{{cat}}
+                                        </label>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed text-uppercase" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <i class="more-less icon-minus"></i>Price
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body">
+                                        <div class="form-group" *ngFor="let p of price">
+                                            <label class="spl-checkbox">
+                                            <input type="checkbox" (click)="onPriceclick(p)">
+                                            <div class="spl-checkmark"></div>
+                                            <span class="icon-inr mr-1"></span>{{p}}
+                                        </label>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingThree">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed text-uppercase" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="more-less icon-minus"></i> WARRANTY
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingThree">
+                                    <div class="panel-body">
+                                        <div class="form-group" *ngFor="let w of waranty">
+                                            <label class="spl-checkbox">
+                                            <input type="checkbox" (click)="onWarantyClick(w)">
+                                            <div class="spl-checkmark"></div>{{w}}
+                                        </label>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingFour">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed text-uppercase" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            <i class="more-less icon-minus"></i> DISCOUNT
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="collapseFour">
+                                    <div class="panel-body">
+                                        <div class="form-group" *ngFor="let d of discount">
+                                            <label class="spl-checkbox">
+                                            <input type="checkbox" (click)="onDiscountClick(d)">
+                                            <div class="spl-checkmark"></div>Upto {{d}}%
+                                        </label>
+                                        </div>
+                                       
+                                        <div class="form-group">
+                                            <label class="spl-checkbox">
+                                            <input type="checkbox" (click)="onDiscountClick('Show All')">
+                                            <div class="spl-checkmark"></div>Show All
+                                        </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingFive">
+                                    <h4 class="panel-title">
+                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                            <i class="more-less  icon-minus"></i>BRAND
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFive" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingFive">
+                                    <div class="panel-body">
+                                        <div class="form-group has-feedback">
+                                            <input type="text" class="form-control" id="inputValidation" placeholder="Search">
+                                            <span class="icon-search form-control-feedback"></span>
+                                        </div>
+                                        <div class="form-group" *ngFor="let brand of brands">
+                                            <label class="spl-checkbox">
+                                            <input type="checkbox" (click)="onBrandClick(brand)">
+                                            <div class="spl-checkmark"></div>{{brand}}
+                                        </label>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingSix">
+                                    <h4 class="panel-title">
+                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                                            <i class="more-less  icon-minus"></i>CUSTOMER RATINGS
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseSix" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingSix">
+                                    <div class="panel-body">
+
+
+                                        <div class="form-group" *ngFor="let rate of ratings">
+                                            <label class="spl-checkbox">
+                                            <input type="checkbox">
+                                            <div class="spl-checkmark"></div>
+                                            {{rate}}
+                                            <span class="icon-star-full mr-2"></span>&amp; Above
+                                        </label>
+                                        </div>
+                                      
+
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingSeven">
+                                    <h4 class="panel-title">
+                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                                            <i class="more-less  icon-minus"></i>OFFERS
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseSeven" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingSeven">
+                                    <div class="panel-body">
+
+
+                                        <div class="form-group" *ngFor="let offer of offers">
+                                            <label class="spl-checkbox">
+                                            <input type="checkbox">
+                                            <div class="spl-checkmark"></div>{{offer}}
+                                        </label>
+                                        </div>
+                                       
+
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingEight">
+                                    <h4 class="panel-title">
+                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                                            <i class="more-less  icon-minus"></i>AVAILABILITY
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseEight" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingEight">
+                                    <div class="panel-body">
+
+                                        <div class="form-group">
+                                            <label class="spl-checkbox">
+                                            <input type="checkbox">
+                                            <div class="spl-checkmark"></div>Include Out of Stock
+                                        </label>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <h3>
+                                <span class="medium">Power Tools</span>
+                                <span class="text-small">(Showing 1- 20 Products of 100 Products)</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row mt-2 align-items-center">
+                        <div class="col-md-9">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item">
+                                    <a class="nav-link mt-1 text-small" href="#">Sort By</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#">Popularity</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Topseling</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Price Low to High</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Price High to Low</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Newest First</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="list-inline float_left mt_4 float-right mb-0">
+                                <li class="list-inline-item ">
+                                    <a class="nav-link medium text-small">
+                                    Show
+                                </a>
+                                </li>
+                                <li class="list-inline-item ">
+                                    <a class="nav-link">
+                                    12
+                                </a>
+                                </li>
+                                <li class="list-inline-item ">
+                                    <a class="nav-link ">
+                                        <span class="icon-grid"></span>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item ">
+                                    <a class="nav-link ">
+                                        <span class="icon-apps"></span>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item ">
+                                    <a class="nav-link active">
+                                        <span class="icon-view_comfy"></span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="block-grid-lg-4 block-grid-md-4 block-grid-sm-2 block-grid-xs-1">
+                                <div class="block-grid-item" data-toggle="modal" data-target="#productdetailModal" *ngFor="let item of [1,1,1,1,1,1,1,1,1,1,1,1]">
+                                    <div class="box position-relative">
+                                        <div class="gray-bg">
+                                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
+                                        </div>
+                                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
+                                        <span class="blue">
+                                        <span class="icon-inr"></span>
+                                        <span>2,564.56</span>
+                                        </span>
+                                        <span class="pricetag">20.5%</span>
+                                        <span class="text-line-through">
+                                        <span class="icon-inr"></span>4,565.00</span>
+                                        <p class="blue pt-2 pt-6">
+                                            <span class="mr-3"> (Excluding-GST) </span>
+
+                                            <span class="icon-star-full"></span>
+                                            <span class="icon-star-full"></span>
+                                            <span class="icon-star-empty"></span>
+                                            <span class="icon-star-empty"></span>
+                                            <span class="icon-star-empty"></span>
+                                        </p>
+                                        <div class="overlay-text">
+                                            <ul class="list-inline mt_4 mb-0">
+
+                                                <li class="list-inline-item ">
+                                                    <a href="#" class="nav-link ">
+                                                        <span class="icon-shopping-cart"></span>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item ">
+                                                    <a href="#" class="nav-link ">
+                                                        <span class="icon-heart"></span>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item ">
+                                                    <a href="#" class="nav-link">
+                                                        <span class="icon-compare_arrows"></span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-11 col-12 mx-auto">
+                    <div class="row gary_bg">
+                        <div class="col-md-3 col-12">
+                            <p class="medium mt-10">Page 1 of 16</p>
+                        </div>
+                        <div class="col-md-9 col-12">
+
+                            <ul class="justify-content-center paginationul flex-wrap pagination pagination-sm">
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">4</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">5</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">6</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">7</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">8</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">9</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">10</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

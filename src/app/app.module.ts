@@ -23,6 +23,11 @@ import { TopBrandsComponent } from './components/home-section/top-brands/top-bra
 import { OffersComponent } from './components/home-section/offers/offers.component';
 import { OffersAdsComponent } from './components/home-section/offers-ads/offers-ads.component';
 import { ToolsComponent } from './components/tools/tools.component';
+import { PlaceOrderComponent } from './components/cart-section/place-order-section/place-order/place-order.component';
+import { OrderLoginComponent } from './components/cart-section/place-order-section/order-login/order-login.component';
+import { DeliveryAddressComponent } from './components/cart-section/place-order-section/delivery-address/delivery-address.component';
+import { OrderSummaryComponent } from './components/cart-section/place-order-section/order-summary/order-summary.component';
+import { PaymentOptionsComponent } from './components/cart-section/place-order-section/payment-options/payment-options.component';
 
 
 @NgModule({
@@ -40,7 +45,12 @@ import { ToolsComponent } from './components/tools/tools.component';
     TopBrandsComponent,
     OffersComponent,
     OffersAdsComponent,
-    ToolsComponent
+    ToolsComponent,
+    OrderLoginComponent,
+    PlaceOrderComponent,
+    DeliveryAddressComponent,
+    OrderSummaryComponent,
+    PaymentOptionsComponent
   ],
   imports: [
     BrowserModule,

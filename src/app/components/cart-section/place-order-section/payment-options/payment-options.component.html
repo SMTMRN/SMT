@@ -1,0 +1,247 @@
+<div class="panel panel-primary setup-content" id="step-4">
+  <div class="panel-heading">
+      <h3 class="panel-title text-uppercase">Payment Options</h3>
+  </div>
+  <div class="panel-body">
+      <div id="accordion" class="paymentoptions">
+          <div class="card">
+              <div class="card-header">
+                  <div class="form-check">
+                      <label class="form-check-label" data-toggle="collapse" href="#collapseOne">
+                          <input type="radio" class="form-check-input" name="optradio"> PhonePe / BHIM UPI
+                      </label>
+                  </div>
+              </div>
+              <div id="collapseOne" class="collapse" data-parent="#accordion">
+                  <div class="card-body">
+                      <p>You'll be redirected to PhonePe page, where you can pay using UPI, credit/debit card or wallet</p>
+                      <div class="form-group">
+                          <a href="#" class="btn btn-success rounded-0 text-uppercase">Continue</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="card">
+              <div class="card-header">
+                  <a class="collapsed card-link">
+                      <div class="form-check">
+                          <label class="form-check-label" for="radio2" data-toggle="collapse" href="#collapseTwo">
+                              <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Credit / Debit / ATM Card
+                          </label>
+                      </div>
+                  </a>
+              </div>
+              <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                  <div class="card-body">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <div class="form-group has-float-label">
+                                      <input class="form-control" id="cardnumber" required="" type="number" placeholder="Enter Card Number">
+                                      <label class="control-label" for="cardnumber">Enter Card Number</label>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="form-inline">
+                          <div class="form-control">
+                              <span class="gray">Expiry</span>
+                              <select class="border-0" name="month" required="" tabindex="4">
+                                  <option disabled="" value="MM">MM</option>
+                                  <option value="01">01</option>
+                                  <option value="02">02</option>
+                                  <option value="03">03</option>
+                                  <option value="04">04</option>
+                                  <option value="05">05</option>
+                                  <option value="06">06</option>
+                                  <option value="07">07</option>
+                                  <option value="08">08</option>
+                                  <option value="09">09</option>
+                                  <option value="10">10</option>
+                                  <option value="11">11</option>
+                                  <option value="12">12</option>
+                              </select>
+                              <select class="border-0" name="year" required="" tabindex="5">
+                                  <option disabled="" value="YY">YY</option>
+                                  <option value="18">18</option>
+                                  <option value="19">19</option>
+                                  <option value="20">20</option>
+                                  <option value="21">21</option>
+                                  <option value="22">22</option>
+                                  <option value="23">23</option>
+                                  <option value="24">24</option>
+                                  <option value="25">25</option>
+                                  <option value="26">26</option>
+                                  <option value="27">27</option>
+                                  <option value="28">28</option>
+                                  <option value="29">29</option>
+                                  <option value="30">30</option>
+                                  <option value="31">31</option>
+                                  <option value="32">32</option>
+                                  <option value="33">33</option>
+                                  <option value="34">34</option>
+                                  <option value="35">35</option>
+                                  <option value="36">36</option>
+                                  <option value="37">37</option>
+                                  <option value="38">38</option>
+                                  <option value="39">39</option>
+                                  <option value="40">40</option>
+                                  <option value="41">41</option>
+                                  <option value="42">42</option>
+                                  <option value="43">43</option>
+                                  <option value="44">44</option>
+                                  <option value="45">45</option>
+                                  <option value="46">46</option>
+                                  <option value="47">47</option>
+                                  <option value="48">48</option>
+                                  <option value="49">49</option>
+                                  <option value="50">50</option>
+                                  <option value="51">51</option>
+                                  <option value="52">52</option>
+                                  <option value="53">53</option>
+                                  <option value="54">54</option>
+                                  <option value="55">55</option>
+                                  <option value="56">56</option>
+                                  <option value="57">57</option>
+                              </select>
+                          </div>
+                          <div class="form-group has-float-label ml-4">
+                              <input class="form-control" id="cvvnumber" required="" type="number" placeholder="CVV">
+                              <label class="control-label" for="cvvnumber">CVV</label>
+                          </div>
+                          <button type="submit" class="ml-3 btn btn-success rounded-0 text-uppercase">Pay
+                              <span class="icon-inr mr-2"></span>864
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="card">
+              <div class="card-header">
+                  <a class="collapsed card-link">
+                      <div class="form-check">
+                          <label class="form-check-label" for="radio3" data-toggle="collapse" href="#collapseThree">
+                              <input type="radio" class="form-check-input" id="radio3" name="optradio" value="option2">Net Banking
+                          </label>
+                      </div>
+                  </a>
+              </div>
+              <div id="collapseThree" class="collapse" data-parent="#accordion">
+                  <div class="card-body">
+                      <div class="form-group bold">Popular Banks</div>
+                      <div class="form-check-inline">
+                          <label class="form-check-label" for="radio1">
+                              <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>HDFC Bank
+                          </label>
+                      </div>
+                      <div class="form-check-inline">
+                          <label class="form-check-label" for="radio2">
+                              <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Axis Bank
+                          </label>
+                      </div>
+                      <div class="form-check-inline">
+                          <label class="form-check-label" for="radio4">
+                              <input type="radio" class="form-check-input" name="optradio" id="radio4">ICICI Bank
+                          </label>
+                      </div>
+                      <div class="form-group mt-2 bold">Other Banks</div>
+                      <div class="form-group col-sm-6">
+                          <select class="form-control">
+                              <option value="SELECT_BANK">---Select Bank---</option>
+                              <option value="AIRTELMONEY">Airtel Payments Bank</option>
+                              <option value="ALLAHABAD">Allahabad Bank</option>
+                              <option value="ANDHRA">Andhra Bank</option>
+                              <option value="BANDHAN">Bandhan Bank</option>
+                              <option value="BASSIENCATHOLICCOOPB">Bassien Catholic Co-Operative Bank</option>
+                              <option value="BNPPARIBAS">BNP Paribas</option>
+                              <option value="BOBAHRAIN">Bank of Bahrain and Kuwait</option>
+                              <option value="BOBARODA">Bank of Baroda</option>
+                              <option value="BOBARODAC">Bank of Baroda Corporate</option>
+                              <option value="BOBARODAR">Bank of Baroda Retail</option>
+                              <option value="BOI">Bank of India</option>
+                              <option value="BOM">Bank of Maharashtra</option>
+                              <option value="CANARA">Canara Bank</option>
+                              <option value="CATHOLICSYRIAN">Catholic Syrian Bank</option>
+                              <option value="CBI">Central Bank</option>
+                              <option value="CITYUNION">City Union Bank</option>
+                              <option value="CORPORATION">Corporation Bank</option>
+                              <option value="COSMOS">Cosmos Co-op Bank</option>
+                              <option value="DBS">digibank by DBS</option>
+                              <option value="DCB">DCB BANK LTD</option>
+                              <option value="DENA">Dena Bank</option>
+                              <option value="DEUTSCHE">Deutsche Bank</option>
+                              <option value="DHANBANK">Dhanalakshmi Bank</option>
+                              <option value="FEDERALBANK">Federal Bank</option>
+                              <option value="IDBI">IDBI Bank</option>
+                              <option value="IDFC">IDFC Bank</option>
+                              <option value="INDIANBANK">Indian Bank</option>
+                              <option value="INDUSIND">IndusInd Bank</option>
+                              <option value="IOB">Indian Overseas Bank</option>
+                              <option value="JANATABANKPUNE">JANATA SAHAKARI BANK LTD PUNE</option>
+                              <option value="JKBANK">J&amp;K Bank</option>
+                              <option value="KARNATAKA">Karnataka Bank</option>
+                              <option value="KARURVYSYA">Karur Vysya Bank</option>
+                              <option value="LAKSHMIVILAS">Lakshmi Vilas Bank - Retail</option>
+                              <option value="LAKSHMIVILASC">Lakshmi Vilas Bank - Corporate</option>
+                              <option value="OBC">Oriental Bank of Commerce</option>
+                              <option value="PNB">Punjab National Bank</option>
+                              <option value="PNBC">Punjab National Bank Corporate</option>
+                              <option value="PNSB">Punjab &amp; Sind Bank</option>
+                              <option value="PUNJABMAHA">Punjab &amp; Maharashtra Co-op Bank</option>
+                              <option value="RATNAKAR">RBL Bank – Net Banking</option>
+                              <option value="RBS">RBS</option>
+                              <option value="SARASWAT">Saraswat Co-op Bank</option>
+                              <option value="SHAMRAOVITHAL">Shamrao Vithal Co-op Bank</option>
+                              <option value="SOUTHINDIAN">The South Indian Bank</option>
+                              <option value="STANC">Standard Chartered Bank</option>
+                              <option value="SYNDICATE">Syndicate Bank</option>
+                              <option value="TMBANK">Tamilnad Mercantile Bank Limited</option>
+                              <option value="TNMERCANTILE">Tamil Nadu Merchantile Bank</option>
+                              <option value="TNSC">TNSC Bank</option>
+                              <option value="UCO">UCO Bank</option>
+                              <option value="UNIONBANK">Union Bank of India</option>
+                              <option value="UNITEDBANK">United Bank of India</option>
+                              <option value="VIJAYABANK">Vijaya Bank</option>
+                              <option value="YESBANK">Yes Bank</option>
+                          </select>
+                      </div>
+                      <div class="form-group mt-3">
+                          <a href="#" class="btn btn-success rounded-0 text-uppercase">Pay
+                              <span class="icon-inr mr-2"></span>980</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="card">
+              <div class="card-header">
+                  <a class="collapsed card-link">
+                      <div class="form-check">
+                          <label class="form-check-label" for="radio4" data-toggle="collapse" href="#collapseFour">
+                              <input type="radio" class="form-check-input" id="radio4" name="optradio" value="option2">Cash on Delivery
+                          </label>
+                      </div>
+                  </a>
+              </div>
+              <div id="collapseFour" class="collapse" data-parent="#accordion">
+                  <div class="card-body">
+                      <div class="form-inline">
+                          <div class="form-group has-float-label ml-4">
+                              <input class="form-control" id="entercha" required="" type="text" placeholder="Enter Characters">
+                              <label class="control-label" for="entercha">Enter Characters</label>
+                          </div>
+                          <button type="submit" class="ml-3 btn btn-success rounded-0 text-uppercase">
+                              Confirm Order
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- <div class="form-group">
+          <label class="control-label">Company Name</label>
+          <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+      </div> -->
+
+
+  </div>
+</div>

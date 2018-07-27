@@ -1,0 +1,106 @@
+<section class="container-fluid container-height">
+  <div class="row">
+      <div class="col-md-9 col-12">
+          <div class="wizard-card">
+              <div class="stepwizard">
+                  <div class="stepwizard-row setup-panel">
+                      <div class="stepwizard-step  pb-3 col-xs-3">
+                          <a (click)="openPage('order-login')" class="btn btn-success btn-circle">1</a>
+                          <p class="text-uppercase">
+                              <small>Login</small>
+                          </p>
+                      </div>
+                      <div class="stepwizard-step  pb-3 col-xs-3">
+                          <a (click)="openPage('delivery-address')" class="btn btn-default btn-circle">2</a>
+                          <p class="text-uppercase">
+                              <small>Delivery Address</small>
+                          </p>
+                      </div>
+                      <div class="stepwizard-step  pb-3 col-xs-3">
+                          <a (click)="openPage('order-summary')" class="btn btn-default btn-circle">3</a>
+                          <p class="text-uppercase">
+                              <small>Order Summary</small>
+                          </p>
+                      </div>
+                      <div class="stepwizard-step  pb-3 col-xs-3">
+                          <a (click)="openPage('payment-optionsn')" class="btn btn-default btn-circle">4</a>
+                          <p class="text-uppercase">
+                              <small>Payment Options</small>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <form role="form">
+                          
+
+                        <app-order-login *ngIf="pageShown=='order-login'"></app-order-login> 
+                        <app-delivery-address *ngIf="pageShown=='delivery-address'"></app-delivery-address>
+                        <app-order-summary *ngIf="pageShown=='order-summary'"></app-order-summary>
+                        <app-payment-options *ngIf="pageShown=='payment-options'"></app-payment-options>
+
+                          
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="panel panel-primary">
+              <div class="wizard-card pt-2 pb-2">
+                  <div class="panel-heading pb-0 border_bottom">
+                      <h3 class="panel-title dark text-uppercase blue">Price details</h3>
+                  </div>
+                  <div class="pr-2 pl-2">
+                      <div class="row">
+                          <div class="col-md-8 col-8">
+                              <p>Price (1 ites)</p>
+                          </div>
+                          <div class="col-md-4 col-4">
+                              <p>
+                                  <span class="icon-inr mr-2"></span>1,150</p>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-8 col-8">
+                              <p>Delivery Charges</p>
+                          </div>
+                          <div class="col-md-4 col-4">
+                              <p class="text-success">Free</p>
+                          </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                          <div class="col-md-8 col-8">
+                              <p class="bold">Amount Payable</p>
+                          </div>
+                          <div class="col-md-4 col-4">
+                              <p class="bold">
+                                  <span class="icon-inr mr-2"></span>1,150</p>
+                          </div>
+                      </div>
+                  </div>
+                  <hr class="hr-margin">
+                  <div class="form-group">
+                      <p class="text-success text__small pr-2 pl-2">
+                          <span>Your Total Savings on this order
+                              <span class="icon-inr mr-2"></span>
+                          <span>1,338</span>
+                          </span>
+                      </p>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="form-group">
+                      <img src="assets/img/shield.png" class="shield-img" alt="Payment secure image">
+                      <span class="secure-text">Safe and Secure Payments. Easy returns. 100% Authentic products.</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</section>

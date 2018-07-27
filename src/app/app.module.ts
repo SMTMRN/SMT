@@ -22,6 +22,7 @@ import { ToolsCategoryComponent } from './components/home-section/tools-category
 import { TopBrandsComponent } from './components/home-section/top-brands/top-brands.component';
 import { OffersComponent } from './components/home-section/offers/offers.component';
 import { OffersAdsComponent } from './components/home-section/offers-ads/offers-ads.component';
+import { ToolsComponent } from './components/tools/tools.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { OffersAdsComponent } from './components/home-section/offers-ads/offers-
     ToolsCategoryComponent,
     TopBrandsComponent,
     OffersComponent,
-    OffersAdsComponent
+    OffersAdsComponent,
+    ToolsComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { RegistrationComponent } from './components/account-management/registrat
 import { RecoverPasswordComponent } from './components/account-management/recover-password/recover-password.component';
 import { ViewCartComponent } from './components/cart-section/view-cart/view-cart.component';
 import { ViewItemDetailsComponent } from './components/cart-section/view-item-details/view-item-details.component';
+import { ToolsComponent } from './components/tools/tools.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'forgotpassword', component: RecoverPasswordComponent },
   { path: 'view-cart', component: ViewCartComponent },
   { path: 'view-details', component: ViewItemDetailsComponent },
+  { path: 'library', component: ToolsComponent },
   { path: '**', component: HomeComponent }
 ];
 

@@ -8,20 +8,24 @@ export class AccountManagementProvider {
 
   }
 
-  login(payload) {
-    return this.responseHandler.requestApiCall('login', 'POST', payload);
+  login(payload, authorization) {
+    return this.responseHandler.requestLoginApiCallPost('login', payload, authorization);
+  }
+
+  getIp() {
+    return this.responseHandler.requestGetIp();
   }
 
   registration(payload) {
-    return this.responseHandler.requestApiCall('register', 'POST', payload);
+    return this.responseHandler.requestApiCallPost('register', payload);
   }
 
   recoverPassword(payload) {
-    return this.responseHandler.requestApiCall('recoverPWD', 'POST', payload);
+    return this.responseHandler.requestApiCallPost('recoverPWD', payload);
   }
 
   resetPassword(payload) {
-    return this.responseHandler.requestApiCall('resetPwd', 'POST', payload);
+    return this.responseHandler.requestApiCallPost('resetPwd', payload);
   }
 
 }

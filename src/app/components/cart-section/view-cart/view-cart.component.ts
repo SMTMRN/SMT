@@ -17,15 +17,21 @@ export class ViewCartComponent implements OnInit {
   constructor(public sampleData: SampleData, public cartService: CartService) { }
 
   ngOnInit() {
-    this.itterations = this.sampleData.vishList;
+    // this.itterations = this.sampleData.vishList;
     this.calculateTotalItems();
     this.getCartDetails();
   }
 
   getCartDetails() {
     const userId = 1000;
-    const payload = '?user_id=' + userId + '';
-    this.cartService.cartWishList(payload);
+    const payload = '?user_id=sindhu.seelapureddy@gmail.com';
+    // const payload = '?user_id=' + userId;
+    this.cartService.cartWishList(payload).subscribe(res => {
+      if (res) {
+        this.itterations = res.data;
+        console.log(this.itterations);
+      }
+    });
   }
 
   calculateTotalItems() {

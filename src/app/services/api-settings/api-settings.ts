@@ -2,6 +2,7 @@
 // it supports typing of the configuration object within the class.
 export interface ApiConfig {
   apiBaseUrl: string;
+  secret_key: string;
   defaultAuthorizationToken: string;
   apiEndpoints: any;
   getEndPoint: any;
@@ -9,7 +10,8 @@ export interface ApiConfig {
 
 // Configuration values for our app
 export const API_CONFIG: ApiConfig = {
-  apiBaseUrl: 'https://abc.com/',
+  apiBaseUrl: 'http://157.119.108.135:8005/',
+  secret_key: '4r5t@W',
   defaultAuthorizationToken: '',
 
   apiEndpoints: [

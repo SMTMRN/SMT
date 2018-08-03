@@ -5,28 +5,47 @@ import 'rxjs/add/operator/catch';
 import { catchError } from 'rxjs/operators';
 import { Api } from './api';
 import { API_CONFIG } from './api-settings';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ResponseHandler {
 
-    constructor(public api: Api) { }
+    constructor(public api: Api, private httpClient: HttpClient) { }
 
-    requestApiCall(endpoint: string, type: string, payload?: any) {
-        console.log(payload);
-        if (type === 'GET') {
-            return this.api.get(API_CONFIG.getEndPoint(endpoint), payload).map((res: any) => {
+    requestApiCallGet(endpoint: string, payload?: any) {
+        return this.api.get(API_CONFIG.apiBaseUrl + API_CONFIG.getEndPoint(endpoint), payload)
+            .map((res: any) => {
                 console.log(res);
                 return this.returnData(res);
             }).catch(this.handleError);
-        }
-        if (type === 'POST') {
-            return this.api.post(API_CONFIG.getEndPoint(endpoint), payload).map((res: any) => {
+    }
+
+    requestGetIp() {
+        return this.api.get('https://jsonip.com/')
+            .map((res: any) => {
                 console.log(res);
                 return this.returnData(res);
             }).catch(this.handleError);
-        }
+    }
+
+    requestLoginApiCallPost(endpoint: string, payload: any, authorization: any) {
+        const header = new HttpHeaders(
+            { 'Content-Type': 'application/json', 'secret_key': API_CONFIG.secret_key, 'Authorization': authorization });
+        return this.api.post(API_CONFIG.apiBaseUrl + API_CONFIG.getEndPoint(endpoint), payload, null, header)
+            .map((res: any) => {
+                console.log(res);
+                return this.returnData(res);
+            }).catch(this.handleError);
+    }
+
+    requestApiCallPost(endpoint: string, payload: any) {
+        return this.api.post(API_CONFIG.apiBaseUrl + API_CONFIG.getEndPoint(endpoint), payload)
+            .map((res: any) => {
+                console.log(res);
+                return this.returnData(res);
+            }).catch(this.handleError);
     }
 
     // Return null if error
@@ -41,7 +60,12 @@ export class ResponseHandler {
     // Return response Data
     returnData(res) {
         console.log(res);
-        if ((res) && (Number(res.statuscode) === 200)) {
+        // if ((res) && (Number(res.statuscode) === 200)) {
+        //     return res;
+        // } else {
+        //     return null;
+        // }
+        if (res) {
             return res;
         } else {
             return null;

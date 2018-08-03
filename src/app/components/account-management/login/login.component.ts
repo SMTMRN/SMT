@@ -42,14 +42,24 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     const payload = {
-      'email': String(this.ngEmail),
-      'password': String(this.ngPassword)
+      'ip_address': '',
+      'user_type': 'web'
     };
-    this.accountServices.login(payload).subscribe(res => {
-      if (res) {
-
+    let authorization = '';
+    const userDetails = String(this.ngEmail) + ':' + String(this.ngPassword);
+    this.accountServices.getIp().subscribe(data => {
+      if (data) {
+        authorization = btoa(userDetails);
+        payload.ip_address = String(data.ip);
+        this.accountServices.login(payload, authorization).subscribe(res => {
+          if (res) {
+            console.log(res);
+            alert('Welcome - ' + res.username);
+          }
+        });
       }
     });
   }
-
+  // email::::::::::sindhu.seelapureddy@gmail.com
+  // password:::::::sindhu
 }

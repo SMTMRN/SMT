@@ -41,7 +41,7 @@ export class RecoverPasswordComponent implements OnInit {
     };
     this.accountServices.recoverPassword(payload).subscribe(res => {
       if (res) {
-
+        alert(res.status);
       }
     });
   }

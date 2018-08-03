@@ -11,12 +11,12 @@ export class Api {
   fileHeader: any;
   timeOut = 120000;
 
-  constructor(public http: Http) {
-    this.header = new HttpHeaders({ 'Content-Type': 'application/json' });
+  constructor(private httpClient: HttpClient) {
+    this.header = new HttpHeaders({ 'Content-Type': 'application/json', 'secret_key': API_CONFIG.secret_key });
   }
 
-  get(endpoint: string, params?: any, token?: any) {
-    let getUrl = this.url + endpoint;
+  get(url: string, params?: any, token?: any) {
+    let getUrl = url;
     if ((params != null) && (params !== undefined)) {
       getUrl = getUrl + params;
       console.log(getUrl);
@@ -27,27 +27,30 @@ export class Api {
     //   }
     // }
     if (token) {
-      return this.http.get(getUrl, this.getHeader(token));
+      return this.httpClient.get(getUrl, this.getHeader(token));
     } else {
-      return this.http.get(getUrl, { headers: this.header });
+      return this.httpClient.get(getUrl, { headers: this.header });
     }
   }
 
-  post(endpoint: string, body: any, token?: any) {
-    console.log(this.url + endpoint);
-    return this.http.post(this.url + endpoint, JSON.stringify(body), { headers: this.header }).timeout(this.timeOut);
+  post(url: string, body: any, token?: any, header?: any) {
+    if (header) {
+      return this.httpClient.post(url, JSON.stringify(body), { headers: header }).timeout(this.timeOut);
+    } else {
+      return this.httpClient.post(url, JSON.stringify(body), { headers: this.header }).timeout(this.timeOut);
+    }
   }
 
-  put(endpoint: string, body: any, reqOpts?: any, token?: any) {
-    return this.http.put(this.url + endpoint, body, this.getHeader(token));
+  put(url: string, body: any, reqOpts?: any, token?: any) {
+    return this.httpClient.put(url, body, this.getHeader(token));
   }
 
-  delete(endpoint: string, token?: any) {
-    return this.http.delete(this.url + endpoint, this.getHeader(token));
+  delete(url: string, token?: any) {
+    return this.httpClient.delete(url, this.getHeader(token));
   }
 
-  patch(endpoint: string, body: any, token?: any) {
-    return this.http.put(this.url + endpoint, body, this.getHeader(token));
+  patch(url: string, body: any, token?: any) {
+    return this.httpClient.put(url, body, this.getHeader(token));
   }
 
   private getHeader(token?: any) {

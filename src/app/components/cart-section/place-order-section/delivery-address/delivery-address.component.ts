@@ -20,12 +20,43 @@ export class DeliveryAddressComponent implements OnInit {
 
   doValidations() {
     this.addressValidator = this.formBuilder.group({
-      email: new FormControl('', Validators.compose([
+      name: new FormControl('', Validators.required),
+      phoneNumber: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        Validators.pattern('[0-9]{10}')
       ])),
-      password: new FormControl('', Validators.required),
+      pinCode: new FormControl('', Validators.required),
+      locality: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      state: new FormControl('', Validators.required),
     });
   }
+
+  // tslint:disable-next-line:member-ordering
+  validation_messages = {
+    'name': [
+      { type: 'required', message: 'Name is required*' }
+    ],
+    'phoneNumber': [
+      { type: 'required', message: 'Phone number is required*' },
+      { type: 'pattern', message: 'Enter a valid mobile number*' }
+    ],
+    'pinCode': [
+      { type: 'required', message: 'Pin code is required*' }
+    ],
+    'locality': [
+      { type: 'required', message: 'Locality is required*' }
+    ],
+    'address': [
+      { type: 'required', message: 'Address is required*' }
+    ],
+    'city': [
+      { type: 'required', message: 'City is required*' }
+    ],
+    'state': [
+      { type: 'required', message: 'City is required*' }
+    ],
+  };
 
 }

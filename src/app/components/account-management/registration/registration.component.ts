@@ -74,16 +74,16 @@ export class RegistrationComponent implements OnInit {
       'lastname': values.lastName,
       'mobile': String(values.mobileNumber),
       'email': values.email,
-      'password': values.password,
-      'confirm_password': values.confirmPassword,
+      'password': values.passwordFormGroup.password,
+      'confirm_password': values.passwordFormGroup.confirmPassword,
       'newsletter': '',
       'gstnumber': String(values.GSTnumber),
-      'user_type': ''
+      'user_type': 'web'
     };
 
     this.accountServices.registration(payload).subscribe(res => {
       if (res) {
-
+        alert('User registration Success, OTP verification is yet to be implemented.');
       }
     });
 

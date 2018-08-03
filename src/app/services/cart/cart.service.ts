@@ -9,7 +9,7 @@ export class CartService {
   constructor(private responseHandler: ResponseHandler) { }
 
   cartWishList(payload) {
-    return this.responseHandler.requestApiCall('wishListView', 'GET', payload);
+    return this.responseHandler.requestApiCallGet('wishListView', payload);
   }
 
 }

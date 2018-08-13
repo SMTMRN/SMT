@@ -28,6 +28,7 @@ import { DeliveryAddressComponent } from './components/cart-section/place-order-
 import { OrderSummaryComponent } from './components/cart-section/place-order-section/order-summary/order-summary.component';
 import { PaymentOptionsComponent } from './components/cart-section/place-order-section/payment-options/payment-options.component';
 import { ErrorValidatorComponent } from './components/validators/error-validator/error-validator.component';
+import { CouponsComponent } from './components/home-section/coupons/coupons.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { ErrorValidatorComponent } from './components/validators/error-validator
     DeliveryAddressComponent,
     OrderSummaryComponent,
     PaymentOptionsComponent,
-    ErrorValidatorComponent
+    ErrorValidatorComponent,
+    CouponsComponent
   ],
   imports: [
     BrowserModule,

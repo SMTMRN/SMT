@@ -22,6 +22,7 @@ export class PlaceOrderComponent implements OnInit {
 
   getLoginDetails(event) {
     if (event) {
+      console.log(event);
       this.deliveryAddressFlag = event;
       this.openPage('delivery-address');
     }

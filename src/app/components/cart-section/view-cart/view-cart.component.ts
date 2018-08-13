@@ -23,7 +23,6 @@ export class ViewCartComponent implements OnInit {
   }
 
   getCartDetails() {
-    const userId = 1000;
     const payload = '?user_id=sindhu.seelapureddy@gmail.com';
     // const payload = '?user_id=' + userId;
     this.cartService.cartWishList(payload).subscribe(res => {

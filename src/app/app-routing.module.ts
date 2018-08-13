@@ -12,6 +12,7 @@ import { PaymentOptionsComponent } from './components/cart-section/place-order-s
 import { OrderSummaryComponent } from './components/cart-section/place-order-section/order-summary/order-summary.component';
 import { OrderLoginComponent } from './components/cart-section/place-order-section/order-login/order-login.component';
 import { DeliveryAddressComponent } from './components/cart-section/place-order-section/delivery-address/delivery-address.component';
+import { CouponsComponent } from './components/home-section/coupons/coupons.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'view-details', component: ViewItemDetailsComponent },
   { path: 'library', component: ToolsComponent },
   { path: 'place-order', component: PlaceOrderComponent },
+  { path: 'coupons', component: CouponsComponent },
   { path: '**', component: HomeComponent }
 ];
 

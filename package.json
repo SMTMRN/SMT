@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^6.0.2",
     "@angular/router": "^6.0.2",
     "bootstrap": "^4.1.2",
+    "bulma": "^0.7.1",
+    "bulma-carousel": "^3.0.0",
     "core-js": "^2.5.4",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.3",

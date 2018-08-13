@@ -71,4 +71,11 @@ export class ResponseHandler {
             return null;
         }
     }
+
+    callGetDataByUrl(url) {
+        return this.api.get(url).map((res: any) => {
+                console.log(res);
+                return this.returnData(res);
+            }).catch(this.handleError);
+    }
 }

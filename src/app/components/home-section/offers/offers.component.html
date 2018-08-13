@@ -8,17 +8,9 @@
     <div class="row">
       <div class="col-md-10 col-sm-12 center-block">
         <ul class="nav nav-pills pb-4" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link text-uppercase active show" data-toggle="pill" href="#home">All Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-uppercase" data-toggle="pill" href="#menu1">Drill machine</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-uppercase" data-toggle="pill" href="#menu2">Angle griender</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-uppercase" data-toggle="pill" href="#menu3">Hammers</a>
+          <li class="nav-item" *ngFor="let product of offerProductTypes">
+            <a class="nav-link text-uppercase show" [ngClass]="{'active': product?.type==selectedTypes.offer, '':product?.type!==selectedTypes.offer }"
+              data-toggle="pill" (click)="filterOffers(product?.type)">{{product?.type}}</a>
           </li>
         </ul>
       </div>
@@ -29,23 +21,23 @@
         <div id="carousel04" class="owl-carousel owl-theme owl-loaded owl-drag">
           <div class="owl-stage-outer">
             <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1432px;">
-              <div class="owl-item active" style="width: 281.25px; margin-right: 5px;" *ngFor="let item of [1,1,1,1,1]">
+              <div class="owl-item active" style="width: 281.25px; margin-right: 5px;" *ngFor="let offerItem of selectedOffers">
                 <div class="item">
                   <div class="box position-relative">
                     <div class="gray-bg">
                       <a href="#">
-                        <img src="assets/img/offer.png" alt="imge" class="img-fluid">
+                        <img src="{{offerItem.upload_photo}}" alt="imge" class="img-fluid">
                       </a>
                     </div>
                     <a href="#">
-                      <p>6mm Wood Chisel MPT MH020031 - 6</p>
+                      <p>{{offerItem.upload_name}}</p>
                     </a>
                     <span class="blue">
                       <span class="icon-inr"></span>
-                      <span>2,564.56</span>
+                      <span>{{offerItem.offer_price}}</span>
                     </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
+                    <span class="pricetag">{{offerItem.percentage}}%</span>
+                    <span class="text-line-through">{{offerItem.enduser_price}}</span>
                     <p class="blue pt-2 pt-6">
                       <span class="mr-3"> (Excluding-GST) </span>
 
@@ -132,13 +124,10 @@
     <div class="row">
       <div class="col-md-6 center-block">
         <ul class="nav nav-pills pb-4" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active text-uppercase" data-toggle="pill" href="#nwearrhome">All Products</a>
+          <li class="nav-item" *ngFor="let product of arrivalProductTypes">
+            <a class="nav-link text-uppercase show" [ngClass]="{'active': product?.type==selectedTypes.newArrival, '':product?.type!==selectedTypes.newArrival }"
+              data-toggle="pill" (click)="filterNewArrivals(product?.type)">{{product?.type}}</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-uppercase" data-toggle="pill" href="#newdemo">dimolistion hammer</a>
-          </li>
-
         </ul>
       </div>
     </div>
@@ -149,23 +138,23 @@
         <div id="carousel02" class="owl-carousel owl-theme owl-loaded owl-drag">
           <div class="owl-stage-outer">
             <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1432px;">
-              <div class="owl-item active" style="width: 281.25px; margin-right: 5px;" *ngFor="let itemNew of [1,1,1,1,1]">
+              <div class="owl-item active" style="width: 281.25px; margin-right: 5px;" *ngFor="let itemNew of selectedNewArrival">
                 <div class="item">
                   <div class="box position-relative">
                     <div class="gray-bg">
                       <a href="#">
-                        <img src="assets/img//offer.png" alt="imge" class="img-fluid">
+                        <img src="{{itemNew.upload_photo}}" alt="imge" class="img-fluid">
                       </a>
                     </div>
                     <a href="#">
-                      <p>6mm Wood Chisel MPT MH020031 - 6</p>
+                      <p>{{itemNew.upload_name}}</p>
                     </a>
                     <span class="blue">
                       <span class="icon-inr"></span>
-                      <span>2,564.56</span>
+                      <span>{{itemNew.offer_price}}</span>
                     </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
+                    <span class="pricetag">{{itemNew.percentage}}%</span>
+                    <span class="text-line-through">{{itemNew.enduser_price}}</span>
                     <p class="blue pt-2 pt-6">
                       <span class="mr-3"> (Excluding-GST) </span>
 
@@ -199,7 +188,7 @@
                   </div>
                 </div>
               </div>
-              
+
             </div>
           </div>
           <div class="owl-nav">

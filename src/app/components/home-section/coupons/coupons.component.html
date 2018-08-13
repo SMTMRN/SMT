@@ -1,0 +1,13 @@
+<section class="container-fluid container-height">
+  <div class="row">
+    <div class="card col-md-4 col-sm-12" *ngFor="let coupon of coupons" style="width:400px">
+      <img class="card-img-top" src="{{coupon.imageurl}}" alt="Card image" style="width:100%">
+      <div class="card-body">
+        <h4 class="card-title">Coupon Code : {{coupon.coupon_code}}</h4>
+        <p class="card-text">Coupon Name : {{coupon.coupon_name}}</p>
+        <p class="card-text">Discount : {{coupon.discount}}</p>
+        <p class="card-text">Expires On : {{coupon.end_date}}</p>
+      </div>
+    </div>
+  </div>
+</section>

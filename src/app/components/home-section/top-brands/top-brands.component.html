@@ -19,10 +19,10 @@
             <div id="carousel01" class="owl-carousel owl-theme owl-loaded owl-drag">
                 <div class="owl-stage-outer">
                     <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1410px;">
-                        <ng-container *ngFor="let item of topBrands; let i=index">
+                        <ng-container *ngFor="let brand of topBrands; let i=index">
                                 <div class="owl-item" style="width: 230px; margin-right: 5px;" [ngClass]="{'active':i<4}">
                                         <div class="item">
-                                            <img src="assets/img/{{item.src}}.png" class="img-fluid logo-bg">
+                                            <img src="{{brand.brandurl}}" class="img-fluid logo-bg">
                                         </div>
                                     </div>
                         </ng-container>
@@ -61,10 +61,10 @@
             <div id="carousel03" class="owl-carousel owl-theme owl-loaded owl-drag owl-hidden">
                 <div class="owl-stage-outer">
                     <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1410px;">
-                            <ng-container *ngFor="let item of emergingBrands; let i=index">
+                            <ng-container *ngFor="let brand of emergingBrands; let i=index">
                                     <div class="owl-item" style="width: 230px; margin-right: 5px;" [ngClass]="{'active':i<4}">
                                             <div class="item">
-                                                <img src="assets/img/{{item.src}}.png" class="img-fluid logo-bg">
+                                                <img src="{{brand.brandurl}}" class="img-fluid logo-bg">
                                             </div>
                                         </div>
                             </ng-container>

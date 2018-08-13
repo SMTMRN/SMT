@@ -5,22 +5,29 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-5">
-        <form [formGroup]="loginValidator" class="form-horizontal" role="form">
+        <form *ngIf="!userLoggedIn" [formGroup]="loginValidator" class="form-horizontal" role="form">
           <div class="form-group has-float-label">
-            <input class="form-control" id="email" required type="email" formControlName="email" [(ngModel)]="ngEmail" placeholder="email@email.com" />
+            <input class="form-control" id="email" required type="email" formControlName="email" [(ngModel)]="ngEmail" placeholder="email@email.com"
+            />
             <label class="control-label" for="email">Enter Email/Mobile number</label>
-            <app-error-validator [validationArray]="validation_messages.email" [formDetails]="loginValidator" [elementType]="'email'" ></app-error-validator>
+            <app-error-validator [validationArray]="validation_messages.email" [formDetails]="loginValidator" [elementType]="'email'"></app-error-validator>
           </div>
           <div class="form-group has-float-label">
-            <input class="form-control" required id="password" type="password" formControlName="password" [(ngModel)]="ngPassword" placeholder="password" />
+            <input class="form-control" required id="password" type="password" formControlName="password" [(ngModel)]="ngPassword" placeholder="password"
+            />
             <label class="control-label" for="password">Password</label>
-            <app-error-validator [validationArray]="validation_messages.password" [formDetails]="loginValidator" [elementType]="'password'" ></app-error-validator>            
+            <app-error-validator [validationArray]="validation_messages.password" [formDetails]="loginValidator" [elementType]="'password'"></app-error-validator>
           </div>
           <div class="form-group pt-4">
-            <button class="btn rounded-0 btn-success nextBtn btn-block text-uppercase" (click)=loginUser() [disabled]="!loginValidator.valid" type="button">next</button>
+            <button class="btn rounded-0 btn-success nextBtn btn-block text-uppercase" (click)=loginUser() [disabled]="!loginValidator.valid"
+              type="button">next</button>
           </div>
         </form>
 
+        <div *ngIf="userLoggedIn">
+          <h5>Continue as {{username}}</h5>
+          <button (click)="onLoginDetailsSubmit(true)">Continue</button>
+        </div>
       </div>
 
       <div class="offset-md-1 col-md-6">

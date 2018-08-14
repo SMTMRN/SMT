@@ -15,4 +15,8 @@ export class HomeService {
   getToolsCategoryData() {
     return this.responseHandler.callGetDataByUrl('https://www.toolsduniya.com/categories');
   }
+
+  getFilteredTools(payload){
+    return this.responseHandler.callPostDataByUrl('https://www.shopmytool.in/categoryproducts', payload);
+  }
 }

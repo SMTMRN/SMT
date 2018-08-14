@@ -78,4 +78,14 @@ export class ResponseHandler {
                 return this.returnData(res);
             }).catch(this.handleError);
     }
+
+    callPostDataByUrl(url, body){
+        const header = new HttpHeaders(
+            { 'Content-Type': 'application/json', 'secret_key': API_CONFIG.secret_key});
+        return this.api.post(url, body, null, header)
+            .map((res: any) => {
+                console.log(res);
+                return this.returnData(res);
+            }).catch(this.handleError);
+    }
 }

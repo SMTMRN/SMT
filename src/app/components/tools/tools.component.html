@@ -22,8 +22,8 @@
                                     <p>
                                         <label class="more-less text-small">Clear All</label>
                                         <span class="text-uppercase">
-                                        filters
-                                    </span>
+                                            filters
+                                        </span>
                                     </p>
                                 </h4>
                             </div>
@@ -31,7 +31,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
-                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
                                             <i class="more-less  icon-minus"></i>Sub-category
                                         </a>
                                     </h4>
@@ -42,13 +43,17 @@
                                             <input type="text" class="form-control" id="inputValidation" placeholder="Search">
                                             <span class="icon-search form-control-feedback"></span>
                                         </div>
+                                        <!-- <div *ngFor="let cat of subCat">
+                                            <label>
+                                                <input type="radio" name="subCat" (click)="onSubCategory(cat)" value="{{cat}}"> {{cat}}
+                                            </label>
+                                        </div> -->
                                         <div class="form-group" *ngFor="let cat of subCat">
                                             <label class="spl-checkbox">
-                                            <input type="checkbox" (click)="onSubCategory(cat)">
-                                            <div class="spl-checkmark"></div>{{cat}}
-                                        </label>
+                                                <input type="checkbox" name="subCat" value="{{cat.subcategory}}" (click)="onSubCategory()">
+                                                <div class="spl-checkmark"></div>{{cat.subcategory}}
+                                            </label>
                                         </div>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -56,21 +61,35 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingTwo">
                                     <h4 class="panel-title">
-                                        <a class="collapsed text-uppercase" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <a class="collapsed text-uppercase" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
                                             <i class="more-less icon-minus"></i>Price
                                         </a>
                                     </h4>
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingTwo">
                                     <div class="panel-body">
-                                        <div class="form-group" *ngFor="let p of price">
+                                        <!-- <div *ngFor="let cost of price">
+                                            <label>
+                                                <input type="radio" name="price" (click)="onPriceclick(cost)" value="{{cost}}"> {{cost}}
+                                            </label>
+                                        </div> -->
+                                        <div>
+                                                <label class="d-block" *ngFor="let type of price">
+                                                    <input type="radio" name="waranty" (click)="onPriceclick(type)" value="{{type}}"> {{type}}
+                                                </label>
+                                                <label class="d-block">
+                                                    <input type="radio" name="price" (click)="onPriceclick('all')" value="all">All
+                                                </label>
+                                            </div>
+                                        <!-- <div class="form-group" *ngFor="let cost of price">
                                             <label class="spl-checkbox">
-                                            <input type="checkbox" (click)="onPriceclick(p)">
-                                            <div class="spl-checkmark"></div>
-                                            <span class="icon-inr mr-1"></span>{{p}}
-                                        </label>
-                                        </div>
-                                        
+                                                <input type="checkbox" (click)="onPriceclick(p)">
+                                                <div class="spl-checkmark"></div>
+                                                <span class="icon-inr mr-1"></span>{{p}}
+                                            </label>
+                                        </div> -->
+
                                     </div>
                                 </div>
                             </div>
@@ -78,20 +97,29 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 class="panel-title">
-                                        <a class="collapsed text-uppercase" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <a class="collapsed text-uppercase" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
                                             <i class="more-less icon-minus"></i> WARRANTY
                                         </a>
                                     </h4>
                                 </div>
                                 <div id="collapseThree" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingThree">
                                     <div class="panel-body">
-                                        <div class="form-group" *ngFor="let w of waranty">
-                                            <label class="spl-checkbox">
-                                            <input type="checkbox" (click)="onWarantyClick(w)">
-                                            <div class="spl-checkmark"></div>{{w}}
-                                        </label>
+                                        <div>
+                                            <label class="d-block" *ngFor="let type of waranty">
+                                                <input type="radio" name="waranty" (click)="onWarantyClick(type)" value="{{type}}"> {{type}}
+                                            </label>
+                                            <label class="d-block">
+                                                <input type="radio" name="waranty" (click)="onWarantyClick('all')" value="all">All
+                                            </label>
                                         </div>
-                                       
+                                        <!-- <div class="form-group" *ngFor="let w of waranty">
+                                            <label class="spl-checkbox">
+                                                <input type="checkbox" (click)="onWarantyClick(w)">
+                                                <div class="spl-checkmark"></div>{{w}}
+                                            </label>
+                                        </div> -->
+
                                     </div>
                                 </div>
                             </div>
@@ -99,26 +127,36 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingFour">
                                     <h4 class="panel-title">
-                                        <a class="collapsed text-uppercase" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        <a class="collapsed text-uppercase" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false"
+                                            aria-controls="collapseFour">
                                             <i class="more-less icon-minus"></i> DISCOUNT
                                         </a>
                                     </h4>
                                 </div>
                                 <div id="collapseFour" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="collapseFour">
                                     <div class="panel-body">
-                                        <div class="form-group" *ngFor="let d of discount">
-                                            <label class="spl-checkbox">
-                                            <input type="checkbox" (click)="onDiscountClick(d)">
-                                            <div class="spl-checkmark"></div>Upto {{d}}%
-                                        </label>
+                                        <div>
+                                            <label class="d-block" *ngFor="let type of discount">
+                                                <input type="radio" name="discount" (click)="onDiscountClick(type)" value="{{type}}">Upto {{type}}%
+                                            </label>
+                                            <label class="d-block">
+                                                <input type="radio" name="discount" (click)="onDiscountClick('all')" value="all">All
+                                            </label>
                                         </div>
-                                       
-                                        <div class="form-group">
+
+                                        <!-- <div class="form-group" *ngFor="let d of discount">
                                             <label class="spl-checkbox">
-                                            <input type="checkbox" (click)="onDiscountClick('Show All')">
-                                            <div class="spl-checkmark"></div>Show All
-                                        </label>
-                                        </div>
+                                                <input type="checkbox" (click)="onDiscountClick(d)">
+                                                <div class="spl-checkmark"></div>Upto {{d}}%
+                                            </label>
+                                        </div> -->
+
+                                        <!-- <div class="form-group">
+                                            <label class="spl-checkbox">
+                                                <input type="checkbox" (click)="onDiscountClick('Show All')">
+                                                <div class="spl-checkmark"></div>Show All
+                                            </label>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +164,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingFive">
                                     <h4 class="panel-title">
-                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true"
+                                            aria-controls="collapseFive">
                                             <i class="more-less  icon-minus"></i>BRAND
                                         </a>
                                     </h4>
@@ -139,11 +178,11 @@
                                         </div>
                                         <div class="form-group" *ngFor="let brand of brands">
                                             <label class="spl-checkbox">
-                                            <input type="checkbox" (click)="onBrandClick(brand)">
-                                            <div class="spl-checkmark"></div>{{brand}}
-                                        </label>
+                                                <input type="checkbox" name="brands" value="{{brand}}" (click)="onBrandClick(brand)">
+                                                <div class="spl-checkmark"></div>{{brand}}
+                                            </label>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -151,25 +190,22 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingSix">
                                     <h4 class="panel-title">
-                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true"
+                                            aria-controls="collapseSix">
                                             <i class="more-less  icon-minus"></i>CUSTOMER RATINGS
                                         </a>
                                     </h4>
                                 </div>
                                 <div id="collapseSix" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingSix">
                                     <div class="panel-body">
-
-
                                         <div class="form-group" *ngFor="let rate of ratings">
                                             <label class="spl-checkbox">
-                                            <input type="checkbox">
-                                            <div class="spl-checkmark"></div>
-                                            {{rate}}
-                                            <span class="icon-star-full mr-2"></span>&amp; Above
-                                        </label>
+                                                <input type="checkbox" name="rating" value="{{rate}}" (click)="onRatingClick()">
+                                                <div class="spl-checkmark"></div>
+                                                {{rate}}
+                                                <span class="icon-star-full mr-2"></span>&amp; Above
+                                            </label>
                                         </div>
-                                      
-
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +213,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingSeven">
                                     <h4 class="panel-title">
-                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true"
+                                            aria-controls="collapseSeven">
                                             <i class="more-less  icon-minus"></i>OFFERS
                                         </a>
                                     </h4>
@@ -188,11 +225,11 @@
 
                                         <div class="form-group" *ngFor="let offer of offers">
                                             <label class="spl-checkbox">
-                                            <input type="checkbox">
-                                            <div class="spl-checkmark"></div>{{offer}}
-                                        </label>
+                                                <input type="checkbox">
+                                                <div class="spl-checkmark"></div>{{offer}}
+                                            </label>
                                         </div>
-                                       
+
 
                                     </div>
                                 </div>
@@ -201,7 +238,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingEight">
                                     <h4 class="panel-title">
-                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                                        <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="true"
+                                            aria-controls="collapseEight">
                                             <i class="more-less  icon-minus"></i>AVAILABILITY
                                         </a>
                                     </h4>
@@ -211,9 +249,9 @@
 
                                         <div class="form-group">
                                             <label class="spl-checkbox">
-                                            <input type="checkbox">
-                                            <div class="spl-checkmark"></div>Include Out of Stock
-                                        </label>
+                                                <input type="checkbox">
+                                                <div class="spl-checkmark"></div>Include Out of Stock
+                                            </label>
                                         </div>
 
 
@@ -263,13 +301,13 @@
                             <ul class="list-inline float_left mt_4 float-right mb-0">
                                 <li class="list-inline-item ">
                                     <a class="nav-link medium text-small">
-                                    Show
-                                </a>
+                                        Show
+                                    </a>
                                 </li>
                                 <li class="list-inline-item ">
                                     <a class="nav-link">
-                                    12
-                                </a>
+                                        12
+                                    </a>
                                 </li>
                                 <li class="list-inline-item ">
                                     <a class="nav-link ">
@@ -300,12 +338,12 @@
                                         </div>
                                         <p>6mm Wood Chisel MPT MH020031 - 6</p>
                                         <span class="blue">
-                                        <span class="icon-inr"></span>
-                                        <span>2,564.56</span>
+                                            <span class="icon-inr"></span>
+                                            <span>2,564.56</span>
                                         </span>
                                         <span class="pricetag">20.5%</span>
                                         <span class="text-line-through">
-                                        <span class="icon-inr"></span>4,565.00</span>
+                                            <span class="icon-inr"></span>4,565.00</span>
                                         <p class="blue pt-2 pt-6">
                                             <span class="mr-3"> (Excluding-GST) </span>
 
@@ -338,9 +376,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                
-                               
+
+
+
                             </div>
                         </div>
                     </div>

@@ -9,6 +9,7 @@ import { AppDataService } from '../../../services/app-data/app-data.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  showLoading: boolean = false;
   itemCategories = [];
   public imgObj = [
     { name: 'carosel1', src: '1' },
@@ -35,23 +36,25 @@ export class HomeComponent implements OnInit {
   public offers_ads = [];
   public newArrivals = [];
   constructor(public sampleData: SampleData, public homeService: HomeService,
-    private appData:AppDataService) {
+    private appData: AppDataService) {
     this.getHomeDetails();
   }
 
   ngOnInit() {
-    
+
   }
 
   getHomeDetails() {
+    this.showLoading = true;
     this.homeService.getHomeData().subscribe(data => {
+      this.showLoading = false;
       if (data) {
         this.topBrands = data.topbrands;
         this.emergingBrands = data.emergingbrands;
         this.offers = data.offerscats;
         this.newArrivals = data.newarrivalcats;
         this.itemCategories = data.collections;
-        this.appData.homeData = data.coupons;
+        this.appData.homeCouponData = data.coupons;
       }
     });
   }

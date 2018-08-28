@@ -29,6 +29,7 @@ import { OrderSummaryComponent } from './components/cart-section/place-order-sec
 import { PaymentOptionsComponent } from './components/cart-section/place-order-section/payment-options/payment-options.component';
 import { ErrorValidatorComponent } from './components/validators/error-validator/error-validator.component';
 import { CouponsComponent } from './components/home-section/coupons/coupons.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { CouponsComponent } from './components/home-section/coupons/coupons.comp
     OrderSummaryComponent,
     PaymentOptionsComponent,
     ErrorValidatorComponent,
-    CouponsComponent
+    CouponsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

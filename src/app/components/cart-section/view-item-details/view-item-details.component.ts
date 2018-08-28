@@ -1,24 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { SampleData } from '../../../../assets/mocks/sample-data';
-import * as $ from 'jquery';
+import { Component, OnInit } from "@angular/core";
+import { SampleData } from "../../../../assets/mocks/sample-data";
+import * as $ from "jquery";
+import { ActivatedRoute } from "@angular/router";
+import { ToolsService } from "../../../services/tools/tools.service";
+import { CartService } from "../../../services/cart/cart.service";
+import { AppDataService } from "../../../services/app-data/app-data.service";
 @Component({
-  selector: 'app-view-item-details',
-  templateUrl: './view-item-details.component.html',
-  styleUrls: ['./view-item-details.component.css']
+  selector: "app-view-item-details",
+  templateUrl: "./view-item-details.component.html",
+  styleUrls: ["./view-item-details.component.css"]
 })
 export class ViewItemDetailsComponent implements OnInit {
-  itemData: any;
+  itemInitialCost: number = 0;
+  itemFinalCost: number = 0;
+  itemDetails: any = {};
   itemPrice = 0;
   discountPercentage = 0;
   discountAmount = 0;
   itemQuantity = 1;
 
-  constructor(public sampleData: SampleData) { }
+  constructor(
+    public sampleData: SampleData,
+    private route: ActivatedRoute,
+    private toolsService: ToolsService,
+    private cartService: CartService,
+    private appData: AppDataService
+  ) {}
 
   ngOnInit() {
-    this.itemData = this.sampleData.itemDetails;
-    this.calculateTotalItems();
-    $(document).ready(function() {
+    var itemName = this.route.snapshot.paramMap.get("product_name");
+    this.loadItemDetails(itemName);
+    // $(document).ready(function() {
     //   $(window).load(function() {
     //     // The slider being synced must be initialized first
     //     $('#carousel').flexslider({
@@ -43,36 +55,57 @@ export class ViewItemDetailsComponent implements OnInit {
     //     });
     // });
 
-  });
+    // });
     // this.getCartDetails();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
-  ngAfterViewInit() {
+  ngAfterViewInit() {}
 
+  loadItemDetails(name) {
+    this.toolsService.getToolsData(name).subscribe(data => {
+      if (data) {
+        console.log(data);
+        this.itemDetails = data;
+        this.itemDetails.quantity = 1;
+        this.calculateTotalItems();
+      }
+    });
   }
 
   calculateTotalItems() {
-    console.log(this.itemData);
-    this.discountPercentage = Number(this.itemData.prices[0].percentage);
-    this.itemPrice = 0;
-    this.discountAmount = 0;
-    console.log(this.itemQuantity);
-    for (let count = 0; count < this.itemQuantity; count++) {
-      console.log(this.itemData.prices[0].enduser_price);
-      this.itemPrice = (this.itemPrice + Number(this.itemData.prices[0].enduser_price));
-      this.discountAmount = (this.discountAmount + Number(this.itemData.prices[0].offer_price));
-    }
+    this.itemInitialCost =
+      this.itemDetails.quantity *
+      Number(this.itemDetails.price_info.offer_price);
+    this.itemFinalCost =
+      this.itemDetails.quantity *
+      Number(this.itemDetails.price_info.enduser_price);
   }
 
   addItem() {
-    this.itemQuantity = Number(this.itemQuantity) + 1;
+    this.itemDetails.quantity = Number(this.itemDetails.quantity) + 1;
     this.calculateTotalItems();
   }
 
   removeItem() {
-    this.itemQuantity = Number(this.itemQuantity) - 1;
+    this.itemDetails.quantity = Number(this.itemDetails.quantity) - 1;
     this.calculateTotalItems();
   }
 
+  addToCart() {
+    var payload = {
+      user_id: "",
+      random_no: "",
+      orderItem: []
+    };
+
+    this.appData.checkUserId().then((res:any)=>{
+      console.log(res);
+    })
+    // this.cartService.addToCartInitialize(payload);
+  }
+
+  openDetails(){
+    
+  }
 }

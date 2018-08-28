@@ -16,7 +16,15 @@ export class HomeService {
     return this.responseHandler.callGetDataByUrl('https://www.toolsduniya.com/categories');
   }
 
-  getFilteredTools(payload){
+  getFilteredTools(payload) {
     return this.responseHandler.callPostDataByUrl('https://www.shopmytool.in/categoryproducts', payload);
+  }
+
+  getFilteredOffers(payload) {
+    return this.responseHandler.callGetDataByUrl('https://www.toolsmela.com/offerscats?upload_subcategory=' + String(payload));
+  }
+
+  getFilteredNewArrivals(payload){
+    return this.responseHandler.callGetDataByUrl('https://www.toolsmela.com/newarrivalcats?upload_subcategory=' + String(payload));
   }
 }

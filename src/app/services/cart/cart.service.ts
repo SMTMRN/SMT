@@ -12,4 +12,8 @@ export class CartService {
     return this.responseHandler.requestApiCallGet('wishListView', payload);
   }
 
+  addToCartInitialize(payload){
+    return this.responseHandler.requestApiCallPost('https://www.shopmytool.com/initiateorder', payload);
+  }
+
 }

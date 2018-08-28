@@ -1,17 +1,18 @@
+<div [ngClass]="{'loader': showLoading, '': !showLoading }"></div>
+<div [ngClass]="{'body-loader': showLoading, '': !showLoading }">
+    <smtp-info></smtp-info>
 
-<smtp-info></smtp-info>
+    <app-carousel [images]="imgObj"></app-carousel>
 
-<app-carousel [images]="imgObj"></app-carousel>
+    <add-block></add-block>
 
-<add-block></add-block>
-
-<!-- <a routerLink="/view-details"> <img src="assets/img/offer.png" alt="imge" class="img-fluid"></a> -->
-<tools-category [itemCategories] = "itemCategories"></tools-category>
-<add-block></add-block>
-<top-brands [topBrands] = "topBrands" [emergingBrands] = "emergingBrands"></top-brands>
-<app-offers [offers]="offers" [newArrivals]="newArrivals"></app-offers>
-<offers-ads [offers_ads]="offers_ads"></offers-ads>
-
+    <!-- <a routerLink="/view-details"> <img src="assets/img/offer.png" alt="imge" class="img-fluid"></a> -->
+    <tools-category [itemCategories]="itemCategories"></tools-category>
+    <add-block></add-block>
+    <top-brands [topBrands]="topBrands" [emergingBrands]="emergingBrands"></top-brands>
+    <app-offers [offers]="offers" [newArrivals]="newArrivals"></app-offers>
+    <offers-ads [offers_ads]="offers_ads"></offers-ads>
+</div>
 <!-- <script>
         $(document).ready(function() {
             $('#carousel01').owlCarousel({

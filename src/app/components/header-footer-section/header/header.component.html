@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg box-shadow  bg-light navbar-light fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand " href="#page-top">
+    <a class="navbar-brand " routerLink="/">
       <img src="assets/img/logo.png" alt="Logo" width="125">
     </a>
     <button class="navbar-toggler navbar-toggle navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive1"
@@ -27,11 +27,11 @@
           </a>
           <ul class="dropdown-menu megadrop" aria-labelledby="navbarDropdownMenuLink">
             <li class="dropdown-submenu" *ngFor="let tools of categories">
-              <a class="dropdown-item  dropdown-toggle text-light">{{tools.categoryname}}</a>
+              <a class="dropdown-item  dropdown-toggle text-light" (click)="sendToTools(tools.categoryname,'')">{{tools.categoryname}}</a>
               <ul class="dropdown-menu">
                 <!-- <ul class="multi-column-dropdown"> -->
                 <li *ngFor="let subTools of tools.subcategoryname">
-                  <a routerLink="/library" class="dropdown-item">{{subTools.subcategory}}</a>
+                  <a class="dropdown-item" (click)="sendToTools(tools.categoryname,subTools.subcategory)">{{subTools.subcategory}}</a>
                 </li>
                 <!-- </ul> -->
               </ul>
@@ -102,7 +102,7 @@
               </span>
             </li>
             <li class="ml-3 mr-3">
-              <a class="btn  btn-success rounded-0 text-center text-uppercase" routerLink="/place-order">Proceed to checkout</a>
+              <a class="btn  btn-success rounded-0 text-center text-uppercase" (click)="proceedToPay()">Proceed to checkout</a>
             </li>
             <li>
               <a class="text-center btn btn-link" (click)="goToViewCart()">View Cart</a>
@@ -120,8 +120,8 @@
               <span class="icon-lock mr-2"></span>Sign in</a>
             <a class="dropdown-item" routerLink="/register">
               <span class="icon-user-plus mr-2"></span>Register</a>
-            <a class="dropdown-item" routerLink="">
-              <span class="icon-handshake-o mr-2"></span>Supplier/Reseller</a>
+            <!-- <a class="dropdown-item" routerLink="">
+              <span class="icon-handshake-o mr-2"></span>Supplier/Reseller</a> -->
           </div>
 
           <div *ngIf="userLogged" class="login dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

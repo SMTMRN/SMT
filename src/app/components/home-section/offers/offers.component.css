@@ -1,0 +1,6 @@
+.txtLimit{
+    white-space: nowrap; 
+    width: 275px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

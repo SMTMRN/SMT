@@ -3,6 +3,7 @@ import { HomeService } from '../../../services/home/home.service';
 import { SimpleChanges } from '@angular/core';
 import { GlobalEventManagerService } from '../../../services/event-manager/global-event-manager.service';
 import { Router } from '@angular/router';
+import { AppDataService } from '../../../services/app-data/app-data.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnChanges, OnInit {
   categories: any = [];
   username = "";
   constructor(private homeService: HomeService, private globalEventsManager: GlobalEventManagerService,
-    private router: Router) {
+    private router: Router, private appData: AppDataService) {
     this.globalEventsManager.showMainMenuEmitter.subscribe((mode) => {
       if (mode !== null) {
         this.userLogged = mode;
@@ -38,8 +39,18 @@ export class HeaderComponent implements OnChanges, OnInit {
     if (userData !== null && userData !== undefined && userData !== []) {
       this.router.navigateByUrl('/view-cart');
     }
-    else{
-      alert("Please login to view the cart details.")
+    else {
+      this.router.navigateByUrl('/login');
+    }
+  }
+
+  proceedToPay() {
+    var userData = JSON.parse(localStorage.getItem('userInfo'));
+    if (userData !== null && userData !== undefined && userData !== []) {
+      this.router.navigateByUrl('/place-order');
+    }
+    else {
+      this.router.navigateByUrl('/login');
     }
   }
 
@@ -58,6 +69,17 @@ export class HeaderComponent implements OnChanges, OnInit {
         this.categories = data.categories;
       }
     });
+  }
+
+  sendToTools(categoryName: string, subCategoryName: string) {
+
+    if (this.router.url !== '/library') {
+      this.appData.toolsMenuList = { category: categoryName, subCategory: subCategoryName };
+      this.router.navigate(["/library"]);
+    }
+    else {
+      this.appData.reloadToolsData(categoryName, subCategoryName);
+    }
   }
 
 }

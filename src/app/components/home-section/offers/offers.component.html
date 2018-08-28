@@ -8,9 +8,13 @@
     <div class="row">
       <div class="col-md-10 col-sm-12 center-block">
         <ul class="nav nav-pills pb-4" role="tablist">
-          <li class="nav-item" *ngFor="let product of offerProductTypes">
+          <!-- <li class="nav-item" *ngFor="let product of offerProductTypes">
             <a class="nav-link text-uppercase show" [ngClass]="{'active': product?.type==selectedTypes.offer, '':product?.type!==selectedTypes.offer }"
               data-toggle="pill" (click)="filterOffers(product?.type)">{{product?.type}}</a>
+          </li> -->
+          <li class="nav-item" *ngFor="let product of offerProductTypes">
+            <a class="nav-link text-uppercase show" [ngClass]="{'active': product==selectedTypes.offer, '':product!==selectedTypes.offer }"
+              data-toggle="pill" (click)="filterOffers(product)">{{product}}</a>
           </li>
         </ul>
       </div>
@@ -22,15 +26,15 @@
           <div class="owl-stage-outer">
             <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1432px;">
               <div class="owl-item active" style="width: 281.25px; margin-right: 5px;" *ngFor="let offerItem of selectedOffers">
-                <div class="item">
+                <div class="item" (click)="viewDetails(offerItem.upload_name)">
                   <div class="box position-relative">
                     <div class="gray-bg">
-                      <a href="#">
+                      <a>
                         <img src="{{offerItem.upload_photo}}" alt="imge" class="img-fluid">
                       </a>
                     </div>
-                    <a href="#">
-                      <p>{{offerItem.upload_name}}</p>
+                    <a>
+                      <p class="txtLimit">{{offerItem.upload_name}}</p>
                     </a>
                     <span class="blue">
                       <span class="icon-inr"></span>
@@ -51,17 +55,17 @@
                       <ul class="list-inline mt_4 mb-0">
 
                         <li class="list-inline-item ">
-                          <a href="#" class="nav-link ">
+                          <a class="nav-link ">
                             <span class="icon-shopping-cart"></span>
                           </a>
                         </li>
                         <li class="list-inline-item ">
-                          <a href="#" class="nav-link ">
+                          <a class="nav-link ">
                             <span class="icon-heart"></span>
                           </a>
                         </li>
                         <li class="list-inline-item ">
-                          <a href="#" class="nav-link">
+                          <a class="nav-link">
                             <span class="icon-compare_arrows"></span>
                           </a>
                         </li>
@@ -96,7 +100,7 @@
           </div>
         </div>
       </div>
-      <div id="menu1" class="container tab-pane fade">
+      <!-- <div id="menu1" class="container tab-pane fade">
         <br>
         <h3>Drill machine</h3>
 
@@ -110,7 +114,7 @@
         <br>
         <h3>Hammers</h3>
 
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
@@ -125,8 +129,8 @@
       <div class="col-md-6 center-block">
         <ul class="nav nav-pills pb-4" role="tablist">
           <li class="nav-item" *ngFor="let product of arrivalProductTypes">
-            <a class="nav-link text-uppercase show" [ngClass]="{'active': product?.type==selectedTypes.newArrival, '':product?.type!==selectedTypes.newArrival }"
-              data-toggle="pill" (click)="filterNewArrivals(product?.type)">{{product?.type}}</a>
+            <a class="nav-link text-uppercase show" [ngClass]="{'active': product==selectedTypes.newArrival, '':product!==selectedTypes.newArrival }"
+              data-toggle="pill" (click)="filterNewArrivals(product)">{{product}}</a>
           </li>
         </ul>
       </div>
@@ -139,15 +143,15 @@
           <div class="owl-stage-outer">
             <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1432px;">
               <div class="owl-item active" style="width: 281.25px; margin-right: 5px;" *ngFor="let itemNew of selectedNewArrival">
-                <div class="item">
+                <div class="item" (click)="viewDetails(itemNew.upload_name)">
                   <div class="box position-relative">
                     <div class="gray-bg">
-                      <a href="#">
+                      <a>
                         <img src="{{itemNew.upload_photo}}" alt="imge" class="img-fluid">
                       </a>
                     </div>
-                    <a href="#">
-                      <p>{{itemNew.upload_name}}</p>
+                    <a>
+                      <p class="txtLimit">{{itemNew.upload_name}}</p>
                     </a>
                     <span class="blue">
                       <span class="icon-inr"></span>
@@ -168,17 +172,17 @@
                       <ul class="list-inline mt_4 mb-0">
 
                         <li class="list-inline-item ">
-                          <a href="#" class="nav-link ">
+                          <a class="nav-link ">
                             <span class="icon-shopping-cart"></span>
                           </a>
                         </li>
                         <li class="list-inline-item ">
-                          <a href="#" class="nav-link ">
+                          <a class="nav-link ">
                             <span class="icon-heart"></span>
                           </a>
                         </li>
                         <li class="list-inline-item ">
-                          <a href="#" class="nav-link">
+                          <a class="nav-link">
                             <span class="icon-compare_arrows"></span>
                           </a>
                         </li>
@@ -213,11 +217,11 @@
           </div>
         </div>
       </div>
-      <div id="newdemo" class="container tab-pane fade">
+      <!-- <div id="newdemo" class="container tab-pane fade">
         <br>
         <h3>Drill machine</h3>
 
-      </div>
+      </div> -->
 
     </div>
   </div>

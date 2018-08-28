@@ -85,7 +85,12 @@ export class ResponseHandler {
         return this.api.post(url, body, null, header)
             .map((res: any) => {
                 console.log(res);
-                return this.returnData(res);
+                if(res.status="Success"){
+                    return res;
+                }
+                else{
+                    return null;
+                }
             }).catch(this.handleError);
     }
 }

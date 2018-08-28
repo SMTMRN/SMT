@@ -1,8 +1,8 @@
 <section class="pt-4 pb-4">
   <div class="container">
-      <div class="row">
+      <div class="row toolCategory">
           <div class="col-md-3 mb-4" *ngFor="let category of itemCategories">
-              <div class="box">
+              <div class="box" (click)="goToTools(category.name)">
                   <h4 class="text-uppercase pb-3">
                       {{category.name}}
                   </h4>

@@ -1,0 +1,7 @@
+.dropdown-menu{
+    margin: -3px 0 0;
+}
+.megadrop .dropdown-item{
+    color:#fff !important;
+    cursor: pointer;
+}

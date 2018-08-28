@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
             console.log(res);
             localStorage.setItem('userInfo', JSON.stringify(res));
             this.globalEventsManager.showMainMenu(true);
-            this.router.navigateByUrl('/');
+            this.router.navigate(['/']);
           }
         });
       }

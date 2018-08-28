@@ -12,14 +12,14 @@ export class CouponsComponent implements OnInit {
 
   coupons = [];
   constructor(private appData: AppDataService, private homeService: HomeService) {
-    if (appData.homeData !== null) {
-      this.coupons = appData.homeData;
+    if (appData.homeCouponData !== null) {
+      this.coupons = appData.homeCouponData;
     }
     else {
       this.homeService.getHomeData().subscribe(data => {
         if (data) {
-          this.appData.homeData = data.coupons;
-          this.coupons = appData.homeData;
+          this.appData.homeCouponData = data.coupons;
+          this.coupons = appData.homeCouponData;
         }
       });
     }

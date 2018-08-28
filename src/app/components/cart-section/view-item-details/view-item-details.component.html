@@ -6,7 +6,7 @@
         <li class="breadcrumb-item">
             <a href="#">Tools</a>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">{{itemData.upload_name}}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{itemDetails?.Product?.upload_name}}</li>
     </ol>
 </nav>
 
@@ -66,13 +66,17 @@
                                             <li>
                                                 <img data-imagezoom="true" class="group3" src="assets/img/ha2.png" />
                                             </li>
-
-
-
                                         </ul>
                                     </div>
                                 </div>
+                                <section>
+                                    <div *ngFor="let img of itemDetails?.Product?.extraimages">
+                                        <img *ngIf="img!== ''" width="100px" height="100px" src="{{img}}" alt="">
+                                    </div>
+                                </section>
                             </section>
+
+
                         </div>
                         <div class="col-md-1">
 
@@ -89,7 +93,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1 class="blue mb-3 medium productdetailh1">{{itemData?.upload_name}}</h1>
+                                    <h1 class="blue mb-3 medium productdetailh1">{{itemDetails?.Product?.upload_name}}</h1>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -101,11 +105,11 @@
                             <h4 class="medium prrupeesize">
                                 <span class="blue">
                                     <span class="icon-inr"></span>
-                                    <span> {{discountAmount}} </span>
+                                    <span> {{itemInitialCost}} </span>
                                 </span>
-                                <span class="pricetag"> {{discountPercentage}} % </span>
+                                <span class="pricetag"> {{itemDetails?.price_info?.percentage}} % </span>
                                 <span class="text-line-through">
-                                    <span class="icon-inr"></span> {{itemPrice}} </span>
+                                    <span class="icon-inr"></span> {{itemFinalCost}} </span>
                             </h4>
                             <p class="blue">Size Guide Shipping</p>
                             <div class="row pb-3">
@@ -113,13 +117,13 @@
                                     <div class="color-quality-right pt-1 pb-2">
                                         <div class="quantity text_center">
                                             <div class="quantity-select">
-                                                <button [disabled]="itemQuantity <= 1" (click)="removeItem()" class="entry value-minus1">
+                                                <button [disabled]="itemDetails?.quantity <= 1" (click)="removeItem()" class="entry value-minus1">
                                                     <span class="icon-minus"></span>
                                                 </button>
                                                 <div class="entry value1">
-                                                    <span>{{itemQuantity}}</span>
+                                                    <span>{{itemDetails?.quantity}}</span>
                                                 </div>
-                                                <button [disabled]="itemQuantity >= 10" (click)="addItem()" class="entry value-plus1 active">
+                                                <button [disabled]="itemDetails?.quantity >= 10" (click)="addItem()" class="entry value-plus1 active">
                                                     <span class="icon-plus"></span>
                                                 </button>
                                             </div>
@@ -127,16 +131,16 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 pl-0 col-12">
-                                    <a href="#" class="rounded-0 btn-block btn btn-success text-uppercase">Add to cart</a>
+                                    <a (click)="addToCart()" class="rounded-0 btn-block btn btn-success text-uppercase">Add to cart</a>
                                 </div>
                             </div>
                             <div class="form-group-small">
                                 <span class="medium">Vendor:</span>
-                                <span class="secondary">Tools</span>
+                                <span class="secondary">{{itemDetails?.Product?.upload_brand}}</span>
                             </div>
                             <div class="form-group-small">
                                 <span class="medium">Product Type:</span>
-                                <span class="secondary">Sweater</span>
+                                <span class="secondary">{{itemDetails?.Product?.upload_category}}</span>
                             </div>
                             <div class="form-group-small">
                                 <span class="medium">Tags:</span>
@@ -151,7 +155,7 @@
                                     <b class="text-uppercase">description</b>
                                 </h5>
                                 <p class="secondary">
-                                    {{itemData?.item_description}}
+                                    {{itemDetails?.Product?.description}}
                                 </p>
                             </div>
                             <div class="panel-group pt-2 pb-2" id="accordion" role="tablist" aria-multiselectable="true">
@@ -167,7 +171,7 @@
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                         <div class="panel-body">
-                                            <div *ngFor="let attr of itemData?.attributes">
+                                            <div *ngFor="let attr of itemDetails?.attribute_info">
                                                 {{attr.atrname}} : {{attr.atrvalue}}
                                             </div>
                                         </div>

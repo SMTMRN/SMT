@@ -1,12 +1,13 @@
-<div class="container-fluid container-height">
+<div [ngClass]="{'loader': showLoading, '': !showLoading }"></div>
+<div [ngClass]="{'body-loader': showLoading, '': !showLoading }" class="container-fluid container-height">
     <div class="row">
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="#">Home</a>
+                        <a routerLink="">Home</a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{category}}</li>
                 </ol>
             </nav>
         </div>
@@ -75,13 +76,16 @@
                                             </label>
                                         </div> -->
                                         <div>
-                                                <label class="d-block" *ngFor="let type of price">
-                                                    <input type="radio" name="waranty" (click)="onPriceclick(type)" value="{{type}}"> {{type}}
-                                                </label>
-                                                <label class="d-block">
-                                                    <input type="radio" name="price" (click)="onPriceclick('all')" value="all">All
+                                            <div *ngFor="let item of price">
+                                                <label class="d-block" *ngIf="((item?.minVal<=productPriceRange.max)&&(item?.maxVal>=productPriceRange.min))">
+                                                    <input type="radio" name="price" (click)="onPriceclick(item?.value)" value="{{item?.value}}">                                                    {{item?.name}}
                                                 </label>
                                             </div>
+                                            <label class="d-block">
+                                                <input type="radio" name="price" (click)="onPriceclick('all')" value="all">Show
+                                                All
+                                            </label>
+                                        </div>
                                         <!-- <div class="form-group" *ngFor="let cost of price">
                                             <label class="spl-checkbox">
                                                 <input type="checkbox" (click)="onPriceclick(p)">
@@ -106,11 +110,12 @@
                                 <div id="collapseThree" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingThree">
                                     <div class="panel-body">
                                         <div>
-                                            <label class="d-block" *ngFor="let type of waranty">
-                                                <input type="radio" name="waranty" (click)="onWarantyClick(type)" value="{{type}}"> {{type}}
+                                            <label class="d-block" *ngFor="let item of warranty">
+                                                <input type="radio" name="waranty" (click)="onWarantyClick(item?.value)" value="{{item?.value}}">                                                {{item?.name}}
                                             </label>
                                             <label class="d-block">
-                                                <input type="radio" name="waranty" (click)="onWarantyClick('all')" value="all">All
+                                                <input type="radio" name="waranty" checked="true" (click)="onWarantyClick('all')" value="all">Show
+                                                All
                                             </label>
                                         </div>
                                         <!-- <div class="form-group" *ngFor="let w of waranty">
@@ -137,10 +142,12 @@
                                     <div class="panel-body">
                                         <div>
                                             <label class="d-block" *ngFor="let type of discount">
-                                                <input type="radio" name="discount" (click)="onDiscountClick(type)" value="{{type}}">Upto {{type}}%
+                                                <input type="radio" name="discount" (click)="onDiscountClick(type)" value="{{type}}">Upto
+                                                {{type}}%
                                             </label>
                                             <label class="d-block">
-                                                <input type="radio" name="discount" (click)="onDiscountClick('all')" value="all">All
+                                                <input type="radio" name="discount" (click)="onDiscountClick('all')" value="all">Show
+                                                All
                                             </label>
                                         </div>
 
@@ -176,10 +183,10 @@
                                             <input type="text" class="form-control" id="inputValidation" placeholder="Search">
                                             <span class="icon-search form-control-feedback"></span>
                                         </div>
-                                        <div class="form-group" *ngFor="let brand of brands">
+                                        <div class="form-group" *ngFor="let item of brands">
                                             <label class="spl-checkbox">
-                                                <input type="checkbox" name="brands" value="{{brand}}" (click)="onBrandClick(brand)">
-                                                <div class="spl-checkmark"></div>{{brand}}
+                                                <input type="checkbox" name="brands" value="{{item.brand}}" (click)="onBrandClick(item.brand)">
+                                                <div class="spl-checkmark"></div>{{item.brand}}
                                             </label>
                                         </div>
 
@@ -229,8 +236,6 @@
                                                 <div class="spl-checkmark"></div>{{offer}}
                                             </label>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -270,7 +275,8 @@
                         <div class="col-md-12">
                             <h3>
                                 <span class="medium">Power Tools</span>
-                                <span class="text-small">(Showing 1- 20 Products of 100 Products)</span>
+                                <span class="text-small">(Showing {{displayCountFormat}} Products of {{filteredToolsArray?.length}}
+                                    Products)</span>
                             </h3>
                         </div>
                     </div>
@@ -278,22 +284,22 @@
                         <div class="col-md-9">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link mt-1 text-small" href="#">Sort By</a>
+                                    Sort By
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#">Popularity</a>
+                                    <a class="nav-link" (click)="sortType('popularity')">Popularity</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Topseling</a>
+                                    <a class="nav-link" (click)="sortType('topselling')">Topseling</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Price Low to High</a>
+                                    <a class="nav-link" (click)="sortType('lowToHight')">Price Low to High</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Price High to Low</a>
+                                    <a class="nav-link" (click)="sortType('highToLow')">Price High to Low</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Newest First</a>
+                                    <a class="nav-link" (click)="sortType('new')">Newest First</a>
                                 </li>
                             </ul>
                         </div>
@@ -330,34 +336,34 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-md-12">
-                            <div class="block-grid-lg-4 block-grid-md-4 block-grid-sm-2 block-grid-xs-1">
-                                <div class="block-grid-item" data-toggle="modal" data-target="#productdetailModal" *ngFor="let item of [1,1,1,1,1,1,1,1,1,1,1,1]">
+                            <div *ngIf="filteredToolsArray?.length>0" class="block-grid-lg-4 block-grid-md-4 block-grid-sm-2 block-grid-xs-1">
+                                <div class="block-grid-item" data-toggle="modal" data-target="#productdetailModal" *ngFor="let item of filteredToolsArray| slice:(fitToPage.min):(fitToPage.max)">
                                     <div class="box position-relative">
-                                        <div class="gray-bg">
-                                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
+                                        <div (click)="viewDetails(item?.upload_name)">
+                                            <div class="gray-bg">
+                                                <img src="{{item?.upload_photo}}" alt="imge" class="img-fluid">
+                                            </div>
+                                            <p>{{item?.upload_name}}</p>
+                                            <span class="blue">
+                                                <span class="icon-inr"></span>
+                                                <span>{{item?.prices[0]?.offer_price}}</span>
+                                            </span>
+                                            <span class="pricetag">{{item?.prices[0]?.percentage}}%</span>
+                                            <span class="text-line-through">
+                                                <span class="icon-inr"></span>{{item?.prices[0]?.enduser_price}}</span>
+                                            <p class="blue pt-2 pt-6">
+                                                <span class="mr-3"> (Excluding-GST) </span>
+                                                <span class="icon-star-full"></span>
+                                                <span class="icon-star-full"></span>
+                                                <span class="icon-star-empty"></span>
+                                                <span class="icon-star-empty"></span>
+                                                <span class="icon-star-empty"></span>
+                                            </p>
                                         </div>
-                                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                                        <span class="blue">
-                                            <span class="icon-inr"></span>
-                                            <span>2,564.56</span>
-                                        </span>
-                                        <span class="pricetag">20.5%</span>
-                                        <span class="text-line-through">
-                                            <span class="icon-inr"></span>4,565.00</span>
-                                        <p class="blue pt-2 pt-6">
-                                            <span class="mr-3"> (Excluding-GST) </span>
-
-                                            <span class="icon-star-full"></span>
-                                            <span class="icon-star-full"></span>
-                                            <span class="icon-star-empty"></span>
-                                            <span class="icon-star-empty"></span>
-                                            <span class="icon-star-empty"></span>
-                                        </p>
                                         <div class="overlay-text">
                                             <ul class="list-inline mt_4 mb-0">
-
                                                 <li class="list-inline-item ">
-                                                    <a href="#" class="nav-link ">
+                                                    <a (click)="addToCart()" href="#" class="nav-link ">
                                                         <span class="icon-shopping-cart"></span>
                                                     </a>
                                                 </li>
@@ -376,9 +382,9 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
+                            </div>
+                            <div *ngIf="filteredToolsArray?.length==0" class="block-grid-lg-4 block-grid-md-4 block-grid-sm-2 block-grid-xs-1">
+                                No Products to Display
                             </div>
                         </div>
                     </div>
@@ -388,40 +394,13 @@
                 <div class="col-md-11 col-12 mx-auto">
                     <div class="row gary_bg">
                         <div class="col-md-3 col-12">
-                            <p class="medium mt-10">Page 1 of 16</p>
+                            <p class="medium mt-10">Page 1 of {{pageSliderCount.length}}</p>
                         </div>
                         <div class="col-md-9 col-12">
 
                             <ul class="justify-content-center paginationul flex-wrap pagination pagination-sm">
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">4</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">5</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">6</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">7</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">8</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">9</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">10</a>
+                                <li class="page-item active" *ngFor="let pageIndex of pageSliderCount">
+                                    <a class="page-link" (click)="loadPageDetails(pageIndex)">{{pageIndex}}</a>
                                 </li>
                                 <li class="page-item">
                                     <a class="page-link" href="#">Next</a>

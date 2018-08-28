@@ -13,6 +13,7 @@ import { OrderSummaryComponent } from './components/cart-section/place-order-sec
 import { OrderLoginComponent } from './components/cart-section/place-order-section/order-login/order-login.component';
 import { DeliveryAddressComponent } from './components/cart-section/place-order-section/delivery-address/delivery-address.component';
 import { CouponsComponent } from './components/home-section/coupons/coupons.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,11 +21,11 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'forgotpassword', component: RecoverPasswordComponent },
   { path: 'view-cart', component: ViewCartComponent },
-  { path: 'view-details', component: ViewItemDetailsComponent },
+  { path: 'view-details/:product_name', component: ViewItemDetailsComponent },
   { path: 'library', component: ToolsComponent },
   { path: 'place-order', component: PlaceOrderComponent },
   { path: 'coupons', component: CouponsComponent },
-  { path: '**', component: HomeComponent }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { HomeService } from '../../services/home/home.service';
-import { AppDataService } from '../../services/app-data/app-data.service';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { HomeService } from "../../services/home/home.service";
+import { AppDataService } from "../../services/app-data/app-data.service";
+import { Observable } from "rxjs";
+import { Router } from "@angular/router";
+import { CartService } from "../../services/cart/cart.service";
 
 @Component({
-  selector: 'app-tools',
-  templateUrl: './tools.component.html',
-  styleUrls: ['./tools.component.css']
+  selector: "app-tools",
+  templateUrl: "./tools.component.html",
+  styleUrls: ["./tools.component.css"]
 })
 export class ToolsComponent implements OnInit {
   displayCountFormat: string = "";
@@ -26,34 +27,67 @@ export class ToolsComponent implements OnInit {
   productPriceRange = {
     max: 0,
     min: 0
-  }
+  };
   fitToPage = {
     max: 0,
     min: 11,
     count: 12
-  }
-  public subCat = ["Angle Grinder Machine", "Drill Machine", "Planner Machine", "Power Tools Accessories"];
-  public price = [{ name: "0 - 1,000", minVal: 0, maxVal: 1000, value: "0-1000" },
-  { name: "1,000 - 10,000", minVal: 1000, maxVal: 10000, value: "1000-10000" },
-  { name: "10,000 - 30,000", minVal: 10000, maxVal: 30000, value: "10000-30000" },
-  { name: "30,000 - 50,000", minVal: 30000, maxVal: 50000, value: "30000-50000" },
-  { name: "50,000 and above", minVal: 50000, maxVal: 100000000, value: "5000-100000000" }];
-  public warranty = [{ name: "Warranty", value: "1" }, { name: "Non-Warranty", value: "0" }];
+  };
+  public subCat = [
+    "Angle Grinder Machine",
+    "Drill Machine",
+    "Planner Machine",
+    "Power Tools Accessories"
+  ];
+  public price = [
+    { name: "0 - 1,000", minVal: 0, maxVal: 1000, value: "0-1000" },
+    {
+      name: "1,000 - 10,000",
+      minVal: 1000,
+      maxVal: 10000,
+      value: "1000-10000"
+    },
+    {
+      name: "10,000 - 30,000",
+      minVal: 10000,
+      maxVal: 30000,
+      value: "10000-30000"
+    },
+    {
+      name: "30,000 - 50,000",
+      minVal: 30000,
+      maxVal: 50000,
+      value: "30000-50000"
+    },
+    {
+      name: "50,000 and above",
+      minVal: 50000,
+      maxVal: 100000000,
+      value: "5000-100000000"
+    }
+  ];
+  public warranty = [
+    { name: "Warranty", value: "1" },
+    { name: "Non-Warranty", value: "0" }
+  ];
   public discount = ["10", "25 ", "50", "75"];
   public ratings = ["4", "3 ", "2", "1"];
   public brands = ["PowerTex", "MPT ", "Bosch", "Dewalt", "Sun Flower"];
   public offers = ["Special Price", "Buy More, Save More ", "Bank Offer "];
-  constructor(public homeServie: HomeService, private appData: AppDataService,
-    private router: Router) {
+  constructor(
+    public homeServie: HomeService,
+    private appData: AppDataService,
+    private router: Router,
+    private cartService: CartService
+  ) {
     this.reloadSubCat = true;
     this.selectedBrands.push("");
     if (appData.toolsMenuList.category) {
-      this.category = appData.toolsMenuList.category
+      this.category = appData.toolsMenuList.category;
     }
     if (appData.toolsMenuList.subCategory) {
       this.selectedSubCat.push(appData.toolsMenuList.subCategory);
-    }
-    else {
+    } else {
       this.selectedSubCat.push("");
     }
     this.getFilteredToolsData(true);
@@ -61,17 +95,14 @@ export class ToolsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Entered On init")
+    console.log("Entered On init");
   }
 
-  onAngleGrinder() {
-
-  }
+  onAngleGrinder() {}
   onDiscountClick(disc) {
     if (disc == "all") {
       this.selectedDiscount = "";
-    }
-    else {
+    } else {
       this.selectedDiscount = String(disc);
     }
     this.getFilteredToolsData(false);
@@ -81,8 +112,7 @@ export class ToolsComponent implements OnInit {
   onWarantyClick(waranty) {
     if (waranty == "all") {
       this.selectedWaranty = "";
-    }
-    else {
+    } else {
       this.selectedWaranty = Number(waranty);
     }
     this.getFilteredToolsData(false);
@@ -93,8 +123,7 @@ export class ToolsComponent implements OnInit {
     console.log(price);
     if (price == "all") {
       this.selectedPrice = "";
-    }
-    else {
+    } else {
       this.selectedPrice = String(price);
     }
     this.getFilteredToolsData(false);
@@ -104,7 +133,7 @@ export class ToolsComponent implements OnInit {
   newEnteredCategory(category, subCategory) {
     this.category = category;
     this.selectedSubCat = [];
-    this.selectedSubCat.push(subCategory)
+    this.selectedSubCat.push(subCategory);
     this.selectedBrands = [];
     this.selectedBrands.push("");
     this.selectedPrice = "";
@@ -153,21 +182,21 @@ export class ToolsComponent implements OnInit {
 
   getFilteredToolsData(reload) {
     var payload = {
-      "category": String(this.category),
-      "subcategory": this.selectedSubCat,
-      "brand": this.selectedBrands,
-      "pricerange": String(this.selectedPrice),
-      "from": 0,
-      "to": 12,
-      "val": "",
-      "warranty": this.selectedWaranty,
-      "percentage": String(this.selectedDiscount)
-    }
+      category: String(this.category),
+      subcategory: this.selectedSubCat,
+      brand: this.selectedBrands,
+      pricerange: String(this.selectedPrice),
+      from: 0,
+      to: 12,
+      val: "",
+      warranty: this.selectedWaranty,
+      percentage: String(this.selectedDiscount)
+    };
     console.log(payload);
     this.showLoading = true;
     this.homeServie.getFilteredTools(payload).subscribe((tools: any) => {
       this.showLoading = false;
-      if (tools != null) {
+      if (tools && String(tools.status).toLowerCase() == "success") {
         this.fitToPage.min = 0;
         this.fitToPage.max = this.fitToPage.count - 1;
         console.log(tools);
@@ -178,42 +207,50 @@ export class ToolsComponent implements OnInit {
           this.productPriceRange.min = tools.totalminval;
           this.productPriceRange.max = tools.totalmaxval;
         }
-        if ((tools.products != null) && (tools.products != undefined)) {
+        if (tools.products != null && tools.products != undefined) {
           this.filteredToolsArray = tools.products;
           this.pageSliderCount = [];
           this.fitToPage.min = 0;
           this.fitToPage.max = this.fitToPage.count;
           var sliderCount = Math.ceil(this.filteredToolsArray.length / 12);
-          this.pageSliderCount = Array(sliderCount).fill(sliderCount).map((x, i) => i + 1);
+          this.pageSliderCount = Array(sliderCount)
+            .fill(sliderCount)
+            .map((x, i) => i + 1);
           if (this.filteredToolsArray.length > this.fitToPage.count) {
             this.displayCountFormat = "0 - " + String(this.fitToPage.count);
-          }
-          else{
-            this.displayCountFormat = "0 - " + String(this.filteredToolsArray.length);
+          } else {
+            this.displayCountFormat =
+              "0 - " + String(this.filteredToolsArray.length);
           }
           console.log(this.pageSliderCount);
-        }
-        else {
+        } else {
           this.filteredToolsArray = [];
           this.displayCountFormat = "0 - 0";
         }
-      }
-      else {
+      } else {
         this.filteredToolsArray = [];
         this.displayCountFormat = "0 - 0";
       }
-    })
+    });
   }
 
   sortType(type) {
     if (type == "lowToHight") {
       console.log(this.filteredToolsArray);
-      this.filteredToolsArray.sort(function (a, b) { return (Number(a.prices[0].offer_price) - Number(b.prices[0].offer_price)) });
+      this.filteredToolsArray.sort(function(a, b) {
+        return (
+          Number(a.prices[0].offer_price) - Number(b.prices[0].offer_price)
+        );
+      });
       console.log(this.filteredToolsArray);
     }
     if (type == "highToLow") {
       console.log(this.filteredToolsArray);
-      this.filteredToolsArray.sort(function (a, b) { return (Number(b.prices[0].offer_price) - Number(a.prices[0].offer_price)) });
+      this.filteredToolsArray.sort(function(a, b) {
+        return (
+          Number(b.prices[0].offer_price) - Number(a.prices[0].offer_price)
+        );
+      });
       console.log(this.filteredToolsArray);
     }
   }
@@ -222,18 +259,112 @@ export class ToolsComponent implements OnInit {
     if (index == 1) {
       this.fitToPage.min = 0;
       this.fitToPage.max = this.fitToPage.count;
-    }
-    else {
+    } else {
       this.fitToPage.min = this.fitToPage.count * (index - 1);
-      this.fitToPage.max = (this.fitToPage.count * index) - 1;
+      this.fitToPage.max = this.fitToPage.count * index - 1;
     }
-    this.displayCountFormat = String(this.fitToPage.min + 1) + " - " + String(this.fitToPage.max + 1)
-    console.log(this.fitToPage)
-    console.log("this.fitToPage")
+    this.displayCountFormat =
+      String(this.fitToPage.min + 1) + " - " + String(this.fitToPage.max + 1);
+    console.log(this.fitToPage);
+    console.log("this.fitToPage");
   }
 
   viewDetails(name) {
     this.router.navigate(["/view-details", name]);
   }
 
+  ///////////////////////////////////////////////////////////
+
+  addToCart(item) {
+    console.log(item);
+    this.appData.checkUserId().then((userRes: any) => {
+      if (userRes !== null) {
+        this.userAddCartDetails(item, userRes);
+      } else {
+        this.localAddCartDetails(item);
+      }
+    });
+  }
+
+  userAddCartDetails(item, userRes) {
+    var response = JSON.parse(userRes);
+    console.log(response);
+    this.appData.checkUserCartDetails().then((cartResp: any) => {
+      var payload = {
+        user_id: "",
+        order_status: "init",
+        orderitem: []
+      };
+      if (cartResp !== null) {
+        payload.orderitem = cartResp.item_list;
+      }
+      payload.orderitem.push({
+        productdescription: String(item.upload_name),
+        qty: "1"
+      });
+      payload.user_id = String(response.user_id);
+      this.cartService.userAddToCartInitialize(payload).subscribe(res => {
+        console.log(res);
+        if (res.status != "") {
+          alert(res.status);
+          this.userUpdateCartDetails(payload.user_id);
+        }
+      });
+    });
+  }
+
+  localAddCartDetails(item) {
+    this.appData.checkLocalCartDetails().then((cartResp: any) => {
+      var payload = {
+        user_id: "",
+        random_no: "",
+        orderitem: []
+      };
+      if (cartResp !== null) {
+        payload.orderitem = cartResp.item_list;
+      }
+      this.appData.checkRandomNumber().then((randomRes: any) => {
+        payload.orderitem.push({
+          productdescription: String(item.upload_name),
+          qty: "1"
+        });
+        if (randomRes !== null) {
+          payload.random_no = String(randomRes);
+        }
+        console.log(payload);
+        this.cartService.localAddToCartInitialize(payload).subscribe(res => {
+          console.log(res);
+          if (res.status != "") {
+            alert(res.status);
+            if (res.random_number) {
+              localStorage.setItem("randomNum", res.random_number);
+              this.localUpdateCartDetails(res.random_number);
+            } else {
+              this.localUpdateCartDetails(payload.random_no);
+            }
+          }
+        });
+      });
+    });
+  }
+
+  openDetails() {}
+
+  localUpdateCartDetails(payload) {
+    this.cartService.localUpdateCartInfo(payload).subscribe(res => {
+      console.log(res);
+      if (res.status == "success") {
+        localStorage.setItem("localAddedCartDetails", JSON.stringify(res));
+      }
+    });
+  }
+
+  userUpdateCartDetails(payload) {
+    this.cartService.userUpdateCartInfo(payload).subscribe(res => {
+      console.log(res);
+      if (res.status == "success") {
+        localStorage.setItem("userAddedCartDetails", JSON.stringify(res));
+      }
+    });
+  }
 }

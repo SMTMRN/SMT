@@ -58,7 +58,9 @@ export class HeaderComponent implements OnChanges, OnInit {
   }
 
   singOut() {
-    localStorage.removeItem("userInfo")
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("userAddedCartDetails");
+    localStorage.removeItem("localAddedCartDetails");
     this.globalEventsManager.showMainMenu(false);
   }
 

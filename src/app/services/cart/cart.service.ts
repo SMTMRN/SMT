@@ -12,8 +12,20 @@ export class CartService {
     return this.responseHandler.requestApiCallGet('wishListView', payload);
   }
 
-  addToCartInitialize(payload){
-    return this.responseHandler.requestApiCallPost('https://www.shopmytool.com/initiateorder', payload);
+  localAddToCartInitialize(payload){
+    return this.responseHandler.callPostDataByUrl('https://www.shopmytool.com/initiateorder', payload);
+  }
+
+  localUpdateCartInfo(payload){
+    return this.responseHandler.callGetDataByUrl('https://www.shopmytool.com/initiateorder?random_no='+String(payload));
+  }
+
+  userAddToCartInitialize(payload){
+    return this.responseHandler.callPostDataByUrl('https://www.shopmytool.com/initiateorder', payload);
+  }
+
+  userUpdateCartInfo(payload){
+    return this.responseHandler.callGetDataByUrl('https://www.shopmytool.com/initiateorder?userid='+String(payload));
   }
 
 }

@@ -3,6 +3,7 @@
 export interface ApiConfig {
   apiBaseUrl: string;
   secret_key: string;
+  payu_secret_key: string;
   defaultAuthorizationToken: string;
   apiEndpoints: any;
   getEndPoint: any;
@@ -12,6 +13,7 @@ export interface ApiConfig {
 export const API_CONFIG: ApiConfig = {
   apiBaseUrl: 'http://157.119.108.135:8005/',
   secret_key: '4r5t@W',
+  payu_secret_key: '4r5s@W',
   defaultAuthorizationToken: '',
 
   apiEndpoints: [

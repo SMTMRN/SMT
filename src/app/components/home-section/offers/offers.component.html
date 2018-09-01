@@ -26,8 +26,8 @@
           <div class="owl-stage-outer">
             <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1432px;">
               <div class="owl-item active" style="width: 281.25px; margin-right: 5px;" *ngFor="let offerItem of selectedOffers">
-                <div class="item" (click)="viewDetails(offerItem.upload_name)">
-                  <div class="box position-relative">
+                <div class="box position-relative">
+                  <div (click)="viewDetails(offerItem.upload_name)">
                     <div class="gray-bg">
                       <a>
                         <img src="{{offerItem.upload_photo}}" alt="imge" class="img-fluid">
@@ -51,11 +51,12 @@
                       <span class="icon-star-empty"></span>
                       <span class="icon-star-empty"></span>
                     </p>
-                    <div class="overlay-text">
+                  </div>
+                  <div class="overlay-text">
                       <ul class="list-inline mt_4 mb-0">
 
                         <li class="list-inline-item ">
-                          <a class="nav-link ">
+                          <a (click)="addToCart(offerItem)" class="nav-link ">
                             <span class="icon-shopping-cart"></span>
                           </a>
                         </li>
@@ -72,7 +73,6 @@
 
                       </ul>
                     </div>
-                  </div>
                 </div>
               </div>
 
@@ -100,21 +100,7 @@
           </div>
         </div>
       </div>
-      <!-- <div id="menu1" class="container tab-pane fade">
-        <br>
-        <h3>Drill machine</h3>
-
-      </div>
-      <div id="menu2" class="container tab-pane fade">
-        <br>
-        <h3>Angle griender</h3>
-
-      </div>
-      <div id="menu3" class="container tab-pane fade">
-        <br>
-        <h3>Hammers</h3>
-
-      </div> -->
+      
     </div>
   </div>
 </section>
@@ -143,22 +129,22 @@
           <div class="owl-stage-outer">
             <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1432px;">
               <div class="owl-item active" style="width: 281.25px; margin-right: 5px;" *ngFor="let itemNew of selectedNewArrival">
-                <div class="item" (click)="viewDetails(itemNew.upload_name)">
-                  <div class="box position-relative">
+                <div class="box position-relative">
+                  <div (click)="viewDetails(itemNew?.upload_name)">
                     <div class="gray-bg">
                       <a>
-                        <img src="{{itemNew.upload_photo}}" alt="imge" class="img-fluid">
+                        <img src="{{itemNew?.upload_photo}}" alt="imge" class="img-fluid">
                       </a>
                     </div>
                     <a>
-                      <p class="txtLimit">{{itemNew.upload_name}}</p>
+                      <p class="txtLimit">{{itemNew?.upload_name}}</p>
                     </a>
                     <span class="blue">
                       <span class="icon-inr"></span>
-                      <span>{{itemNew.offer_price}}</span>
+                      <span>{{itemNew?.offer_price}}</span>
                     </span>
-                    <span class="pricetag">{{itemNew.percentage}}%</span>
-                    <span class="text-line-through">{{itemNew.enduser_price}}</span>
+                    <span class="pricetag">{{itemNew?.percentage}}%</span>
+                    <span class="text-line-through">{{itemNew?.enduser_price}}</span>
                     <p class="blue pt-2 pt-6">
                       <span class="mr-3"> (Excluding-GST) </span>
 
@@ -168,27 +154,28 @@
                       <span class="icon-star-empty"></span>
                       <span class="icon-star-empty"></span>
                     </p>
-                    <div class="overlay-text">
-                      <ul class="list-inline mt_4 mb-0">
+                    
+                  </div>
+                  <div class="overlay-text">
+                    <ul class="list-inline mt_4 mb-0">
 
-                        <li class="list-inline-item ">
-                          <a class="nav-link ">
-                            <span class="icon-shopping-cart"></span>
-                          </a>
-                        </li>
-                        <li class="list-inline-item ">
-                          <a class="nav-link ">
-                            <span class="icon-heart"></span>
-                          </a>
-                        </li>
-                        <li class="list-inline-item ">
-                          <a class="nav-link">
-                            <span class="icon-compare_arrows"></span>
-                          </a>
-                        </li>
+                      <li class="list-inline-item ">
+                        <a (click)="addToCart(itemNew)" class="nav-link ">
+                          <span class="icon-shopping-cart"></span>
+                        </a>
+                      </li>
+                      <li class="list-inline-item ">
+                        <a class="nav-link ">
+                          <span class="icon-heart"></span>
+                        </a>
+                      </li>
+                      <li class="list-inline-item ">
+                        <a class="nav-link">
+                          <span class="icon-compare_arrows"></span>
+                        </a>
+                      </li>
 
-                      </ul>
-                    </div>
+                    </ul>
                   </div>
                 </div>
               </div>

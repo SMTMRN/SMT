@@ -16,25 +16,50 @@ export class AppDataService {
   }
 
   checkUserId() {
-    var result:any;
     var promise = new Promise((resolve, reject) => {
-      console.log("Async Work Complete");
       console.log(localStorage.getItem("userInfo"));
       if (localStorage.getItem("userInfo")) {
-        return localStorage.getItem("userInfo");
+        resolve(localStorage.getItem("userInfo"));
       } else {
-        return false;
+        resolve(null);
       }
     });
-    console.log(promise);
     return promise;
+  }
 
-    // console.log(localStorage.getItem("userInfo"));
-    // if(localStorage.getItem("userInfo")){
-    //   return localStorage.getItem("userInfo");
-    // }
-    // else{
-    //   return "XXXXXXXXXXXXXXX";
-    // }
+  checkRandomNumber() {
+    var promise = new Promise((resolve, reject) => {
+      console.log(localStorage.getItem("randomNum"));
+      if (localStorage.getItem("randomNum")) {
+        resolve(localStorage.getItem("randomNum"));
+      } else {
+        resolve(null);
+      }
+    });
+    return promise;
+  }
+
+  checkUserCartDetails() {
+    var promise = new Promise((resolve, reject) => {
+      console.log(localStorage.getItem("userAddedCartDetails"));
+      if (localStorage.getItem("userAddedCartDetails")) {
+        resolve(JSON.parse(localStorage.getItem("userAddedCartDetails")));
+      } else {
+        resolve(null);
+      }
+    });
+    return promise;
+  }
+
+  checkLocalCartDetails() {
+    var promise = new Promise((resolve, reject) => {
+      console.log(localStorage.getItem("localAddedCartDetails"));
+      if (localStorage.getItem("localAddedCartDetails")) {
+        resolve(JSON.parse(localStorage.getItem("localAddedCartDetails")));
+      } else {
+        resolve(null);
+      }
+    });
+    return promise;
   }
 }

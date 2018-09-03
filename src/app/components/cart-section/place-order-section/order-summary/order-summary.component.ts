@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { CartService } from "../../../../services/cart/cart.service";
 import { AppDataService } from "../../../../services/app-data/app-data.service";
 
@@ -8,6 +8,9 @@ import { AppDataService } from "../../../../services/app-data/app-data.service";
   styleUrls: ["./order-summary.component.css"]
 })
 export class OrderSummaryComponent implements OnInit {
+  @Output()
+  refreshCartDetails = new EventEmitter<any>();
+  
   savedCartTotal: any = "";
   savedCartData: any = [];
   itterations: any = [];
@@ -186,7 +189,7 @@ export class OrderSummaryComponent implements OnInit {
       console.log(res);
       if (res.status == "success") {
         localStorage.setItem("localAddedCartDetails", JSON.stringify(res));
-        this.getCartDetails();
+        this.refreshCartDetails.emit();
       }
     });
   }
@@ -196,7 +199,7 @@ export class OrderSummaryComponent implements OnInit {
       console.log(res);
       if (res.status == "success") {
         localStorage.setItem("userAddedCartDetails", JSON.stringify(res));
-        this.getCartDetails();
+        this.refreshCartDetails.emit();
       }
     });
   }

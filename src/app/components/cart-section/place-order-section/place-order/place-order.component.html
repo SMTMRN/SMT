@@ -37,7 +37,7 @@
 
                         <app-order-login (loginDetails)="getLoginDetails($event)" *ngIf="pageShown=='order-login'"></app-order-login> 
                         <app-delivery-address (addressDetails)="getAddressDetails($event)" *ngIf="pageShown=='delivery-address'"></app-delivery-address>
-                        <app-order-summary *ngIf="pageShown=='order-summary'"></app-order-summary>
+                        <app-order-summary (refreshCartDetails)="getCartDetails()" *ngIf="pageShown=='order-summary'"></app-order-summary>
                         <app-payment-options *ngIf="pageShown=='payment-options'"></app-payment-options>
 
                           
@@ -55,11 +55,11 @@
                   <div class="pr-2 pl-2">
                       <div class="row">
                           <div class="col-md-8 col-8">
-                              <p>Price (1 ites)</p>
+                              <p>Price ({{totalItems}} item(s))</p>
                           </div>
                           <div class="col-md-4 col-4">
                               <p>
-                                  <span class="icon-inr mr-2"></span>1,150</p>
+                                  <span class="icon-inr mr-2"></span>{{totalCost}}</p>
                           </div>
                       </div>
                       <div class="row">
@@ -77,7 +77,7 @@
                           </div>
                           <div class="col-md-4 col-4">
                               <p class="bold">
-                                  <span class="icon-inr mr-2"></span>1,150</p>
+                                  <span class="icon-inr mr-2"></span>{{totalPayAmount}}</p>
                           </div>
                       </div>
                   </div>
@@ -86,7 +86,7 @@
                       <p class="text-success text__small pr-2 pl-2">
                           <span>Your Total Savings on this order
                               <span class="icon-inr mr-2"></span>
-                          <span>1,338</span>
+                          <span>{{totalSavings}}</span>
                           </span>
                       </p>
                   </div>

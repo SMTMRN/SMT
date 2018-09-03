@@ -5,7 +5,7 @@
               <div class="stepwizard">
                   <div class="stepwizard-row setup-panel">
                       <div class="stepwizard-step  pb-3 col-xs-3">
-                          <a (click)="openPage('order-login')" class="btn btn-success btn-circle">1</a>
+                          <button (click)="openPage('order-login')" class="btn btn-success btn-circle">1</button>
                           <p class="text-uppercase">
                               <small>Login</small>
                           </p>
@@ -17,13 +17,13 @@
                           </p>
                       </div>
                       <div class="stepwizard-step  pb-3 col-xs-3">
-                          <a (click)="openPage('order-summary')"class="btn btn-default btn-circle">3</a>
+                          <button (click)="openPage('order-summary')" [disabled]="!orderSummaryFlag" class="btn btn-default btn-circle">3</button>
                           <p class="text-uppercase">
                               <small>Order Summary</small>
                           </p>
                       </div>
                       <div class="stepwizard-step  pb-3 col-xs-3">
-                          <a (click)="openPage('payment-optionsn')" class="btn btn-default btn-circle">4</a>
+                          <button (click)="openPage('payment-optionsn')" [disabled]="!paymentOptionsFlag" class="btn btn-default btn-circle">4</button>
                           <p class="text-uppercase">
                               <small>Payment Options</small>
                           </p>
@@ -36,7 +36,7 @@
                           
 
                         <app-order-login (loginDetails)="getLoginDetails($event)" *ngIf="pageShown=='order-login'"></app-order-login> 
-                        <app-delivery-address *ngIf="pageShown=='delivery-address'"></app-delivery-address>
+                        <app-delivery-address (addressDetails)="getAddressDetails($event)" *ngIf="pageShown=='delivery-address'"></app-delivery-address>
                         <app-order-summary *ngIf="pageShown=='order-summary'"></app-order-summary>
                         <app-payment-options *ngIf="pageShown=='payment-options'"></app-payment-options>
 

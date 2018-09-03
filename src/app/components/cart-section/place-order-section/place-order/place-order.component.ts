@@ -1,20 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-place-order',
-  templateUrl: './place-order.component.html',
-  styleUrls: ['./place-order.component.css']
+  selector: "app-place-order",
+  templateUrl: "./place-order.component.html",
+  styleUrls: ["./place-order.component.css"]
 })
 export class PlaceOrderComponent implements OnInit {
-
-  pageShown = 'order-login';
+  pageShown = "order-login";
   deliveryAddressFlag: any = false;
   orderSummaryFlag: any = false;
   paymentOptionsFlag: any = false;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   openPage(page) {
     this.pageShown = page;
@@ -23,9 +21,16 @@ export class PlaceOrderComponent implements OnInit {
   getLoginDetails(event) {
     if (event) {
       console.log(event);
-      this.deliveryAddressFlag = event;
-      this.openPage('delivery-address');
+      this.deliveryAddressFlag = true;
+      this.openPage("delivery-address");
     }
   }
 
+  getAddressDetails(event) {
+    if (event) {
+      console.log(event);
+      this.orderSummaryFlag = true;
+      this.openPage("order-summary");
+    }
+  }
 }

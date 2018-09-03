@@ -23,9 +23,12 @@ export class CartService {
   userAddToCartInitialize(payload){
     return this.responseHandler.callPostDataByUrl('https://www.shopmytool.com/initiateorder', payload);
   }
-
+  
   userUpdateCartInfo(payload){
     return this.responseHandler.callGetDataByUrl('https://www.shopmytool.com/initiateorder?userid='+String(payload));
   }
-
+  
+  deleteCartDetails(endpoint,payload){
+    return this.responseHandler.callDeleteDataByUrl('https://www.shopmytool.com/initiateorder?userid='+String(endpoint), payload);
+  }
 }

@@ -1,10 +1,10 @@
 <nav class="fixed-top-2" aria-label="breadcrumb">
   <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-          <a href="#">Home</a>
-      </li>
+    <li class="breadcrumb-item">
+      <a href="#">Home</a>
+    </li>
 
-      <li class="breadcrumb-item active" aria-current="page">Cart</li>
+    <li class="breadcrumb-item active" aria-current="page">Cart</li>
   </ol>
 </nav>
 <section>
@@ -19,7 +19,7 @@
                   <div class="col-md-12">
                     <div class="row">
                       <div class="col-md-8">
-                        <h5 class="text-uppercase">My cart( {{itterations?.length}} )</h5>
+                        <h5 class="text-uppercase">My cart( {{savedCartData?.length}} )</h5>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group has-feedback">
@@ -32,22 +32,24 @@
                   </div>
                 </div>
               </div>
-              <div class="card-body" *ngFor="let itteration of itterations; let i = index">
+              <div class="card-body" *ngFor="let itteration of savedCartData; let i = index">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="row">
                       <div class="col-md-2 pr-0 pr_0 col-12">
-                        <img src="assets/img/Dewalt-Compressors.png" class="img-fluid">
+                        <img src="{{itteration?.image}}" class="img-fluid">
                         <div class="color-quality-right pt-3 pb-3">
                           <div class="quantity text_center">
                             <div class="quantity-select">
-                              <button [disabled]="itteration.quantity <= 1" (click)="removeItem(i)" class="entry value-minus1">
+                              <!-- <button [disabled]="itteration?.qty <= 1" (click)="removeItem(i)" class="entry value-minus1"> -->
+                              <button (click)="removeItem(i)" class="entry value-minus1">
                                 <span class="icon-minus"></span>
                               </button>
                               <div class="entry value1">
-                                <span>{{itteration.quantity}}</span>
+                                <span>{{itteration?.qty}}</span>
                               </div>
-                              <button [disabled]="itteration.quantity >= 10" (click)="addItem(i)" class="entry value-plus1 active">
+                              <!-- <button [disabled]="itteration?.qty >= 10" (click)="addItem(i)" class="entry value-plus1 active"> -->
+                              <button (click)="addItem(i)" class="entry value-plus1 active">
                                 <span class="icon-plus"></span>
                               </button>
                             </div>
@@ -55,27 +57,27 @@
                         </div>
                       </div>
                       <div class="col-md-6 pr-0">
-                        <p class="medium">{{itteration.upload_name}}</p>
+                        <p class="medium">{{itteration?.productdescription}}</p>
                         <div class="form-group">
                           <span class="medium">Seller : </span>
-                          <span class="secondary">{{itteration.upload_brand}}</span>
+                          <span class="secondary">{{itteration?.brand}}</span>
                         </div>
                         <p class="medium">
                           <span class="blue">
                             <span class="icon-inr"></span>
-                            <span>{{itteration.prices[0]?.offer_price}} </span>
+                            <span>{{calculateDiscountPrice(itteration)}} </span>
                           </span>
-                          <span class="pricetag">{{itteration.prices[0]?.percentage}} % </span>
+                          <span class="pricetag">{{calculatePercentage(itteration)}} % </span>
                           <span class="text-line-through">
-                            <span class="icon-inr"></span>{{itteration.prices[0]?.enduser_price}} </span>
-                          <span class="mr-1 ml-2 blue">2 Offers Applied</span>
+                            <span class="icon-inr"></span>{{itteration?.sub_total}} </span>
+                          <!-- <span class="mr-1 ml-2 blue">2 Offers Applied</span> -->
                           <span class="icon-info blue"></span>
                         </p>
                         <div class="form-group medium pt-3">
                           <a href="#" class="text-uppercase mr-4">
                             Save for later
                           </a>
-                          <a href="#" class="text-uppercase">
+                          <a (click)="deleteCartItem(itteration)" class="text-uppercase">
                             Remove
                           </a>
                         </div>
@@ -158,7 +160,7 @@
           <div class="d-block d-sm-none d-md-none d-lg-none">&nbsp;</div>
           <div class="row  mb-3">
             <div class="col-md-8 text_left text-right">
-              <a href="#" class="btn btn-light btn-lg rounded-0 text-uppercase mr-3">
+              <a routerLink="/" class="btn btn-light btn-lg rounded-0 text-uppercase mr-3">
                 <span class="icon-angle-left mr-2"></span>Continue shopping
               </a>
               <div class="d-block d-sm-none d-md-none d-lg-none">&nbsp;</div>

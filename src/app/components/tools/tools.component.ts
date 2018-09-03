@@ -287,7 +287,7 @@ export class ToolsComponent implements OnInit {
   }
 
   userAddCartDetails(item, userRes) {
-    var response = JSON.parse(userRes);
+    var response = userRes;
     console.log(response);
     this.appData.checkUserCartDetails().then((cartResp: any) => {
       var payload = {

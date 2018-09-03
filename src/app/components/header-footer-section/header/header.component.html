@@ -53,43 +53,29 @@
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link categories dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
+          <a class="nav-link categories dropdown-toggle" (mouseover)="showSavedCartDetails()" href="#" id="navbarDropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="icon-shopping-cart"></span>
           </a>
-          <ul class="dropdown-menu dropdown-cart" role="menu" aria-labelledby="navbarDropdownMenuLink">
-            <li>
+          <ul *ngIf="savedCartData.length==0" class="dropdown-menu dropdown-cart" role="menu" aria-labelledby="navbarDropdownMenuLink">
+            No cart details to display.
+          </ul>
+          <ul *ngIf="savedCartData.length > 0" class="dropdown-menu dropdown-cart" role="menu" aria-labelledby="navbarDropdownMenuLink">
+            <li *ngFor="let item of savedCartData">
               <span class="item">
                 <span class="item-left">
-                  <img src="assets/img/powertools.png" alt="" />
+                  <img src="{{item?.image}}" alt="" />
                   <span class="item-info">
-                    <span>Angle griender Machine</span>
-                    <p class="blue">1X
-                      <span class="icon-inr"></span>2,450.00</p>
+                    <span>{{item?.productdescription}}</span>
+                    <p class="blue">{{item?.qty}} X
+                      <span class="icon-inr"></span>{{item.offer_price}}</p>
                   </span>
                 </span>
                 <span class="item-right pull-right">
-                  <span class="icon-trash-2"></span>
+                  <span (click)="deleteCartItem(item)" class="icon-trash-2"></span>
                 </span>
               </span>
             </li>
-            <li>
-              <span class="item">
-                <span class="item-left">
-                  <img src="assets/img/Dewalt-Compressors.png" alt="" />
-                  <span class="item-info">
-                    <span>Dewalt-Compressor</span>
-                    <p class="blue">1X
-                      <span class="icon-inr"></span>2,450.00</p>
-                  </span>
-                </span>
-                <span class="item-right pull-right">
-                  <span class="icon-trash-2"></span>
-                </span>
-              </span>
-            </li>
-
-
             <li class="divider"></li>
             <li>
               <span class="item">
@@ -97,7 +83,7 @@
                   <h5>Total:</h5>
                 </span>
                 <span class="blue item-right pull-right">
-                  <span class="icon-inr mr-1"></span>5,496.00
+                  <span class="icon-inr mr-1"></span>{{savedCartTotal}}
                 </span>
               </span>
             </li>

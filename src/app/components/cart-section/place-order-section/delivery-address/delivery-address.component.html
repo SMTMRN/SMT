@@ -9,14 +9,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group has-float-label">
-                                <input class="form-control" id="name" required type="text" formControlName="name" [(ngModel)]="ngName" placeholder="Name" />
+                                <input class="form-control" id="name" required type="text" formControlName="name" [(ngModel)]="ngDeliveryAddress.ngName" placeholder="Name" />
                                 <label class="control-label" for="name">Name</label>
                                 <app-error-validator [validationArray]="validation_messages.name" [formDetails]="addressValidator" [elementType]="'name'" ></app-error-validator>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group has-float-label">
-                                <input class="form-control" id="number" required type="number" formControlName="phoneNumber" [(ngModel)]="ngPhoneNumber" placeholder="Phone Number" />
+                                <input class="form-control" id="number" required type="number" formControlName="phoneNumber" [(ngModel)]="ngDeliveryAddress.ngPhoneNumber" placeholder="Phone Number" />
                                 <label class="control-label" for="number">Phone Number</label>
                                 <app-error-validator [validationArray]="validation_messages.phoneNumber" [formDetails]="addressValidator" [elementType]="'phoneNumber'" ></app-error-validator>
                             </div>
@@ -25,14 +25,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group has-float-label">
-                                <input class="form-control" id="pincode" required type="text" formControlName="pinCode" [(ngModel)]="ngPinCode" placeholder="Pin code" />
+                                <input class="form-control" id="pincode" required type="text" formControlName="pinCode" [(ngModel)]="ngDeliveryAddress.ngPinCode" placeholder="Pin code" />
                                 <label class="control-label" for="pincode">Pin code</label>
                                 <app-error-validator [validationArray]="validation_messages.pinCode" [formDetails]="addressValidator" [elementType]="'pinCode'" ></app-error-validator>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group has-float-label">
-                                <input class="form-control" id="locality" required type="text" formControlName="locality" [(ngModel)]="ngLocality" placeholder="Locality" />
+                                <input class="form-control" id="locality" required type="text" formControlName="locality" [(ngModel)]="ngDeliveryAddress.ngLocality" placeholder="Locality" />
                                 <label class="control-label" for="locality">Locality</label>
                                 <app-error-validator [validationArray]="validation_messages.locality" [formDetails]="addressValidator" [elementType]="'locality'" ></app-error-validator>
                             </div>
@@ -41,7 +41,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group has-float-label">
-                                <textarea rows="4" class="form-control" id="address" formControlName="address" [(ngModel)]="ngAddress" placeholder="Address (Area and Street)"></textarea>
+                                <textarea rows="4" class="form-control" id="address" formControlName="address" [(ngModel)]="ngDeliveryAddress.ngAddress" placeholder="Address (Area and Street)"></textarea>
                                 <label class="control-label" for="address">Address (Area and Street)</label>
                                 <app-error-validator [validationArray]="validation_messages.address" [formDetails]="addressValidator" [elementType]="'address'" ></app-error-validator>
                             </div>
@@ -50,14 +50,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group has-float-label">
-                                <input class="form-control" id="city" required type="text" formControlName="city" [(ngModel)]="ngCity" placeholder="City/District/Twon" />
+                                <input class="form-control" id="city" required type="text" formControlName="city" [(ngModel)]="ngDeliveryAddress.ngCity" placeholder="City/District/Twon" />
                                 <label class="control-label" for="city">City/District/Twon</label>
                                 <app-error-validator [validationArray]="validation_messages.city" [formDetails]="addressValidator" [elementType]="'city'" ></app-error-validator>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group has-float-label">
-                                <select formControlName="state" [(ngModel)]="ngState" class="form-control">
+                                <select formControlName="state" [(ngModel)]="ngDeliveryAddress.ngState" class="form-control">
                                     <option value="1">Hyderabad</option>
                                     <option value="2">Banglore</option>
                                     <option value="3">Chennai</option>
@@ -70,13 +70,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group has-float-label">
-                                <input class="form-control" id="landmark" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="ngLandMark" placeholder="Landmark (Optional)" />
+                                <input class="form-control" id="landmark" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="ngDeliveryAddress.ngLandMark" placeholder="Landmark (Optional)" />
                                 <label class="control-label" for="landmark">Landmark (Optional)</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group has-float-label">
-                                <input class="form-control" id="alternate" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="ngAlternatePhone" placeholder="Alternate Phone number (Optional)" />
+                                <input class="form-control" id="alternate" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="ngDeliveryAddress.ngAlternatePhone" placeholder="Alternate Phone number (Optional)" />
                                 <label class="control-label" for="alternate">Alternate Phone number (Optional)</label>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                     <div class="form-group mt-4">
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn rounded-0 btn-success rounded-0 mr-3 nextBtn text-uppercase" type="submit">Save and deliver here</button>
+                                <button class="btn rounded-0 btn-success rounded-0 mr-3 nextBtn text-uppercase" [disabled]="!addressValidator.valid" type="button" (click)="saveDeliveryAddress()">Save and deliver here</button>
                                 <button class="btn rounded-0 btn-link  text-uppercase" type="submit">Cancel</button>
                             </div>
                         </div>

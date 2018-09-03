@@ -6,6 +6,7 @@ import { catchError } from "rxjs/operators";
 import { Api } from "./api";
 import { API_CONFIG } from "./api-settings";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { RequestOptions } from "@angular/http";
 
 @Injectable({
   providedIn: "root"
@@ -108,6 +109,24 @@ export class ResponseHandler {
     });
     return this.api
       .post(url, body, null, header)
+      .map((res: any) => {
+        console.log(res);
+        return this.returnData(res);
+      })
+      .catch(this.handleError);
+  }
+
+  callDeleteDataByUrl(url, body) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type":
+          "application/json, application/x-www-form-urlencoded;charset=UTF-8",
+        secret_key: String(API_CONFIG.secret_key)
+      }),
+      body: body
+    };
+    return this.api
+      .delete(url, httpOptions)
       .map((res: any) => {
         console.log(res);
         return this.returnData(res);

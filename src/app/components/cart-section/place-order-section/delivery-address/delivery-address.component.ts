@@ -8,17 +8,19 @@ import { FormBuilder, FormControl, Validators } from "@angular/forms";
 })
 export class DeliveryAddressComponent implements OnInit {
   @Output()
-  loginDetails = new EventEmitter<string>();
+  addressDetails = new EventEmitter<any>();
   addressValidator: any;
-  ngName: string = "";
-  ngPhoneNumber: string = "";
-  ngPinCode: string = "";
-  ngLocality: string = "";
-  ngAddress: string = "";
-  ngCity: string = "";
-  ngState: string = "";
-  ngLandMark: string = "";
-  ngAlternatePhone: string = "";
+  ngDeliveryAddress = {
+    ngName: "",
+    ngPhoneNumber: "",
+    ngPinCode: "",
+    ngLocality: "",
+    ngAddress: "",
+    ngCity: "",
+    ngState: "",
+    ngLandMark: "",
+    ngAlternatePhone: ""
+  };
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -56,4 +58,9 @@ export class DeliveryAddressComponent implements OnInit {
     city: [{ type: "required", message: "City is required*" }],
     state: [{ type: "required", message: "City is required*" }]
   };
+
+  saveDeliveryAddress() {
+    console.log(this.ngDeliveryAddress);
+    this.addressDetails.emit(this.ngDeliveryAddress);
+  }
 }

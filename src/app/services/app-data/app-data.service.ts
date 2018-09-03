@@ -17,9 +17,9 @@ export class AppDataService {
 
   checkUserId() {
     var promise = new Promise((resolve, reject) => {
-      console.log(localStorage.getItem("userInfo"));
+      console.log(JSON.parse(localStorage.getItem("userInfo")));
       if (localStorage.getItem("userInfo")) {
-        resolve(localStorage.getItem("userInfo"));
+        resolve(JSON.parse(localStorage.getItem("userInfo")));
       } else {
         resolve(null);
       }
@@ -41,7 +41,7 @@ export class AppDataService {
 
   checkUserCartDetails() {
     var promise = new Promise((resolve, reject) => {
-      console.log(localStorage.getItem("userAddedCartDetails"));
+      console.log(JSON.parse(localStorage.getItem("userAddedCartDetails")));
       if (localStorage.getItem("userAddedCartDetails")) {
         resolve(JSON.parse(localStorage.getItem("userAddedCartDetails")));
       } else {
@@ -53,7 +53,7 @@ export class AppDataService {
 
   checkLocalCartDetails() {
     var promise = new Promise((resolve, reject) => {
-      console.log(localStorage.getItem("localAddedCartDetails"));
+      console.log(JSON.parse(localStorage.getItem("localAddedCartDetails")));
       if (localStorage.getItem("localAddedCartDetails")) {
         resolve(JSON.parse(localStorage.getItem("localAddedCartDetails")));
       } else {

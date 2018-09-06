@@ -1,90 +1,41 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { OnChanges } from "@angular/core";
-import { SimpleChanges } from "@angular/core";
-import { Router } from "@angular/router";
-import { HomeService } from "../../../services/home/home.service";
-import { AppDataService } from "../../../services/app-data/app-data.service";
-import { CartService } from "../../../services/cart/cart.service";
+import { Component, OnInit } from '@angular/core';
+import { AppDataService } from '../../../services/app-data/app-data.service';
+import { Router } from '@angular/router';
+import { CartService } from '../../../services/cart/cart.service';
 
 @Component({
-  selector: "app-offers",
-  templateUrl: "./offers.component.html",
-  styleUrls: ["./offers.component.css"]
+  selector: 'app-compare-items',
+  templateUrl: './compare-items.component.html',
+  styleUrls: ['./compare-items.component.css']
 })
-export class OffersComponent implements OnChanges, OnInit {
-  public offersAll = [];
-  offerProductTypes = [
-    "All Products",
-    "Drill Machine",
-    "Angle Grinder",
-    "Hammers"
-  ];
-  arrivalProductTypes = ["All Products", "Angle Grinder"];
-  selectedOffers = [];
-  selectedNewArrival = [];
-  selectedTypes = {
-    offer: "all products",
-    newArrival: "all products"
-  };
-  selectedOfferType = "all products";
-  @Input()
-  offers = [];
-  @Input()
-  newArrivals = [];
-  constructor(
-    public homeService: HomeService,
+export class CompareItemsComponent implements OnInit {
+
+  displayMessage: string = "";
+  compareItems: any = [];
+  constructor(private appData: AppDataService,
     private router: Router,
-    private cartService: CartService,
-    private appData: AppDataService
-  ) {}
+    private cartService: CartService) {}
 
-  ngOnInit() {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    // this.findOffersType();
-    // this.findNewArrivalType();
-    this.filterOffers("All Products");
-    this.filterNewArrivals("All Products");
-  }
-
-  getProductTypeLength() {
-    return this.offerProductTypes.length;
-  }
-
-  getArrivalsTypeLength() {
-    return this.arrivalProductTypes.length;
-  }
-
-  filterOffers(type: string) {
-    var payload = "";
-    if (type == "All Products") {
-      payload = "";
-    } else {
-      payload = type;
-    }
-    this.homeService.getFilteredOffers(payload).subscribe((data: any) => {
-      console.log(data);
-      this.selectedOffers = data.offerscats;
+  ngOnInit() {
+    this.appData.checkCompareItems().then((compareRes: any) => {
+      if (compareRes) {
+        this.displayMessage = "Compare items";
+        this.compareItems = compareRes;
+      } else {
+        this.displayMessage = "No Compare items to display";
+      }
     });
-
-    console.log(this.selectedOffers);
-    this.selectedTypes.offer = String(type);
   }
 
-  filterNewArrivals(type: string) {
-    var payload = "";
-    if (type == "All Products") {
-      payload = "";
-    } else {
-      payload = type;
+  deleteCompareItem(offerItem, i){
+    this.compareItems.splice(i,1);
+    if(this.compareItems.length ==0){
+      localStorage.removeItem("compareItems");
+      this.displayMessage = "No Compare items to display";
     }
-    this.homeService.getFilteredNewArrivals(payload).subscribe((data: any) => {
-      console.log(data);
-      this.selectedNewArrival = data.newarrivalcats;
-    });
-
-    console.log(this.selectedNewArrival);
-    this.selectedTypes.newArrival = String(type);
+    else{
+      localStorage.setItem("compareItems", JSON.stringify(this.compareItems));
+    }
   }
 
   viewDetails(name) {
@@ -207,25 +158,4 @@ export class OffersComponent implements OnChanges, OnInit {
     });
   }
 
-  addToCompareList(item) {
-    var compareList = [];
-    this.appData.checkCompareItems().then((compareRes: any) => {
-      if (compareRes) {
-        if (compareRes.length >= 4) {
-          alert(
-            "You have reached maximum items in Compare list."
-          );
-        } else {
-          compareList = compareRes;
-          compareList.push(item);
-          localStorage.setItem("compareItems", JSON.stringify(compareList));
-          alert("Item added to Compare list");
-        }
-      } else {
-        compareList.push(item);
-        localStorage.setItem("compareItems", JSON.stringify(compareList));
-        alert("Item added to Compare list");
-      }
-    });
-  }
 }

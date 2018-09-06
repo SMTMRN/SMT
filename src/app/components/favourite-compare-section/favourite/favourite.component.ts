@@ -1,90 +1,40 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { OnChanges } from "@angular/core";
-import { SimpleChanges } from "@angular/core";
-import { Router } from "@angular/router";
-import { HomeService } from "../../../services/home/home.service";
+import { Component, OnInit } from "@angular/core";
 import { AppDataService } from "../../../services/app-data/app-data.service";
 import { CartService } from "../../../services/cart/cart.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-offers",
-  templateUrl: "./offers.component.html",
-  styleUrls: ["./offers.component.css"]
+  selector: "app-favourite",
+  templateUrl: "./favourite.component.html",
+  styleUrls: ["./favourite.component.css"]
 })
-export class OffersComponent implements OnChanges, OnInit {
-  public offersAll = [];
-  offerProductTypes = [
-    "All Products",
-    "Drill Machine",
-    "Angle Grinder",
-    "Hammers"
-  ];
-  arrivalProductTypes = ["All Products", "Angle Grinder"];
-  selectedOffers = [];
-  selectedNewArrival = [];
-  selectedTypes = {
-    offer: "all products",
-    newArrival: "all products"
-  };
-  selectedOfferType = "all products";
-  @Input()
-  offers = [];
-  @Input()
-  newArrivals = [];
-  constructor(
-    public homeService: HomeService,
+export class FavouriteComponent implements OnInit {
+  displayMessage: string = "";
+  favouriteItems: any = [];
+  constructor(private appData: AppDataService,
     private router: Router,
-    private cartService: CartService,
-    private appData: AppDataService
-  ) {}
+    private cartService: CartService) {}
 
-  ngOnInit() {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    // this.findOffersType();
-    // this.findNewArrivalType();
-    this.filterOffers("All Products");
-    this.filterNewArrivals("All Products");
-  }
-
-  getProductTypeLength() {
-    return this.offerProductTypes.length;
-  }
-
-  getArrivalsTypeLength() {
-    return this.arrivalProductTypes.length;
-  }
-
-  filterOffers(type: string) {
-    var payload = "";
-    if (type == "All Products") {
-      payload = "";
-    } else {
-      payload = type;
-    }
-    this.homeService.getFilteredOffers(payload).subscribe((data: any) => {
-      console.log(data);
-      this.selectedOffers = data.offerscats;
+  ngOnInit() {
+    this.appData.checkFavouriteItems().then((favouriteRes: any) => {
+      if (favouriteRes) {
+        this.displayMessage = "Favourite items";
+        this.favouriteItems = favouriteRes;
+      } else {
+        this.displayMessage = "No Favourite items to display";
+      }
     });
-
-    console.log(this.selectedOffers);
-    this.selectedTypes.offer = String(type);
   }
 
-  filterNewArrivals(type: string) {
-    var payload = "";
-    if (type == "All Products") {
-      payload = "";
-    } else {
-      payload = type;
+  deleteFavouriteItem(offerItem, i){
+    this.favouriteItems.splice(i,1);
+    if(this.favouriteItems.length ==0){
+      localStorage.removeItem("favouriteItems");
+      this.displayMessage = "No Favourite items to display";
     }
-    this.homeService.getFilteredNewArrivals(payload).subscribe((data: any) => {
-      console.log(data);
-      this.selectedNewArrival = data.newarrivalcats;
-    });
-
-    console.log(this.selectedNewArrival);
-    this.selectedTypes.newArrival = String(type);
+    else{
+      localStorage.setItem("favouriteItems", JSON.stringify(this.favouriteItems));
+    }
   }
 
   viewDetails(name) {
@@ -180,29 +130,6 @@ export class OffersComponent implements OnChanges, OnInit {
       console.log(res);
       if (res.status == "success") {
         localStorage.setItem("userAddedCartDetails", JSON.stringify(res));
-      }
-    });
-  }
-
-  addToFavouriteList(item) {
-    console.log("Entered Favourite");
-    var favouriteList = [];
-    this.appData.checkFavouriteItems().then((favouriteRes: any) => {
-      if (favouriteRes) {
-        if (favouriteRes.length >= 10) {
-          alert(
-            "You have reached maximum items in Favourite list."
-          );
-        } else {
-          favouriteList = favouriteRes;
-          favouriteList.push(item);
-          localStorage.setItem("favouriteItems", JSON.stringify(favouriteList));
-          alert("Item added to favouite list");
-        }
-      } else {
-        favouriteList.push(item);
-        localStorage.setItem("favouriteItems", JSON.stringify(favouriteList));
-        alert("Item added to favouite list");
       }
     });
   }

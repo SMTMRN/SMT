@@ -14,6 +14,8 @@ import { OrderLoginComponent } from './components/cart-section/place-order-secti
 import { DeliveryAddressComponent } from './components/cart-section/place-order-section/delivery-address/delivery-address.component';
 import { CouponsComponent } from './components/home-section/coupons/coupons.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { FavouriteComponent } from './components/favourite-compare-section/favourite/favourite.component';
+import { CompareItemsComponent } from './components/favourite-compare-section/compare-items/compare-items.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: 'library', component: ToolsComponent },
   { path: 'place-order', component: PlaceOrderComponent },
   { path: 'coupons', component: CouponsComponent },
+  { path: 'favourite', component: FavouriteComponent },
+  { path: 'compare-items', component: CompareItemsComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

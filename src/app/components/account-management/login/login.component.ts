@@ -94,6 +94,8 @@ export class LoginComponent implements OnInit {
             this.userUpdateCartDetails([]);
           }
         });
+      }else {
+        this.userUpdateCartDetails([]);
       }
     });
   }
@@ -104,7 +106,7 @@ export class LoginComponent implements OnInit {
         this.cartService.userUpdateCartInfo(userRes.user_id).subscribe(res => {
           console.log(res);
           if (res.status == "success") {
-            if (localData.item_list.length > 0) {
+            if (localData && localData.item_list && localData.item_list.length > 0) {
               if (res.item_list) {
                 for (
                   let count = 0;
@@ -113,10 +115,12 @@ export class LoginComponent implements OnInit {
                 ) {
                   res.item_list.push(localData.item_list[count]);
                   if (count + 1 == localData.item_list.length) {
-                    localStorage.setItem(
-                      "userAddedCartDetails",
-                      JSON.stringify(res)
-                    );
+                    var payload = {
+                      user_id: String(userRes.user_id),
+                      order_status: "init",
+                      orderitem: res.item_list
+                    };
+                    this.updateUserAPICart(payload, res);
                     console.log("res");
                     console.log(res);
                   }
@@ -125,13 +129,35 @@ export class LoginComponent implements OnInit {
             } else {
               localStorage.setItem("userAddedCartDetails", JSON.stringify(res));
             }
-          } else if (localData.item_list.length > 0) {
+          } else if (localData && localData.item_list && localData.item_list.length > 0) {
             res = localData;
             localStorage.setItem("userAddedCartDetails", JSON.stringify(res));
           }
           console.log("res");
           console.log(res);
         });
+      }
+    });
+  }
+
+  updateUserAPICart(payload, localRes){
+    this.cartService.userAddToCartInitialize(payload).subscribe(res => {
+      console.log(res);
+      // localStorage.setItem(
+      //   "userAddedCartDetails",
+      //   JSON.stringify(localRes)
+      // );
+      this.userCartDetails(payload.user_id)
+      localStorage.removeItem("randomNum");
+      localStorage.removeItem("localAddedCartDetails");
+    });
+  }
+
+  userCartDetails(payload) {
+    this.cartService.userUpdateCartInfo(payload).subscribe(res => {
+      console.log(res);
+      if (res.status == "success") {
+        localStorage.setItem("userAddedCartDetails", JSON.stringify(res));
       }
     });
   }

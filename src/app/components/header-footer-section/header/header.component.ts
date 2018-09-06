@@ -26,13 +26,23 @@ export class HeaderComponent implements OnChanges, OnInit {
   ) {
     this.globalEventsManager.showMainMenuEmitter.subscribe(mode => {
       if (mode !== null) {
-        this.userLogged = mode;
-        if (mode) {
-          var userData = JSON.parse(localStorage.getItem("userInfo"));
-          if (userData !== null && userData !== undefined && userData !== []) {
-            this.username = userData.username;
-          }
+        this.showSavedData(mode);
+      }
+    });
+    this.showSavedData(true);
+  }
+
+  showSavedData(mode) {
+    this.appData.checkUserId().then((userRes: any) => {
+      if (userRes !== null) {
+        if (userRes.username !== null && userRes.username !== undefined) {
+          this.username = userRes.username;
+          this.userLogged = true;
+        } else {
+          this.userLogged = false;
         }
+      } else {
+        this.userLogged = false;
       }
     });
   }
@@ -46,12 +56,12 @@ export class HeaderComponent implements OnChanges, OnInit {
   }
 
   proceedToPay() {
-      this.router.navigateByUrl("/place-order");
+    this.router.navigateByUrl("/place-order");
   }
 
   ngOnChanges(changes: SimpleChanges): void {}
 
-  singOut() {
+  signOut() {
     localStorage.removeItem("userInfo");
     localStorage.removeItem("userAddedCartDetails");
     localStorage.removeItem("localAddedCartDetails");
@@ -127,10 +137,10 @@ export class HeaderComponent implements OnChanges, OnInit {
   }
 
   localDeleteCartDetails(item) {
-    this.appData.checkRandomNumber().then((cartResp: any) => {
-      if (cartResp !== null) {
+    this.appData.checkRandomNumber().then((randomNo: any) => {
+      if (randomNo !== null) {
         var payload = { product: String(item.productdescription) };
-        var endpoint = String(cartResp);
+        var endpoint = String(randomNo);
         this.cartService
           .deleteCartDetails(endpoint, payload)
           .subscribe(data => {
@@ -161,5 +171,9 @@ export class HeaderComponent implements OnChanges, OnInit {
         this.showSavedCartDetails();
       }
     });
+  }
+
+  viewDetails(name) {
+    this.router.navigate(["/view-details", name]);
   }
 }

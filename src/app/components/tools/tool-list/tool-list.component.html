@@ -1,0 +1,54 @@
+<div class="container row mt-4">
+  <div class="col-md-12">
+      <div *ngIf="toolsArray?.length>0" class="block-grid-lg-4 block-grid-md-4 block-grid-sm-2 block-grid-xs-1">
+          <div class="block-grid-item" data-toggle="modal" data-target="#productdetailModal" *ngFor="let item of toolsArray">
+            <!-- <div class="block-grid-item" data-toggle="modal" data-target="#productdetailModal" *ngFor="let item of toolsArray| slice:(fitToPage.min):(fitToPage.max)"> -->
+              <div class="box position-relative">
+                  <div (click)="viewDetails(item?.upload_name)">
+                      <div class="gray-bg">
+                          <img src="{{item?.upload_photo}}" alt="imge" class="img-fluid">
+                      </div>
+                      <p>{{item?.upload_name}}</p>
+                      <span class="blue">
+                          <span class="icon-inr"></span>
+                          <span>{{item?.prices[0]?.offer_price}}</span>
+                      </span>
+                      <span class="pricetag">{{item?.prices[0]?.percentage}}%</span>
+                      <span class="text-line-through">
+                          <span class="icon-inr"></span>{{item?.prices[0]?.enduser_price}}</span>
+                      <p class="blue pt-2 pt-6">
+                          <span class="mr-3"> (Excluding-GST) </span>
+                          <span class="icon-star-full"></span>
+                          <span class="icon-star-full"></span>
+                          <span class="icon-star-empty"></span>
+                          <span class="icon-star-empty"></span>
+                          <span class="icon-star-empty"></span>
+                      </p>
+                  </div>
+                  <div class="overlay-text">
+                      <ul class="list-inline mt_4 mb-0">
+                          <li class="list-inline-item ">
+                              <a (click)="addToCart(item)" class="nav-link ">
+                                  <span class="icon-shopping-cart"></span>
+                              </a>
+                          </li>
+                          <li class="list-inline-item ">
+                              <a (click)="addToFavouriteList(item)" class="nav-link ">
+                                  <span class="icon-heart"></span>
+                              </a>
+                          </li>
+                          <li class="list-inline-item ">
+                              <a (click)="addToCompareList(item)" class="nav-link">
+                                  <span class="icon-compare_arrows"></span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div *ngIf="toolsArray?.length==0" class="block-grid-lg-4 block-grid-md-4 block-grid-sm-2 block-grid-xs-1">
+          No Products to Display
+      </div>
+  </div>
+</div>

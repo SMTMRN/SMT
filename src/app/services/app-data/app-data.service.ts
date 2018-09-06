@@ -62,4 +62,29 @@ export class AppDataService {
     });
     return promise;
   }
+
+  checkFavouriteItems() {
+    var promise = new Promise((resolve, reject) => {
+      console.log(localStorage.getItem("favouriteItems"));
+      console.log(JSON.parse(localStorage.getItem("favouriteItems")));
+      if (localStorage.getItem("favouriteItems")) {
+        resolve(JSON.parse(localStorage.getItem("favouriteItems")));
+      } else {
+        resolve(null);
+      }
+    });
+    return promise;
+  }
+
+  checkCompareItems() {
+    var promise = new Promise((resolve, reject) => {
+      console.log(JSON.parse(localStorage.getItem("compareItems")));
+      if (localStorage.getItem("compareItems")) {
+        resolve(JSON.parse(localStorage.getItem("compareItems")));
+      } else {
+        resolve(null);
+      }
+    });
+    return promise;
+  }
 }

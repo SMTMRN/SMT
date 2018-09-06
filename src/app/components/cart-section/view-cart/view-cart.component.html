@@ -1,177 +1,180 @@
-<nav class="fixed-top-2" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="#">Home</a>
-    </li>
+<div [ngClass]="{'loader': showLoading, '': !showLoading }"></div>
+<div [ngClass]="{'body-loader': showLoading, '': !showLoading }" class="container-fluid container-height">
+  <nav class="fixed-top-2" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/">Home</a>
+      </li>
 
-    <li class="breadcrumb-item active" aria-current="page">Cart</li>
-  </ol>
-</nav>
-<section>
-  <div class="container-fluid mt-5 mb-4">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="row">
-            <div class="col-md-8 pr-0 pr_0">
-              <div class="card-header pb-0">
-                <div class="row fullcart-margin">
-                  <div class="col-md-12">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <h5 class="text-uppercase">My cart( {{savedCartData?.length}} )</h5>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group has-feedback">
-                          <input type="text" class="form-control form-control-pin" id="inputValidation" placeholder="Enter delivery pincode">
-                          <span class="icon-map-marker form-control-feedback"></span>
-                          <a href="#" class="btn btn-link no-shadow form-control-feedback1">Check</a>
+      <li class="breadcrumb-item active" aria-current="page">Cart</li>
+    </ol>
+  </nav>
+  <section>
+    <div class="container-fluid mt-5 mb-4">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="row">
+              <div class="col-md-8 pr-0 pr_0">
+                <div class="card-header pb-0">
+                  <div class="row fullcart-margin">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <h5 class="text-uppercase">My cart( {{savedCartData?.length}} )</h5>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body" *ngFor="let itteration of savedCartData; let i = index">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="row">
-                      <div class="col-md-2 pr-0 pr_0 col-12">
-                        <img src="{{itteration?.image}}" class="img-fluid">
-                        <div class="color-quality-right pt-3 pb-3">
-                          <div class="quantity text_center">
-                            <div class="quantity-select">
-                              <!-- <button [disabled]="itteration?.qty <= 1" (click)="removeItem(i)" class="entry value-minus1"> -->
-                              <button (click)="removeItem(i)" class="entry value-minus1">
-                                <span class="icon-minus"></span>
-                              </button>
-                              <div class="entry value1">
-                                <span>{{itteration?.qty}}</span>
-                              </div>
-                              <!-- <button [disabled]="itteration?.qty >= 10" (click)="addItem(i)" class="entry value-plus1 active"> -->
-                              <button (click)="addItem(i)" class="entry value-plus1 active">
-                                <span class="icon-plus"></span>
-                              </button>
-                            </div>
+                        <div class="col-md-4">
+                          <div class="form-group has-feedback">
+                            <input type="text" class="form-control form-control-pin" id="inputValidation" placeholder="Enter delivery pincode">
+                            <span class="icon-map-marker form-control-feedback"></span>
+                            <a href="#" class="btn btn-link no-shadow form-control-feedback1">Check</a>
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-6 pr-0">
-                        <p class="medium">{{itteration?.productdescription}}</p>
-                        <div class="form-group">
-                          <span class="medium">Seller : </span>
-                          <span class="secondary">{{itteration?.brand}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body" *ngFor="let itteration of savedCartData; let i = index">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-2 pr-0 pr_0 col-12">
+                          <img src="{{itteration?.image}}" class="img-fluid">
+                          <div class="color-quality-right pt-3 pb-3">
+                            <div class="quantity text_center">
+                              <div class="quantity-select">
+                                <!-- <button [disabled]="itteration?.qty <= 1" (click)="removeItem(i)" class="entry value-minus1"> -->
+                                <button (click)="removeItem(i)" class="entry value-minus1">
+                                  <span class="icon-minus"></span>
+                                </button>
+                                <div class="entry value1">
+                                  <span>{{itteration?.qty}}</span>
+                                </div>
+                                <!-- <button [disabled]="itteration?.qty >= 10" (click)="addItem(i)" class="entry value-plus1 active"> -->
+                                <button (click)="addItem(i)" class="entry value-plus1 active">
+                                  <span class="icon-plus"></span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <p class="medium">
-                          <span class="blue">
-                            <span class="icon-inr"></span>
-                            <span>{{calculateDiscountPrice(itteration)}} </span>
-                          </span>
-                          <span class="pricetag">{{calculatePercentage(itteration)}} % </span>
-                          <span class="text-line-through">
-                            <span class="icon-inr"></span>{{itteration?.sub_total}} </span>
-                          <!-- <span class="mr-1 ml-2 blue">2 Offers Applied</span> -->
-                          <span class="icon-info blue"></span>
-                        </p>
-                        <div class="form-group medium pt-3">
-                          <a href="#" class="text-uppercase mr-4">
+                        <div class="col-md-6 pr-0">
+                          <p class="medium" (click)="viewDetails(itteration.productdescription)">{{itteration?.productdescription}}</p>
+                          <div class="form-group">
+                            <span class="medium">Seller : </span>
+                            <span class="secondary">{{itteration?.brand}}</span>
+                          </div>
+                          <p class="medium">
+                            <span class="blue">
+                              <span class="icon-inr"></span>
+                              <span>{{calculateDiscountPrice(itteration)}} </span>
+                            </span>
+                            <span class="pricetag">{{calculatePercentage(itteration)}} % </span>
+                            <span class="text-line-through">
+                              <span class="icon-inr"></span>{{itteration?.sub_total}} </span>
+                            <!-- <span class="mr-1 ml-2 blue">2 Offers Applied</span> -->
+                            <span class="icon-info blue"></span>
+                          </p>
+                          <div class="form-group medium pt-3">
+                            <!-- <a href="#" class="text-uppercase mr-4">
                             Save for later
-                          </a>
-                          <a (click)="deleteCartItem(itteration)" class="text-uppercase">
-                            Remove
-                          </a>
+                          </a> -->
+                            <a (click)="deleteCartItem(itteration)" class="text-uppercase">
+                              Remove
+                            </a>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-4">
-                        <p>
-                          <b>Free delivery in 5-7 days</b>
-                        </p>
-                        <p>30 days Replacement policy</p>
+                        <div class="col-md-4">
+                          <p>
+                            <b>Free delivery in 5-7 days</b>
+                          </p>
+                          <p>30 days Replacement policy</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-4 pl-0 pl_0">
-              <div class="pricedetails-bg rounded-0">
-                <h5 class="text-uppercase pl-3 pt-3 pb-1 mb-0">price details</h5>
-                <hr class="hr1 mb-0 mt-0">
+              <div class="col-md-4 pl-0 pl_0">
+                <div class="pricedetails-bg rounded-0">
+                  <h5 class="text-uppercase pl-3 pt-3 pb-1 mb-0">price details</h5>
+                  <hr class="hr1 mb-0 mt-0">
+                </div>
+                <div class="card-body pt-2 pb-2 pricedetails-bg">
+                  <div class="row align-items-center">
+                    <div class="col-md-6 col-6">
+                      <b>Price ({{totalItems}} Item(s))</b>
+                    </div>
+                    <div class="col-md-6 col-6 text-right">
+                      <span class="icon-inr"></span>
+                      <span>{{totalCost}}</span>
+                    </div>
+                  </div>
+                  <div class="row align-items-center">
+                    <div class="col-md-6 col-6">
+                      <b>Tax (18%)</b>
+                    </div>
+                    <div class="col-md-6 col-6 bold text-right">
+                      <span class="icon-inr"></span>
+                      <span>{{totalGST}}</span>
+                    </div>
+                  </div>
+                  <div class="row align-items-center">
+                    <div class="col-md-6 col-6">
+                      <b>Delivery Charges</b>
+                    </div>
+                    <div class="col-md-6 col-6 text-right">
+                      <span class="blue text-uppercase">Free</span>
+                    </div>
+                  </div>
+                  <hr class="hr1">
+                  <div class="row align-items-center">
+                    <div class="col-md-6 col-6">
+                      <b>Amount Payable</b>
+                    </div>
+                    <div class="col-md-6 col-6 text-right">
+                      <span class="icon-inr"></span>
+                      <span>{{totalPayAmount}}</span>
+                    </div>
+                  </div>
+                  <hr class="hr1">
+                  <div class="row mb-3">
+                    <div class="col-md-12">
+                      <p class="text-small">
+                        Your total savings on this order
+                        <span class="blue">
+                          <span class="ml-1 icon-inr"></span>
+                          <span>{{totalSavings}}</span>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                      <p class="text-small">
+                        <span class="icon-securepay mr-3"></span> Safe and Secure payments. Easy returns 100% Authentic products
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="card-body pt-2 pb-2 pricedetails-bg">
-                <div class="row align-items-center">
-                  <div class="col-md-6 col-6">
-                    <b>Price ({{totalItems}} Item(s))</b>
-                  </div>
-                  <div class="col-md-6 col-6 text-right">
-                    <span class="icon-inr"></span>
-                    <span>{{totalCost}}</span>
-                  </div>
-                </div>
-                <div class="row align-items-center">
-                  <div class="col-md-6 col-6">
-                    <b>Tax (18%)</b>
-                  </div>
-                  <div class="col-md-6 col-6 bold text-right">
-                    <span class="icon-inr"></span>
-                    <span>{{totalGST}}</span>
-                  </div>
-                </div>
-                <div class="row align-items-center">
-                  <div class="col-md-6 col-6">
-                    <b>Delivery Charges</b>
-                  </div>
-                  <div class="col-md-6 col-6 text-right">
-                    <span class="blue text-uppercase">Free</span>
-                  </div>
-                </div>
-                <hr class="hr1">
-                <div class="row align-items-center">
-                  <div class="col-md-6 col-6">
-                    <b>Amount Payable</b>
-                  </div>
-                  <div class="col-md-6 col-6 text-right">
-                    <span class="icon-inr"></span>
-                    <span>{{totalPayAmount}}</span>
-                  </div>
-                </div>
-                <hr class="hr1">
-                <div class="row mb-3">
-                  <div class="col-md-12">
-                    <p class="text-small">
-                      Your total savings on this order
-                      <span class="blue">
-                        <span class="ml-1 icon-inr"></span>
-                        <span>{{totalSavings}}</span>
-                      </span>
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-8 mx-auto text-center">
-                    <p class="text-small">
-                      <span class="icon-securepay mr-3"></span> Safe and Secure payments. Easy returns 100% Authentic products
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-          <div class="d-block d-sm-none d-md-none d-lg-none">&nbsp;</div>
-          <div class="row  mb-3">
-            <div class="col-md-8 text_left text-right">
-              <a routerLink="/" class="btn btn-light btn-lg rounded-0 text-uppercase mr-3">
-                <span class="icon-angle-left mr-2"></span>Continue shopping
-              </a>
-              <div class="d-block d-sm-none d-md-none d-lg-none">&nbsp;</div>
-              <a routerLink="/place-order" class="btn btn-success mr-3 rounded-0 btn-lg text-uppercase">
-                Place order
-              </a>
-              <div class="d-block d-sm-none d-md-none d-lg-none">&nbsp;</div>
+            <div class="d-block d-sm-none d-md-none d-lg-none">&nbsp;</div>
+            <div class="row  mb-3">
+              <div class="col-md-8 text_left text-right">
+                <a routerLink="/" class="btn btn-light btn-lg rounded-0 text-uppercase mr-3">
+                  <span class="icon-angle-left mr-2"></span>Continue shopping
+                </a>
+                <div class="d-block d-sm-none d-md-none d-lg-none">&nbsp;</div>
+                <a routerLink="/place-order" class="btn btn-success mr-3 rounded-0 btn-lg text-uppercase">
+                  Place order
+                </a>
+                <div class="d-block d-sm-none d-md-none d-lg-none">&nbsp;</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>

@@ -61,12 +61,12 @@
                           </a>
                         </li>
                         <li class="list-inline-item ">
-                          <a class="nav-link ">
+                          <a (click)="addToFavouriteList(offerItem)" class="nav-link ">
                             <span class="icon-heart"></span>
                           </a>
                         </li>
                         <li class="list-inline-item ">
-                          <a class="nav-link">
+                          <a (click)="addToCompareList(offerItem)" class="nav-link">
                             <span class="icon-compare_arrows"></span>
                           </a>
                         </li>
@@ -122,7 +122,7 @@
       </div>
     </div>
     <div class="tab-content">
-      <div id="nwearrhome" class="container tab-pane active">
+      <div id="home" class="container tab-pane active">
         <br>
 
         <div id="carousel02" class="owl-carousel owl-theme owl-loaded owl-drag">
@@ -165,12 +165,12 @@
                         </a>
                       </li>
                       <li class="list-inline-item ">
-                        <a class="nav-link ">
+                        <a (click)="addToFavouriteList(itemNew)" class="nav-link ">
                           <span class="icon-heart"></span>
                         </a>
                       </li>
                       <li class="list-inline-item ">
-                        <a class="nav-link">
+                        <a (click)="addToCompareList(itemNew)" class="nav-link">
                           <span class="icon-compare_arrows"></span>
                         </a>
                       </li>
@@ -204,12 +204,6 @@
           </div>
         </div>
       </div>
-      <!-- <div id="newdemo" class="container tab-pane fade">
-        <br>
-        <h3>Drill machine</h3>
-
-      </div> -->
-
     </div>
   </div>
 </section>

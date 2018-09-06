@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { SampleData } from "../../../../assets/mocks/sample-data";
 import { CartService } from "../../../services/cart/cart.service";
 import { AppDataService } from "../../../services/app-data/app-data.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-view-cart",
@@ -16,10 +17,12 @@ export class ViewCartComponent implements OnInit {
   totalCost = 0;
   totalGST = 0;
   totalPayAmount = 0;
+  showLoading: boolean = false;
   totalSavings = 0;
   constructor(
     public sampleData: SampleData,
     public cartService: CartService,
+    private router: Router,
     private appData: AppDataService
   ) {}
 
@@ -238,6 +241,10 @@ export class ViewCartComponent implements OnInit {
           });
       }
     });
+  }
+
+  viewDetails(name) {
+    this.router.navigate(["/view-details", name]);
   }
 
 }

@@ -4,6 +4,7 @@ import { AppDataService } from "../../services/app-data/app-data.service";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { CartService } from "../../services/cart/cart.service";
+import { variable } from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: "app-tools",
@@ -11,6 +12,8 @@ import { CartService } from "../../services/cart/cart.service";
   styleUrls: ["./tools.component.css"]
 })
 export class ToolsComponent implements OnInit {
+  navigationPageIndex: number = 1;
+  checkedSubCat: string = "";
   displayCountFormat: string = "";
   showLoading: boolean = false;
   pageSliderCount: any = [];
@@ -30,15 +33,10 @@ export class ToolsComponent implements OnInit {
   };
   fitToPage = {
     max: 0,
-    min: 11,
-    count: 12
+    min: 4,
+    count: 5
   };
-  public subCat = [
-    "Angle Grinder Machine",
-    "Drill Machine",
-    "Planner Machine",
-    "Power Tools Accessories"
-  ];
+  public subCat = [];
   public price = [
     { name: "0 - 1,000", minVal: 0, maxVal: 1000, value: "0-1000" },
     {
@@ -85,13 +83,31 @@ export class ToolsComponent implements OnInit {
     if (appData.toolsMenuList.category) {
       this.category = appData.toolsMenuList.category;
     }
+    console.log(appData.toolsMenuList);
     if (appData.toolsMenuList.subCategory) {
+      this.checkedSubCat = appData.toolsMenuList.subCategory;
       this.selectedSubCat.push(appData.toolsMenuList.subCategory);
     } else {
       this.selectedSubCat.push("");
     }
     this.getFilteredToolsData(true);
     this.appData.toolsListData = this;
+  }
+
+  selectSubCat() {
+    if (this.checkedSubCat && this.checkedSubCat != "") {
+      var subCats: any = document.getElementsByName("subCat");
+      console.log(subCats.length);
+      for (let count = 0; count < subCats.length; count++) {
+        if (subCats[count].defaultValue == this.checkedSubCat) {
+          document
+            .getElementsByName("subCat")
+            .item(count)
+            .setAttribute("checked", "true");
+          subCats[count].checked = true;
+        }
+      }
+    }
   }
 
   ngOnInit() {
@@ -133,6 +149,7 @@ export class ToolsComponent implements OnInit {
   newEnteredCategory(category, subCategory) {
     this.category = category;
     this.selectedSubCat = [];
+    this.checkedSubCat = subCategory;
     this.selectedSubCat.push(subCategory);
     this.selectedBrands = [];
     this.selectedBrands.push("");
@@ -142,13 +159,13 @@ export class ToolsComponent implements OnInit {
     this.getFilteredToolsData(true);
   }
 
-  onSubCategory(cat) {
-    console.log(cat);
+  onSubCategory() {
     this.selectedSubCat = [];
     this.selectedSubCat.push("");
     var subCats: any = document.getElementsByName("subCat");
     for (let count = 0; count < subCats.length; count++) {
       if (subCats[count].checked) {
+        console.log(subCats);
         this.selectedSubCat.push(subCats[count].value);
       }
     }
@@ -187,7 +204,7 @@ export class ToolsComponent implements OnInit {
       brand: this.selectedBrands,
       pricerange: String(this.selectedPrice),
       from: 0,
-      to: 12,
+      to: this.fitToPage.count,
       val: "",
       warranty: this.selectedWaranty,
       percentage: String(this.selectedDiscount)
@@ -206,13 +223,17 @@ export class ToolsComponent implements OnInit {
           this.brands = tools.brand_count;
           this.productPriceRange.min = tools.totalminval;
           this.productPriceRange.max = tools.totalmaxval;
+          var temp = this;
+          setTimeout(function() {
+            temp.selectSubCat();
+          }, 500);
         }
         if (tools.products != null && tools.products != undefined) {
           this.filteredToolsArray = tools.products;
           this.pageSliderCount = [];
           this.fitToPage.min = 0;
           this.fitToPage.max = this.fitToPage.count;
-          var sliderCount = Math.ceil(this.filteredToolsArray.length / 12);
+          var sliderCount = Math.ceil(this.filteredToolsArray.length / this.fitToPage.count);
           this.pageSliderCount = Array(sliderCount)
             .fill(sliderCount)
             .map((x, i) => i + 1);
@@ -256,6 +277,7 @@ export class ToolsComponent implements OnInit {
   }
 
   loadPageDetails(index) {
+    this.navigationPageIndex = index;
     if (index == 1) {
       this.fitToPage.min = 0;
       this.fitToPage.max = this.fitToPage.count;
@@ -367,4 +389,56 @@ export class ToolsComponent implements OnInit {
       }
     });
   }
+
+  ///////////////////////////////////////////////////////////////////
+
+  addToFavouriteList(item) {
+    console.log("Entered Favourite");
+    var favouriteList = [];
+    this.appData.checkFavouriteItems().then((favouriteRes: any) => {
+      if (favouriteRes) {
+        if (favouriteRes.length >= 10) {
+          alert(
+            "You have reached maximum items in Favourite list."
+          );
+        } else {
+          favouriteList = favouriteRes;
+          favouriteList.push(item);
+          localStorage.setItem("favouriteItems", JSON.stringify(favouriteList));
+          alert("Item added to favouite list");
+        }
+      } else {
+        favouriteList.push(item);
+        localStorage.setItem("favouriteItems", JSON.stringify(favouriteList));
+        alert("Item added to favouite list");
+      }
+    });
+  }
+
+  addToCompareList(item) {
+    var compareList = [];
+    this.appData.checkCompareItems().then((compareRes: any) => {
+      if (compareRes) {
+        if (compareRes.length >= 4) {
+          alert(
+            "You have reached maximum items in Compare list."
+          );
+        } else {
+          compareList = compareRes;
+          compareList.push(item);
+          localStorage.setItem("compareItems", JSON.stringify(compareList));
+          alert("Item added to Compare list");
+        }
+      } else {
+        compareList.push(item);
+        localStorage.setItem("compareItems", JSON.stringify(compareList));
+        alert("Item added to Compare list");
+      }
+    });
+  }
+
+  goToNextPage(){
+    this.loadPageDetails(this.navigationPageIndex+1);
+  }
+
 }

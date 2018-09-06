@@ -18,6 +18,9 @@ export class ViewItemDetailsComponent implements OnInit {
   discountPercentage = 0;
   discountAmount = 0;
   itemQuantity = 1;
+  upsellProducts: any = [];
+  relatedProducts: any = [];
+  showLoading: boolean = false;
 
   constructor(
     public sampleData: SampleData,
@@ -28,8 +31,9 @@ export class ViewItemDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    var itemName = this.route.snapshot.paramMap.get("product_name");
-    this.loadItemDetails(itemName);
+    this.route.params.subscribe(params => {
+      this.loadItemDetails(params.product_name);
+    });
     // $(document).ready(function() {
     //   $(window).load(function() {
     //     // The slider being synced must be initialized first
@@ -63,9 +67,17 @@ export class ViewItemDetailsComponent implements OnInit {
   ngAfterViewInit() {}
 
   loadItemDetails(name) {
+    this.showLoading = true;
     this.toolsService.getToolsData(name).subscribe(data => {
+      this.showLoading = false;
       if (data) {
         console.log(data);
+        if (data.Related_Products) {
+          this.relatedProducts = data.Related_Products;
+        }
+        if (data.Related_Products) {
+          this.upsellProducts = data.Upsell_Products;
+        }
         this.itemDetails = data;
         this.itemDetails.quantity = 1;
         this.calculateTotalItems();

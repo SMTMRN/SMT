@@ -34,7 +34,7 @@
                                     <h4 class="panel-title">
                                         <a role="button" class="text-uppercase medium" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
                                             aria-controls="collapseOne">
-                                            <i class="more-less  icon-minus"></i>Sub-category
+                                            <i class="more-less  icon-minus"></i>Sub-categ111ory
                                         </a>
                                     </h4>
                                 </div>
@@ -78,12 +78,11 @@
                                         <div>
                                             <div *ngFor="let item of price">
                                                 <label class="d-block" *ngIf="((item?.minVal<=productPriceRange.max)&&(item?.maxVal>=productPriceRange.min))">
-                                                    <input type="radio" name="price" (click)="onPriceclick(item?.value)" value="{{item?.value}}">                                                    {{item?.name}}
+                                                    <input type="radio" name="price" (click)="onPriceclick(item?.value)" value="{{item?.value}}"> {{item?.name}}
                                                 </label>
                                             </div>
                                             <label class="d-block">
-                                                <input type="radio" name="price" (click)="onPriceclick('all')" value="all">Show
-                                                All
+                                                <input type="radio" name="price" (click)="onPriceclick('all')" value="all">Show All
                                             </label>
                                         </div>
                                         <!-- <div class="form-group" *ngFor="let cost of price">
@@ -111,11 +110,10 @@
                                     <div class="panel-body">
                                         <div>
                                             <label class="d-block" *ngFor="let item of warranty">
-                                                <input type="radio" name="waranty" (click)="onWarantyClick(item?.value)" value="{{item?.value}}">                                                {{item?.name}}
+                                                <input type="radio" name="waranty" (click)="onWarantyClick(item?.value)" value="{{item?.value}}"> {{item?.name}}
                                             </label>
                                             <label class="d-block">
-                                                <input type="radio" name="waranty" checked="true" (click)="onWarantyClick('all')" value="all">Show
-                                                All
+                                                <input type="radio" name="waranty" checked="true" (click)="onWarantyClick('all')" value="all">Show All
                                             </label>
                                         </div>
                                         <!-- <div class="form-group" *ngFor="let w of waranty">
@@ -142,12 +140,10 @@
                                     <div class="panel-body">
                                         <div>
                                             <label class="d-block" *ngFor="let type of discount">
-                                                <input type="radio" name="discount" (click)="onDiscountClick(type)" value="{{type}}">Upto
-                                                {{type}}%
+                                                <input type="radio" name="discount" (click)="onDiscountClick(type)" value="{{type}}">Upto {{type}}%
                                             </label>
                                             <label class="d-block">
-                                                <input type="radio" name="discount" (click)="onDiscountClick('all')" value="all">Show
-                                                All
+                                                <input type="radio" name="discount" (click)="onDiscountClick('all')" value="all">Show All
                                             </label>
                                         </div>
 
@@ -275,8 +271,8 @@
                         <div class="col-md-12">
                             <h3>
                                 <span class="medium">Power Tools</span>
-                                <span class="text-small">(Showing {{displayCountFormat}} Products of {{filteredToolsArray?.length}}
-                                    Products)</span>
+                                <span class="text-small">(Showing {{displayCountFormat}} Products of {{filteredToolsArray?.length}} Products)
+                                </span>
                             </h3>
                         </div>
                     </div>
@@ -311,9 +307,7 @@
                                     </a>
                                 </li>
                                 <li class="list-inline-item ">
-                                    <a class="nav-link">
-                                        12
-                                    </a>
+                                    <input style="width:40px" type="number" [(ngModel)]="fitToPage.count" (input)="getFilteredToolsData(false)">
                                 </li>
                                 <li class="list-inline-item ">
                                     <a class="nav-link ">
@@ -363,21 +357,20 @@
                                         <div class="overlay-text">
                                             <ul class="list-inline mt_4 mb-0">
                                                 <li class="list-inline-item ">
-                                                    <a  (click)="addToCart(item)" class="nav-link ">
+                                                    <a (click)="addToCart(item)" class="nav-link ">
                                                         <span class="icon-shopping-cart"></span>
                                                     </a>
                                                 </li>
                                                 <li class="list-inline-item ">
-                                                    <a href="#" class="nav-link ">
+                                                    <a (click)="addToFavouriteList(item)" class="nav-link ">
                                                         <span class="icon-heart"></span>
                                                     </a>
                                                 </li>
                                                 <li class="list-inline-item ">
-                                                    <a href="#" class="nav-link">
+                                                    <a (click)="addToCompareList(item)" class="nav-link">
                                                         <span class="icon-compare_arrows"></span>
                                                     </a>
                                                 </li>
-
                                             </ul>
                                         </div>
                                     </div>
@@ -402,8 +395,8 @@
                                 <li class="page-item active" *ngFor="let pageIndex of pageSliderCount">
                                     <a class="page-link" (click)="loadPageDetails(pageIndex)">{{pageIndex}}</a>
                                 </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
+                                <li *ngIf="navigationPageIndex < pageSliderCount.length" class="page-item">
+                                    <a class="page-link" (click)="goToNextPage()">Next</a>
                                 </li>
                             </ul>
 

@@ -30,6 +30,9 @@ import { PaymentOptionsComponent } from './components/cart-section/place-order-s
 import { ErrorValidatorComponent } from './components/validators/error-validator/error-validator.component';
 import { CouponsComponent } from './components/home-section/coupons/coupons.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { FavouriteComponent } from './components/favourite-compare-section/favourite/favourite.component';
+import { CompareItemsComponent } from './components/favourite-compare-section/compare-items/compare-items.component';
+import { ToolListComponent } from './components/tools/tool-list/tool-list.component';
 
 
 @NgModule({
@@ -55,7 +58,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     PaymentOptionsComponent,
     ErrorValidatorComponent,
     CouponsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FavouriteComponent,
+    CompareItemsComponent,
+    ToolListComponent
   ],
   imports: [
     BrowserModule,

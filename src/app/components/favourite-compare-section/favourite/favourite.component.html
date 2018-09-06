@@ -1,0 +1,100 @@
+<nav class="fixed-top-2" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/">Home</a>
+    </li>
+
+    <li class="breadcrumb-item active" aria-current="page">Favourite</li>
+  </ol>
+</nav>
+<section>
+  <div class="container">
+
+    <h3>{{displayMessage}}</h3>
+    <div class="tab-content">
+      <div id="home" class="container tab-pane active">
+        <br>
+        <div id="carousel04" class="owl-carousel owl-theme owl-loaded owl-drag">
+          <div class="owl-stage-outer">
+            <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1432px;">
+              <div class="owl-item active" style="width: 281.25px; margin-right: 5px;" *ngFor="let offerItem of favouriteItems; let i = index">
+                <div class="box position-relative">
+                  <div (click)="viewDetails(offerItem.upload_name)">
+                    <div class="gray-bg">
+                      <a>
+                        <img src="{{offerItem.upload_photo}}" alt="imge" class="img-fluid">
+                      </a>
+                    </div>
+                    <a>
+                      <p class="txtLimit">{{offerItem.upload_name}}</p>
+                    </a>
+                    <span class="blue">
+                      <span class="icon-inr"></span>
+                      <span>{{offerItem.offer_price}}</span>
+                    </span>
+                    <span class="pricetag">{{offerItem.percentage}}%</span>
+                    <span class="text-line-through">{{offerItem.enduser_price}}</span>
+                    <p class="blue pt-2 pt-6">
+                      <span class="mr-3"> (Excluding-GST) </span>
+
+                      <span class="icon-star-full"></span>
+                      <span class="icon-star-full"></span>
+                      <span class="icon-star-empty"></span>
+                      <span class="icon-star-empty"></span>
+                      <span class="icon-star-empty"></span>
+                    </p>
+                  </div>
+                  <div class="overlay-text">
+                    <ul class="list-inline mt_4 mb-0">
+
+                      <li class="list-inline-item ">
+                        <a (click)="addToCart(offerItem)" class="nav-link ">
+                          <span class="icon-shopping-cart"></span>
+                        </a>
+                      </li>
+                      <li class="list-inline-item ">
+                        <a  (click)="deleteFavouriteItem(offerItem, i)" class="nav-link ">
+                          <span class="icon-trash-2"></span>
+                        </a>
+                      </li>
+                      <li class="list-inline-item ">
+                          <a (click)="addToCompareList(offerItem)" class="nav-link">
+                          <span class="icon-compare_arrows"></span>
+                        </a>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="owl-nav">
+            <button type="button" role="presentation" class="owl-prev disabled">
+              <span aria-label="Previous">
+                <span class="icon-angle-left"></span>
+              </span>
+            </button>
+            <button type="button" role="presentation" class="owl-next">
+              <span aria-label="Next">
+                <span class="icon-angle-right"></span>
+              </span>
+            </button>
+          </div>
+          <div class="owl-dots">
+            <button role="button" class="owl-dot active">
+              <span></span>
+            </button>
+            <button role="button" class="owl-dot">
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</section>

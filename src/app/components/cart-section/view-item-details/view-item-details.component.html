@@ -1,302 +1,305 @@
-<nav class="fixed-top-2" aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="#">Home</a>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="#">Tools</a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">{{itemDetails?.Product?.upload_name}}</li>
-    </ol>
-</nav>
+<div [ngClass]="{'loader': showLoading, '': !showLoading }"></div>
+<div [ngClass]="{'body-loader': showLoading, '': !showLoading }" class="container-fluid container-height">
+    <nav class="fixed-top-2" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#">Tools</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">{{itemDetails?.Product?.upload_name}}</li>
+        </ol>
+    </nav>
 
-<div class="d-block d-sm-none d-md-none d-lg-none">&nbsp;</div>
+    <div class="d-block d-sm-none d-md-none d-lg-none">&nbsp;</div>
 
-<section>
-    <div class="container-fluid mt-5 mb-4">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="row m-3">
-                        <div class="col-md-5 single-left">
-                            <section class="slider">
-                                <div id="carousel" class=" flexslider d-none d-md-block d-lg-block d-sm-block">
-                                    <ul class="slides">
-                                        <li>
-                                            <img src="assets/img/ha.png" />
-                                        </li>
-                                        <li>
-                                            <img src="assets/img/ha3.png" />
-                                        </li>
-                                        <li>
-                                            <img src="assets/img/ha2.png" />
-                                        </li>
-                                        <li>
-                                            <img src="assets/img/ha.png" />
-                                        </li>
-                                        <li>
-                                            <img src="assets/img/ha3.png" />
-                                        </li>
-                                        <li>
-                                            <img src="assets/img/ha2.png" />
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div style="width:100%">
-                                    <div id="slider" class="flexslider">
+    <section>
+        <div class="container-fluid mt-5 mb-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="row m-3">
+                            <div class="col-md-5 single-left">
+                                <section class="slider">
+                                    <div id="carousel" class=" flexslider d-none d-md-block d-lg-block d-sm-block">
                                         <ul class="slides">
                                             <li>
-                                                <img data-imagezoom="true" class="group3" data-zoomviewborder="2px solid #000" data-cursor="none" data-cursorcolor="52,152,219"
-                                                    src="assets/img/ha.png" />
+                                                <img src="assets/img/ha.png" />
                                             </li>
                                             <li>
-                                                <img data-imagezoom="true" class="group3" src="assets/img/ha3.png" />
+                                                <img src="assets/img/ha3.png" />
                                             </li>
                                             <li>
-                                                <img data-imagezoom="true" class="group3" src="assets/img/ha2.png" />
+                                                <img src="assets/img/ha2.png" />
                                             </li>
                                             <li>
-                                                <img data-imagezoom="true" class="group3" src="assets/img/ha.png" />
+                                                <img src="assets/img/ha.png" />
                                             </li>
                                             <li>
-                                                <img data-imagezoom="true" class="group3" src="assets/img/ha3.png" />
+                                                <img src="assets/img/ha3.png" />
                                             </li>
                                             <li>
-                                                <img data-imagezoom="true" class="group3" src="assets/img/ha2.png" />
+                                                <img src="assets/img/ha2.png" />
                                             </li>
                                         </ul>
                                     </div>
-                                </div>
-                                <section>
-                                    <div *ngFor="let img of itemDetails?.Product?.extraimages">
-                                        <img *ngIf="img!== ''" width="100px" height="100px" src="{{img}}" alt="">
+
+                                    <div style="width:100%">
+                                        <div id="slider" class="flexslider">
+                                            <ul class="slides">
+                                                <li>
+                                                    <img data-imagezoom="true" class="group3" data-zoomviewborder="2px solid #000" data-cursor="none" data-cursorcolor="52,152,219"
+                                                        src="assets/img/ha.png" />
+                                                </li>
+                                                <li>
+                                                    <img data-imagezoom="true" class="group3" src="assets/img/ha3.png" />
+                                                </li>
+                                                <li>
+                                                    <img data-imagezoom="true" class="group3" src="assets/img/ha2.png" />
+                                                </li>
+                                                <li>
+                                                    <img data-imagezoom="true" class="group3" src="assets/img/ha.png" />
+                                                </li>
+                                                <li>
+                                                    <img data-imagezoom="true" class="group3" src="assets/img/ha3.png" />
+                                                </li>
+                                                <li>
+                                                    <img data-imagezoom="true" class="group3" src="assets/img/ha2.png" />
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                    <section>
+                                        <div *ngFor="let img of itemDetails?.Product?.extraimages">
+                                            <img *ngIf="img!== ''" width="100px" height="100px" src="{{img}}" alt="">
+                                        </div>
+                                    </section>
                                 </section>
-                            </section>
-                        </div>
-                        <div class="col-md-1">
+                            </div>
+                            <div class="col-md-1">
 
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group-small">
-                                <span class="medium">SKU:</span>
-                                <span class="secondary">244</span>
                             </div>
-                            <div class="form-group-small">
-                                <span class="medium">Availability:</span>
-                                <span class="secondary">
-                                </span>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h1 class="blue mb-3 medium productdetailh1">{{itemDetails?.Product?.upload_name}}</h1>
+                            <div class="col-md-6">
+                                <div class="form-group-small">
+                                    <span class="medium">SKU:</span>
+                                    <span class="secondary">244</span>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-sm btn-success">4.3
-                                    <span class="icon-star-full"></span>
-                                </button>
-                                <span class="ml-2  medium">6 Ratings & 1 Review</span>
-                            </div>
-                            <h4 class="medium prrupeesize">
-                                <span class="blue">
-                                    <span class="icon-inr"></span>
-                                    <span> {{itemInitialCost}} </span>
-                                </span>
-                                <span class="pricetag"> {{itemDetails?.price_info?.percentage}} % </span>
-                                <span class="text-line-through">
-                                    <span class="icon-inr"></span> {{itemFinalCost}} </span>
-                            </h4>
-                            <p class="blue">Size Guide Shipping</p>
-                            <div class="row pb-3">
-                                <div class="col-md-3 col-sm-4 pr-0 col-12">
-                                    <div class="color-quality-right pt-1 pb-2">
-                                        <div class="quantity text_center">
-                                            <div class="quantity-select">
-                                                <button [disabled]="itemDetails?.quantity <= 1" (click)="removeItem()" class="entry value-minus1">
-                                                    <span class="icon-minus"></span>
+                                <div class="form-group-small">
+                                    <span class="medium">Availability:</span>
+                                    <span class="secondary">
+                                    </span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h1 class="blue mb-3 medium productdetailh1">{{itemDetails?.Product?.upload_name}}</h1>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-sm btn-success">4.3
+                                        <span class="icon-star-full"></span>
+                                    </button>
+                                    <span class="ml-2  medium">6 Ratings & 1 Review</span>
+                                </div>
+                                <h4 class="medium prrupeesize">
+                                    <span class="blue">
+                                        <span class="icon-inr"></span>
+                                        <span> {{itemInitialCost}} </span>
+                                    </span>
+                                    <span class="pricetag"> {{itemDetails?.price_info?.percentage}} % </span>
+                                    <span class="text-line-through">
+                                        <span class="icon-inr"></span> {{itemFinalCost}} </span>
+                                </h4>
+                                <p class="blue">Size Guide Shipping</p>
+                                <div class="row pb-3">
+                                    <div class="col-md-3 col-sm-4 pr-0 col-12">
+                                        <div class="color-quality-right pt-1 pb-2">
+                                            <div class="quantity text_center">
+                                                <div class="quantity-select">
+                                                    <button [disabled]="itemDetails?.quantity <= 1" (click)="removeItem()" class="entry value-minus1">
+                                                        <span class="icon-minus"></span>
+                                                    </button>
+                                                    <div class="entry value1">
+                                                        <span>{{itemDetails?.quantity}}</span>
+                                                    </div>
+                                                    <button [disabled]="itemDetails?.quantity >= 10" (click)="addItem()" class="entry value-plus1 active">
+                                                        <span class="icon-plus"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pl-0 col-12">
+                                        <a (click)="addToCart(itemDetails)" class="rounded-0 btn-block btn btn-success text-uppercase">Add to cart</a>
+                                    </div>
+                                </div>
+                                <div class="form-group-small">
+                                    <span class="medium">Vendor:</span>
+                                    <span class="secondary">{{itemDetails?.Product?.upload_brand}}</span>
+                                </div>
+                                <div class="form-group-small">
+                                    <span class="medium">Product Type:</span>
+                                    <span class="secondary">{{itemDetails?.Product?.upload_category}}</span>
+                                </div>
+                                <div class="form-group-small">
+                                    <span class="medium">Tags:</span>
+                                    <span class="secondary">Vintage, Awesome, Summer, Beachwear</span>
+                                </div>
+                                <div class="form-group-small">
+                                    <span class="medium">SKU:</span>
+                                    <span class="secondary">244</span>
+                                </div>
+                                <div class="form-group-small">
+                                    <h5>
+                                        <b class="text-uppercase">description</b>
+                                    </h5>
+                                    <p class="secondary">
+                                        {{itemDetails?.Product?.description}}
+                                    </p>
+                                </div>
+                                <div class="panel-group pt-2 pb-2" id="accordion" role="tablist" aria-multiselectable="true">
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingOne">
+                                            <h4 class="panel-title">
+                                                <a role="button" class="text-uppercase border-top border-bottom dark" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                                    aria-expanded="true" aria-controls="collapseOne">
+                                                    <i class="more-less icon-plus"></i>Additional information
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                <div *ngFor="let attr of itemDetails?.attribute_info">
+                                                    {{attr.atrname}} : {{attr.atrvalue}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <h4 class="text-uppercase">Ratings & Reviews</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="mb-3">
+                                            <h2 class="bold padding-bottom-7 text_left text-center">4.3
+                                                <span class="text-small icon-star-full"></span>
+                                            </h2>
+                                            <p class="text-small secondary">6 Ratings and 1 Review</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="float-left">
+                                            <div class="float-left" style="width:35px; line-height:1;">
+                                                <div style="height:9px; margin:5px 0;">5
+                                                    <span class="icon-star-full"></span>
+                                                </div>
+                                            </div>
+                                            <div class="float-left" style="width:180px;">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 1000%">
+                                                        <span class="sr-only">80% Complete (danger)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="float-right" style="margin-left:10px;">1500</div>
+                                        </div>
+                                        <div class="float-left">
+                                            <div class="float-left" style="width:35px; line-height:1;">
+                                                <div style="height:9px; margin:5px 0;">4
+                                                    <span class="icon-star-full"></span>
+                                                </div>
+                                            </div>
+                                            <div class="float-left" style="width:180px;">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
+                                                        <span class="sr-only">80% Complete (danger)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="float-right" style="margin-left:10px;">1200</div>
+                                        </div>
+                                        <div class="float-left">
+                                            <div class="float-left" style="width:35px; line-height:1;">
+                                                <div style="height:9px; margin:5px 0;">3
+                                                    <span class="icon-star-full"></span>
+                                                </div>
+                                            </div>
+                                            <div class="float-left" style="width:180px;">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
+                                                        <span class="sr-only">80% Complete (danger)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="float-right" style="margin-left:10px;">600</div>
+                                        </div>
+                                        <div class="float-left">
+                                            <div class="float-left" style="width:35px; line-height:1;">
+                                                <div style="height:9px; margin:5px 0;">2
+                                                    <span class="icon-star-full"></span>
+                                                </div>
+                                            </div>
+                                            <div class="float-left" style="width:180px;">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
+                                                        <span class="sr-only">80% Complete (danger)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="float-right" style="margin-left:10px;">200</div>
+                                        </div>
+                                        <div class="float-left">
+                                            <div class="float-left" style="width:35px; line-height:1;">
+                                                <div style="height:9px; margin:5px 0;">1
+                                                    <span class="icon-star-full"></span>
+                                                </div>
+                                            </div>
+                                            <div class="float-left" style="width:180px;">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
+                                                        <span class="sr-only">80% Complete (danger)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="float-right" style="margin-left:10px;">100</div>
+                                        </div>
+                                        <div class="clearfix"></div>
+
+                                    </div>
+                                </div>
+                                <div class="row pt-4">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div>
+                                                <button class="btn btn-sm btn-success rating-text">4.3
+                                                    <span class="ml-1 icon-star-full"></span>
                                                 </button>
-                                                <div class="entry value1">
-                                                    <span>{{itemDetails?.quantity}}</span>
-                                                </div>
-                                                <button [disabled]="itemDetails?.quantity >= 10" (click)="addItem()" class="entry value-plus1 active">
-                                                    <span class="icon-plus"></span>
-                                                </button>
+                                                <span class="ml-2  medium">Must Buy!</span>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 pl-0 col-12">
-                                    <a (click)="addToCart(itemDetails)" class="rounded-0 btn-block btn btn-success text-uppercase">Add to cart</a>
-                                </div>
-                            </div>
-                            <div class="form-group-small">
-                                <span class="medium">Vendor:</span>
-                                <span class="secondary">{{itemDetails?.Product?.upload_brand}}</span>
-                            </div>
-                            <div class="form-group-small">
-                                <span class="medium">Product Type:</span>
-                                <span class="secondary">{{itemDetails?.Product?.upload_category}}</span>
-                            </div>
-                            <div class="form-group-small">
-                                <span class="medium">Tags:</span>
-                                <span class="secondary">Vintage, Awesome, Summer, Beachwear</span>
-                            </div>
-                            <div class="form-group-small">
-                                <span class="medium">SKU:</span>
-                                <span class="secondary">244</span>
-                            </div>
-                            <div class="form-group-small">
-                                <h5>
-                                    <b class="text-uppercase">description</b>
-                                </h5>
-                                <p class="secondary">
-                                    {{itemDetails?.Product?.description}}
-                                </p>
-                            </div>
-                            <div class="panel-group pt-2 pb-2" id="accordion" role="tablist" aria-multiselectable="true">
+                                            <p class="mt-2">
+                                                <b>Very good product. Thank you shopmytools</b>
+                                            </p>
+                                            <div class="row">
+                                                <div class="col-md-8 col-7">
+                                                    <p class="secondary">Surya
+                                                        <span class="mr-1 ml-1 icon-check_circle"></span>Certified Buyer 31 June 2018</p>
+                                                </div>
+                                                <div class="col-md-4 col-5">
+                                                    <p class="text-small">
+                                                        <span class="blue mr-3">
+                                                            <span class="icon-thumb_up mr-1"></span> 0
+                                                        </span>
+                                                        <span class="secondary">
+                                                            <span class="icon-thumb_down mr-1"></span> 0
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
 
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingOne">
-                                        <h4 class="panel-title">
-                                            <a role="button" class="text-uppercase border-top border-bottom dark" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                                                aria-expanded="true" aria-controls="collapseOne">
-                                                <i class="more-less icon-plus"></i>Additional information
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                        <div class="panel-body">
-                                            <div *ngFor="let attr of itemDetails?.attribute_info">
-                                                {{attr.atrname}} : {{attr.atrvalue}}
-                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <h4 class="text-uppercase">Ratings & Reviews</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="mb-3">
-                                        <h2 class="bold padding-bottom-7 text_left text-center">4.3
-                                            <span class="text-small icon-star-full"></span>
-                                        </h2>
-                                        <p class="text-small secondary">6 Ratings and 1 Review</p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="float-left">
-                                        <div class="float-left" style="width:35px; line-height:1;">
-                                            <div style="height:9px; margin:5px 0;">5
-                                                <span class="icon-star-full"></span>
-                                            </div>
-                                        </div>
-                                        <div class="float-left" style="width:180px;">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 1000%">
-                                                    <span class="sr-only">80% Complete (danger)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="float-right" style="margin-left:10px;">1500</div>
-                                    </div>
-                                    <div class="float-left">
-                                        <div class="float-left" style="width:35px; line-height:1;">
-                                            <div style="height:9px; margin:5px 0;">4
-                                                <span class="icon-star-full"></span>
-                                            </div>
-                                        </div>
-                                        <div class="float-left" style="width:180px;">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
-                                                    <span class="sr-only">80% Complete (danger)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="float-right" style="margin-left:10px;">1200</div>
-                                    </div>
-                                    <div class="float-left">
-                                        <div class="float-left" style="width:35px; line-height:1;">
-                                            <div style="height:9px; margin:5px 0;">3
-                                                <span class="icon-star-full"></span>
-                                            </div>
-                                        </div>
-                                        <div class="float-left" style="width:180px;">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
-                                                    <span class="sr-only">80% Complete (danger)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="float-right" style="margin-left:10px;">600</div>
-                                    </div>
-                                    <div class="float-left">
-                                        <div class="float-left" style="width:35px; line-height:1;">
-                                            <div style="height:9px; margin:5px 0;">2
-                                                <span class="icon-star-full"></span>
-                                            </div>
-                                        </div>
-                                        <div class="float-left" style="width:180px;">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
-                                                    <span class="sr-only">80% Complete (danger)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="float-right" style="margin-left:10px;">200</div>
-                                    </div>
-                                    <div class="float-left">
-                                        <div class="float-left" style="width:35px; line-height:1;">
-                                            <div style="height:9px; margin:5px 0;">1
-                                                <span class="icon-star-full"></span>
-                                            </div>
-                                        </div>
-                                        <div class="float-left" style="width:180px;">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
-                                                    <span class="sr-only">80% Complete (danger)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="float-right" style="margin-left:10px;">100</div>
-                                    </div>
-                                    <div class="clearfix"></div>
-
-                                </div>
-                            </div>
-                            <div class="row pt-4">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <div>
-                                            <button class="btn btn-sm btn-success rating-text">4.3
-                                                <span class="ml-1 icon-star-full"></span>
-                                            </button>
-                                            <span class="ml-2  medium">Must Buy!</span>
-                                        </div>
-                                        <p class="mt-2">
-                                            <b>Very good product. Thank you shopmytools</b>
-                                        </p>
-                                        <div class="row">
-                                            <div class="col-md-8 col-7">
-                                                <p class="secondary">Surya
-                                                    <span class="mr-1 ml-1 icon-check_circle"></span>Certified Buyer 31 June 2018</p>
-                                            </div>
-                                            <div class="col-md-4 col-5">
-                                                <p class="text-small">
-                                                    <span class="blue mr-3">
-                                                        <span class="icon-thumb_up mr-1"></span> 0
-                                                    </span>
-                                                    <span class="secondary">
-                                                        <span class="icon-thumb_down mr-1"></span> 0
-                                                    </span>
-                                                </p>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -305,654 +308,27 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="pt-4 pb-4">
-    <div class="container-fluid">
-        <div class="row pb-4">
-            <div class="col-md-12">
-                <h4 class="medium text-uppercase">Related Products</h4>
+    <section class="pt-4 pb-4">
+        <div class="container-fluid">
+            <div class="row pb-4">
+                <div class="col-md-12">
+                    <h4 class="medium text-uppercase">Related Products</h4>
+                </div>
             </div>
+            <app-tool-list [toolsArray]="relatedProducts"></app-tool-list>
         </div>
-        <div class="row">
-            <div class="block-grid-item col-sm-3">
-                <div (click)="openDetails()" class="box position-relative">
-                    <div class="gray-bg">
-                        <a routerLink="/view-details">
-                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
-                        </a>
-                    </div>
-                    <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                    <span class="blue">
-                        <span class="icon-inr"></span>
-                        <span>2,564.56</span>
-                    </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">
-                        <span class="icon-inr"></span>4,565.00</span>
-                    <p class="blue pt-2 pt-6">
-                        <span class="mr-3"> (Excluding-GST) </span>
+    </section>
 
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                    </p>
-                    <div class="overlay-text">
-                        <ul class="list-inline mt_4 mb-0">
-
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-shopping-cart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-heart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link">
-                                    <span class="icon-compare_arrows"></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
+    <section class="pt-4 pb-4">
+        <div class="container-fluid">
+            <div class="row pb-4">
+                <div class="col-md-12">
+                    <h4 class="medium text-uppercase">Upsell Products</h4>
                 </div>
             </div>
+            <app-tool-list [toolsArray]="upsellProducts"></app-tool-list>
         </div>
-        <div id="carousel04" class="owl-carousel owl-theme">
-            <div class="item">
-                <div class="box position-relative">
-                    <div class="gray-bg">
-                        <a href="#">
-                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
-                        </a>
-                    </div>
-                    <a href="#">
-                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                    </a>
-                    <span class="blue">
-                        <span class="icon-inr"></span>
-                        <span>2,564.56</span>
-                    </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
-                    <p class="blue pt-2 pt-6">
-                        <span class="mr-3"> (Excluding-GST) </span>
-
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                    </p>
-                    <div class="overlay-text">
-                        <ul class="list-inline mt_4 mb-0">
-
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-shopping-cart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-heart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link">
-                                    <span class="icon-compare_arrows"></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="box position-relative">
-                    <div class="gray-bg">
-                        <a href="#">
-                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
-                        </a>
-                    </div>
-                    <a href="#">
-                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                    </a>
-                    <span class="blue">
-                        <span class="icon-inr"></span>
-                        <span>2,564.56</span>
-                    </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
-                    <p class="blue pt-2 pt-6">
-                        <span class="mr-3"> (Excluding-GST) </span>
-
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                    </p>
-                    <div class="overlay-text">
-                        <ul class="list-inline mt_4 mb-0">
-
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-shopping-cart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-heart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link">
-                                    <span class="icon-compare_arrows"></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="box position-relative">
-                    <div class="gray-bg">
-                        <a href="#">
-                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
-                        </a>
-                    </div>
-                    <a href="#">
-                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                    </a>
-                    <span class="blue">
-                        <span class="icon-inr"></span>
-                        <span>2,564.56</span>
-                    </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
-                    <p class="blue pt-2 pt-6">
-                        <span class="mr-3"> (Excluding-GST) </span>
-
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                    </p>
-                    <div class="overlay-text">
-                        <ul class="list-inline mt_4 mb-0">
-
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-shopping-cart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-heart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link">
-                                    <span class="icon-compare_arrows"></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="box position-relative">
-                    <div class="gray-bg">
-                        <a href="#">
-                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
-                        </a>
-                    </div>
-                    <a href="#">
-                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                    </a>
-                    <span class="blue">
-                        <span class="icon-inr"></span>
-                        <span>2,564.56</span>
-                    </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
-                    <p class="blue pt-2 pt-6">
-                        <span class="mr-3"> (Excluding-GST) </span>
-
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                    </p>
-                    <div class="overlay-text">
-                        <ul class="list-inline mt_4 mb-0">
-
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-shopping-cart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-heart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link">
-                                    <span class="icon-compare_arrows"></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="box position-relative">
-                    <div class="gray-bg">
-                        <a href="#">
-                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
-                        </a>
-                    </div>
-                    <a href="#">
-                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                    </a>
-                    <span class="blue">
-                        <span class="icon-inr"></span>
-                        <span>2,564.56</span>
-                    </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
-                    <p class="blue pt-2 pt-6">
-                        <span class="mr-3"> (Excluding-GST) </span>
-
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                    </p>
-                    <div class="overlay-text">
-                        <ul class="list-inline mt_4 mb-0">
-
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-shopping-cart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-heart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link">
-                                    <span class="icon-compare_arrows"></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="box position-relative">
-                    <div class="gray-bg">
-                        <a href="#">
-                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
-                        </a>
-                    </div>
-                    <a href="#">
-                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                    </a>
-                    <span class="blue">
-                        <span class="icon-inr"></span>
-                        <span>2,564.56</span>
-                    </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
-                    <p class="blue pt-2 pt-6">
-                        <span class="mr-3"> (Excluding-GST) </span>
-
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                    </p>
-                    <div class="overlay-text">
-                        <ul class="list-inline mt_4 mb-0">
-
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-shopping-cart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-heart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link">
-                                    <span class="icon-compare_arrows"></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="pt-4 pb-4">
-    <div class="container-fluid">
-        <div class="row pb-4">
-            <div class="col-md-12">
-                <h4 class="medium text-uppercase">Upsell Products</h4>
-            </div>
-        </div>
-        <div id="carousel02" class="owl-carousel owl-theme">
-            <div class="item">
-                <div class="box position-relative">
-                    <div class="gray-bg">
-                        <a href="#">
-                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
-                        </a>
-                    </div>
-                    <a href="#">
-                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                    </a>
-                    <span class="blue">
-                        <span class="icon-inr"></span>
-                        <span>2,564.56</span>
-                    </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
-                    <p class="blue pt-2 pt-6">
-                        <span class="mr-3"> (Excluding-GST) </span>
-
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                    </p>
-                    <div class="overlay-text">
-                        <ul class="list-inline mt_4 mb-0">
-
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-shopping-cart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-heart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link">
-                                    <span class="icon-compare_arrows"></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="box position-relative">
-                    <div class="gray-bg">
-                        <a href="#">
-                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
-                        </a>
-                    </div>
-                    <a href="#">
-                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                    </a>
-                    <span class="blue">
-                        <span class="icon-inr"></span>
-                        <span>2,564.56</span>
-                    </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
-                    <p class="blue pt-2 pt-6">
-                        <span class="mr-3"> (Excluding-GST) </span>
-
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                    </p>
-                    <div class="overlay-text">
-                        <ul class="list-inline mt_4 mb-0">
-
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-shopping-cart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-heart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link">
-                                    <span class="icon-compare_arrows"></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="box position-relative">
-                    <div class="gray-bg">
-                        <a href="#">
-                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
-                        </a>
-                    </div>
-                    <a href="#">
-                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                    </a>
-                    <span class="blue">
-                        <span class="icon-inr"></span>
-                        <span>2,564.56</span>
-                    </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
-                    <p class="blue pt-2 pt-6">
-                        <span class="mr-3"> (Excluding-GST) </span>
-
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                    </p>
-                    <div class="overlay-text">
-                        <ul class="list-inline mt_4 mb-0">
-
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-shopping-cart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-heart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link">
-                                    <span class="icon-compare_arrows"></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="box position-relative">
-                    <div class="gray-bg">
-                        <a href="#">
-                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
-                        </a>
-                    </div>
-                    <a href="#">
-                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                    </a>
-                    <span class="blue">
-                        <span class="icon-inr"></span>
-                        <span>2,564.56</span>
-                    </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
-                    <p class="blue pt-2 pt-6">
-                        <span class="mr-3"> (Excluding-GST) </span>
-
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                    </p>
-                    <div class="overlay-text">
-                        <ul class="list-inline mt_4 mb-0">
-
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-shopping-cart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-heart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link">
-                                    <span class="icon-compare_arrows"></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="box position-relative">
-                    <div class="gray-bg">
-                        <a href="#">
-                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
-                        </a>
-                    </div>
-                    <a href="#">
-                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                    </a>
-                    <span class="blue">
-                        <span class="icon-inr"></span>
-                        <span>2,564.56</span>
-                    </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
-                    <p class="blue pt-2 pt-6">
-                        <span class="mr-3"> (Excluding-GST) </span>
-
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                    </p>
-                    <div class="overlay-text">
-                        <ul class="list-inline mt_4 mb-0">
-
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-shopping-cart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-heart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link">
-                                    <span class="icon-compare_arrows"></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="box position-relative">
-                    <div class="gray-bg">
-                        <a href="#">
-                            <img src="assets/img/offer.png" alt="imge" class="img-fluid">
-                        </a>
-                    </div>
-                    <a href="#">
-                        <p>6mm Wood Chisel MPT MH020031 - 6</p>
-                    </a>
-                    <span class="blue">
-                        <span class="icon-inr"></span>
-                        <span>2,564.56</span>
-                    </span>
-                    <span class="pricetag">20.5%</span>
-                    <span class="text-line-through">4,565.00</span>
-                    <p class="blue pt-2 pt-6">
-                        <span class="mr-3"> (Excluding-GST) </span>
-
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-full"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                        <span class="icon-star-empty"></span>
-                    </p>
-                    <div class="overlay-text">
-                        <ul class="list-inline mt_4 mb-0">
-
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-shopping-cart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link ">
-                                    <span class="icon-heart"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item ">
-                                <a href="#" class="nav-link">
-                                    <span class="icon-compare_arrows"></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+</div>
